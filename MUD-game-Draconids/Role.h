@@ -3,6 +3,8 @@
 #include <vector>
 #include<string>
 #include"Good.h"
+#include<set>
+#include <algorithm>
 using namespace std;
 class Skill;
 class Good;
@@ -12,7 +14,18 @@ class Role
 {
 public:
     Role(string name, int HP, int attack, int DEF, int Agility, double dodge, int life, int money, int level); //构造函数
+    // 展示角色信息
     void showrole();
+    // 展示角色技能
+    int showskill();
+    // 添加技能
+    int Addskill(unique_ptr<Skill> skill);
+    // 使用技能
+    void Useskill(int choose);
+ // 声明技能为Role友元类
+    friend class GUI;
+    friend class SHEN;
+    friend class XI;
 private:
     string name;
     int HP;          // 血量
@@ -20,9 +33,9 @@ private:
     int DEF;         // 防御
     int Agility;     // 敏捷
     double dodge;    // 闪避
-    std::vector<std::unique_ptr<Skill>> Skill_vector; // 技能
+    std::set<std::unique_ptr<Skill>> Skill_vector; // 技能
     int life; // 生命
-    std::unique_ptr<Good> weapon; // 武器（只能装备一把）
+    //std::unique_ptr<Good> weapon; // 武器（只能装备一把）
     std::unique_ptr<Bag> bag; // 背包
     int money; // 金币
     std::unique_ptr<Task> task; // 任务
