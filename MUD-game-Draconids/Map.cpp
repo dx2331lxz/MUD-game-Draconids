@@ -1,9 +1,4 @@
 #include"Map.h"
-
-
-
-
-
 Map::Map()
 :pos(1)
 {
@@ -52,4 +47,47 @@ void Map::move(string &str) {//¸ù¾İÊäÈëµØµãÀ´µ½²»Í¬Î»ÖÃ,ÈôÊäÈë´íÎó,ÍË³öº¯ÊıÖØĞÂÊ
 	}
 		
 	else  cout << "¸ÃµØµã²»´æÔÚ,ÇëÖØĞÂÊäÈë" << endl;
+}
+
+void MapNode::AddChildren(MapNode* NewChildren)
+{
+	children.push_back(NewChildren);
+}
+//MapNode::MapNode(MapNode* root)
+//{
+	
+//}
+void TreeMap::AddNote(MapNode* newone,MapNode* parent)
+{
+	//MapNode* Newone(new MapNode(newone));
+	parent->AddChildren(newone);
+}
+
+
+School_Map::School_Map()
+	:pos()
+{
+
+}
+
+void School_Map::showmap()
+{
+	cout << " |------------------------------------------|" << endl;
+	cout << " |                     |                    |" << endl;
+	cout << " |                     |                    |" << endl;
+	cout << " |                     |                    |" << endl;
+	cout << " |------------------------------------------|" << endl;
+	cout << " |                     |                    |" << endl;
+	cout << " |                     |                    |" << endl;
+	cout << " |                     |                    |" << endl;
+	cout << " |------------------------------------------|" << endl;
+	cout << " |                     |                    |" << endl;
+	cout << " |                     |                    |" << endl;
+	cout << " |                     |                    |" << endl;
+	cout << " |------------------------------------------|" << endl;
+}
+
+void School_Map::move(string &action)
+{
+	if(pos[1])
 }
