@@ -2,9 +2,10 @@
 
 int main()
 {
-	MapNode* root=new MapNode();
-	root->Getthere();
+	shared_ptr<MapNode> root=make_shared< MapNode>();
+	
 	TreeMap map(root);
+
 	map.showmap();
 	system("pause");
 	return 0;

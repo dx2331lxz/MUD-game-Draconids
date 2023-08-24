@@ -26,10 +26,13 @@ private:
 	int pos;
 	unordered_map<string, int>search_map;
 	vector<string> posname = { "卡塞尔学院","青铜城","北京","日本","俄罗斯","北极","仕兰中学" };
-	vector<Npc*> allnpc;//地图上的所有npc指针
+	vector<shared_ptr<Npc>> allnpc;//地图上的所有npc指针
 	unordered_map<string, int>searchNPC_map;//查找npc的表,为地点和数组
 	
 };
+
+
+
 
 class School_Map {   //卡塞尔学院地图
 public:
@@ -42,43 +45,46 @@ private:
 	int pos[2];
 };
 
+
+
+
+
+
 class MapNode   //青铜城专用地图块
 {
 public:
 	 //不同的人物指针
 	MapNode();
-	MapNode(Role* role, MapNode* left, MapNode* right);
-	MapNode* left;
-	MapNode* right;
-	//MapNode(MapNode *root);
+	MapNode(unique_ptr<Role>& role, shared_ptr<MapNode> left, shared_ptr<MapNode> right);
+	shared_ptr<MapNode> left;
+	shared_ptr<MapNode> right;
+	
 	void Getthere()//到达此地时调用
 	{
 		isthere = true;
 	}
-	void goaway()//离开时调用
-	{
-		isthere = false;
-	}
-	char IsThere()
-	{
-		if (isthere)
-			return '*';
-		else
-			return'0';
-	}
+	shared_ptr<MapNode> goaway();//离开时调用
+	
+	char IsThere();
+	
 private:
-	Role* role;
+	unique_ptr<Role> role;
 	bool isthere=false;
 };
 
 class TreeMap {
 public:
-	TreeMap();
-	TreeMap(MapNode* root);
-	MapNode* GetRoot() {//返回入口节点
+	//TreeMap();
+	TreeMap(shared_ptr<MapNode> root);
+	shared_ptr<MapNode> GetRoot() {//返回入口节点
 		return root;
+	}
+	void init()
+	{
+		now->Getthere();
 	}
 	void showmap();
 private:
-	MapNode* root;
+	shared_ptr<MapNode> root;
+	shared_ptr<MapNode> now;
 };

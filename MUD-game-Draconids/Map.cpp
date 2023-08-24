@@ -11,19 +11,19 @@ Map::Map()
 	search_map.insert(pair<string, int>("仕兰中学", 6));
 	search_map.insert(pair<string, int>("巴西", 7));
 
-	Npc* npc1 = new Npc();
+	shared_ptr<Npc> npc1=make_shared<Npc>();
 	allnpc.push_back(npc1);
 	searchNPC_map.insert(pair<string, int>("北京", 0));
-	Npc* npc2 = new Npc();
+	shared_ptr<Npc> npc2 = make_shared<Npc>();
 	allnpc.push_back(npc2);
 	searchNPC_map.insert(pair<string, int>("日本", 1));
-	Npc* npc3 = new Npc();
+	shared_ptr<Npc> npc3 = make_shared<Npc>();
 	allnpc.push_back(npc3);
 	searchNPC_map.insert(pair<string, int>("俄罗斯", 2));
-	Npc* npc4 = new Npc();
+	shared_ptr<Npc> npc4 = make_shared<Npc>();
 	allnpc.push_back(npc4);
 	searchNPC_map.insert(pair<string, int>("北极", 3));
-	Npc* npc5 = new Npc();
+	shared_ptr<Npc> npc5 = make_shared<Npc>();
 	allnpc.push_back(npc5);
 	searchNPC_map.insert(pair<string, int>("仕兰中学", 4));
 	
@@ -149,29 +149,30 @@ void School_Map::move(char action)//移动输入wasd 如果超出位置,只能在此地呆着
 
 MapNode::MapNode()
 	:left(nullptr),right(nullptr),role(nullptr){}
-MapNode::MapNode(Role* role, MapNode* left, MapNode* right)
-	:role(role),left(left),right(right)
+MapNode::MapNode(unique_ptr<Role>& role, shared_ptr<MapNode> left, shared_ptr<MapNode> right)
+	:role(move(role)),left(left),right(right)
 {
 
 }
-TreeMap::TreeMap() {}
-TreeMap::TreeMap(MapNode* root)
-	:root(root)
+//TreeMap::TreeMap()
+//:root(nullptr),now(nullptr){}
+TreeMap::TreeMap(shared_ptr<MapNode> root)
+	:root(root),now(root)
 {
-	MapNode* new_L = new MapNode();
-	MapNode* new_R = new MapNode();
+	shared_ptr<MapNode> new_L =make_shared<MapNode>();
+	shared_ptr<MapNode> new_R = make_shared<MapNode>();
 
 	root->left = new_L;
 	root->right = new_R;
-	MapNode* new_LL = new MapNode();
-	MapNode* new_RR = new MapNode();
+	shared_ptr<MapNode> new_LL = make_shared<MapNode>();
+	shared_ptr<MapNode> new_RR = make_shared<MapNode>();
 	new_L->left = new_LL;
 	new_R->right = new_RR;
-	MapNode* new_LR = new MapNode();
-	MapNode* new_RL = new MapNode();
+	shared_ptr<MapNode> new_LR = make_shared<MapNode>();
+	shared_ptr<MapNode> new_RL = make_shared<MapNode>();
 	new_L->right = new_LR;
 	new_R->left = new_RL;
-	MapNode* new_End = new MapNode();
+	shared_ptr<MapNode> new_End = make_shared<MapNode>();
 	new_LL->right = new_End;
 	new_LR->right = new_End;
 	new_RL->left = new_End;
@@ -189,4 +190,36 @@ void TreeMap::showmap()
 	cout << "          \\ | | /  " << endl;
 	cout << "           \\| |/                    " << endl;
 	cout << "             "<< root->left->left->right->IsThere() <<"                       " << endl;
+}
+
+
+char MapNode::IsThere()
+{
+	if (isthere)
+		return '*';
+	else
+		return'0';
+}
+
+shared_ptr<MapNode> MapNode::goaway()//离开时调用
+{
+	cout << "请输入L\\R离开:" << endl;
+	char choice;
+	do {
+		cin >> choice;
+		if (choice == 'L' && this->left)
+		{
+			isthere = false;
+			this->left->Getthere();
+			return this->left;
+		}
+		else if (choice == 'R' && this->right)
+		{
+			isthere = false;
+			this->right->Getthere();
+			return this->right;
+		}
+		else
+			cout << "输入有误,请重新输入" << endl;
+	} while (1);
 }
