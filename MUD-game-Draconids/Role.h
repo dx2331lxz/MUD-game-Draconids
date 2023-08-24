@@ -30,6 +30,7 @@ private:
     string name;
     int HP;          // ÑªÁ¿
     int attack;      // ¹¥»÷
+    
     int DEF;         // ·ÀÓù
     int Agility;     // Ãô½İ
     double dodge;    // ÉÁ±Ü
