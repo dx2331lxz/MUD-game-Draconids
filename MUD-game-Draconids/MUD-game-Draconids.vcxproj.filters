@@ -16,14 +16,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+    <None Include="D:\OneDrive\桌面\Typora\龙族.md" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="fight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="fight.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
