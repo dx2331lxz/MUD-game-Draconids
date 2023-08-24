@@ -1,14 +1,14 @@
 #pragma once
 #include"main.h"
-class Good
-{
-public:
-	Good();
-	~Good();
+//class Good
+//{
+//public:
+//	Good();
+//	~Good();
 
-private:
+//private:
 
-};
+//};
 
 
 

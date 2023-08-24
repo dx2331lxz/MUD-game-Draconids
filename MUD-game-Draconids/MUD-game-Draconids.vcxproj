@@ -135,6 +135,7 @@
     <ClCompile Include="Good.cpp" />
     <ClCompile Include="Good.h" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Npc.cpp" />
     <ClCompile Include="Role.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="Task.cpp" />
@@ -143,6 +144,7 @@
   <ItemGroup>
     <ClInclude Include="Bag.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="Npc.h" />
     <ClInclude Include="Role.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="Task.h" />
