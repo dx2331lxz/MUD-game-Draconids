@@ -12,5 +12,8 @@
 #include <iomanip> // 包含这个头文件以使用格式化输出相关功能
 #include <set> // set容器
 #include <algorithm> //算法
-using namespace std;
+#include <thread>
 #include"Map.h"
+#include"welcomePage.h"
+using namespace std;
+
