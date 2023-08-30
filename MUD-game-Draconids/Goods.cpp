@@ -370,7 +370,7 @@ void Goods::showGoods()
 		cout << "血量:" << addMaxHP << endl;
 	}
 	if (type == 2) //药品
-	{
+{
 		cout << "回复血量:" << addHP << endl;
 	}
 }

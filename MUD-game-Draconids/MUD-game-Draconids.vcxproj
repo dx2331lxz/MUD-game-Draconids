@@ -146,6 +146,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bag.h" />
+    <ClInclude Include="fight.h" />
+    <ClInclude Include="Goods.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Npc.h" />
     <ClInclude Include="Role.h" />
