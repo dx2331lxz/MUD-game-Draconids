@@ -135,20 +135,25 @@
     <ClCompile Include="Good.cpp" />
     <ClCompile Include="Good.h" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Npc.cpp" />
+    <ClCompile Include="Npc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Role.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="Task.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="welcomePage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bag.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Npc.h" />
     <ClInclude Include="Role.h" />
+    <ClInclude Include="sdf.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="Task.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="welcomePage.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

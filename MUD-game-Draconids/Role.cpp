@@ -1,6 +1,6 @@
 #include"Role.h"
 
-Role::Role(string name, int HP, int attack, int DEF, int Agility, double dodge, int life, int money, int level):name(name), HP(HP), attack(attack), DEF(DEF), Agility(Agility), dodge(dodge), life(life), money(money), level(level), EXP(0)
+Role::Role(string name, int HP, int attack, int DEF, int Agility, int life, int money, int level):name(name), HP(HP), attack(attack), DEF(DEF), Agility(Agility), life(life), money(money), level(level), EXP(0)
 {
 }
 void Role::showrole()
@@ -14,7 +14,6 @@ void Role::showrole()
     cout << "·ÀÓù: " << DEF << "\t\t";
     cout << "½ðÇ®: " << money << endl;
     cout << "Ãô½Ý: " << Agility << "\t\t";
-    cout << "ÉÁ±Ü: " << dodge << "\t\t";
     cout << "ÉúÃü: " << life << "\t\t\t";
     cout << "¾­Ñé: " << EXP << endl;
     cout << endl;

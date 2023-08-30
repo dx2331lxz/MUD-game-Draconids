@@ -13,7 +13,7 @@ class Task;
 class Role
 {
 public:
-    Role(string name, int HP, int attack, int DEF, int Agility, double dodge, int life, int money, int level); //构造函数
+    Role(string name, int HP, int attack, int DEF, int Agility, int life, int money, int level); //构造函数
     // 展示角色信息
     void showrole();
     // 展示角色技能
@@ -32,7 +32,6 @@ private:
     int attack;      // 攻击
     int DEF;         // 防御
     int Agility;     // 敏捷
-    double dodge;    // 闪避
     std::set<std::unique_ptr<Skill>> Skill_vector; // 技能
     int life; // 生命
     //std::unique_ptr<Good> weapon; // 武器（只能装备一把）
