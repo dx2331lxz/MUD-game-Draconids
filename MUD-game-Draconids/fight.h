@@ -1,8 +1,4 @@
-#ifndef FIGHT_H
-#define FIGHT_H
-
-#ifndef FIGHTSYSTEM_H
-#define FIGHTSYSTEM_H
+#pragma once
 
 #include "Role.h"
 #include "Enemy.h"

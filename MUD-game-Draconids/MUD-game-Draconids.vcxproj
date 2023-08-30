@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bag.cpp" />
+    <ClCompile Include="fight.cpp" />
     <ClCompile Include="Good.cpp" />
     <ClCompile Include="Good.h" />
     <ClCompile Include="main.cpp" />
@@ -141,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bag.h" />
+    <ClInclude Include="fight.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Role.h" />
     <ClInclude Include="Skill.h" />
