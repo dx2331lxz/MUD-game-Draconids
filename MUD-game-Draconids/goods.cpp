@@ -10,7 +10,7 @@ Goods::Goods(int id)
 		desc = "平平无奇的拳头";
 		type = 0;
 		addAttack = 0;
-		addAGI = 0;
+		addAGI = 0; 
 		addDefend = 5;
 		priceBuy = 200;
 		priceSell = 50;
@@ -264,26 +264,26 @@ Goods::Goods(int id)
 		priceSell = 10;
 		break;
 	}
-		   /*case 22: {
-			   goodsId = id;
-			   name = "定神香";
-			   desc = "名贵药物精心炼成的丹药,补充少量内力";
-			   type = 2;
-			   addMP = 30;
-			   priceBuy = 80;
-			   priceSell = 10;
-			   break;
-		   }
-		   case 23: {
-			   goodsId = id;
-			   name = "风水混元丹";
-			   desc = "有着浓郁香气的药丸,补充大量内力";
-			   type = 2;
-			   addMP = 60;
-			   priceBuy = 100;
-			   priceSell = 15;
-			   break;
-		   }*/
+	/*case 22: {
+		goodsId = id;
+		name = "定神香";
+		desc = "名贵药物精心炼成的丹药,补充少量内力";
+		type = 2;
+		addMP = 30;
+		priceBuy = 80;
+		priceSell = 10;
+		break;
+	}
+	case 23: {
+		goodsId = id;
+		name = "风水混元丹";
+		desc = "有着浓郁香气的药丸,补充大量内力";
+		type = 2;
+		addMP = 60;
+		priceBuy = 100;
+		priceSell = 15;
+		break;
+	}*/
 	default:
 		break;
 	}
@@ -297,6 +297,9 @@ Goods::~Goods()
 {
 }
 
+int Goods::getDescd() {
+	return desc;
+}
 
 int Goods::getAddAGI() {
 	return addAGI;
@@ -315,6 +318,7 @@ string Goods::getDesc()
 {
 	return string(desc);
 }
+
 
 
 int Goods::getType()
@@ -370,7 +374,7 @@ void Goods::showGoods()
 		cout << "血量:" << addMaxHP << endl;
 	}
 	if (type == 2) //药品
-{
+	{
 		cout << "回复血量:" << addHP << endl;
 	}
 }
