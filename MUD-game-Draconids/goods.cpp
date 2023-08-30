@@ -289,6 +289,10 @@ Goods::Goods(int id)
 	}
 }
 
+Goods::Goods()
+{
+}
+
 Goods::~Goods()
 {
 }
