@@ -3,10 +3,8 @@
 #include<iomanip>
 using namespace std;
 
-Bag::Bag() {
-	saveGoods[20][2] = { 0 };
+Bag::Bag() :saveGoods{} {
 }
-
 Bag::~Bag() {}
 
 void Bag::showBags() {
