@@ -323,6 +323,50 @@ int Goods::getAddAttack()
 	return addAttack;
 }
 
-Good::~Good()
+int Goods::getAddDefend()
 {
+	return addDefend;
+}
+
+int Goods::getAddHP()
+{
+	return addHP;
+}
+
+int Goods::getAddMaxHP()
+{
+	return addMaxHP;
+}
+
+int Goods::getPriceSell()
+{
+	return priceSell;
+}
+
+int Goods::getPriceBuy()
+{
+	return priceBuy;
+}
+
+void Goods::showGoods()
+{
+	cout << name << endl;
+	cout << desc << endl;
+	if (type == 0) //武器
+	{
+		cout << "攻击力:" << addAttack << endl;
+		cout << "防御力:" << addDefend << endl;
+		cout << "敏捷:" << addAGI << endl;
+
+	}
+	if (type == 1) //防具
+	{
+		cout << "防御力:" << addDefend << endl;
+		cout << "敏捷:" << addAGI << endl;
+		cout << "血量:" << addMaxHP << endl;
+	}
+	if (type == 2) //药品
+	{
+		cout << "回复血量:" << addHP << endl;
+	}
 }
