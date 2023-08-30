@@ -31,6 +31,7 @@ void welcomePage() {
         std::cout.flush();//立刻输出缓冲区里的字符
         std::this_thread::sleep_for(std::chrono::milliseconds(50));//使程序停止50ms
     }
+
     //延迟50ms输出字符
 
     std::cout << std::endl;
