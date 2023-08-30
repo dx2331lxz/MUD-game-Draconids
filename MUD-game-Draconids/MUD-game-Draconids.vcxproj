@@ -132,8 +132,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bag.cpp" />
-    <ClCompile Include="Good.cpp" />
-    <ClCompile Include="Good.h" />
+    <ClCompile Include="Goods.cpp" />
+    <ClCompile Include="Goods.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Npc.cpp" />
     <ClCompile Include="Role.cpp" />

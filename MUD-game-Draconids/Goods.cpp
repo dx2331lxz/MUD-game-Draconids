@@ -1,4 +1,4 @@
-#include "Good.h"
+#include "Goods.h"
 
 Good::Good()
 {

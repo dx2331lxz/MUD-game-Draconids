@@ -2,7 +2,7 @@
 #include "main.h"
 #include <vector>
 #include<string>
-#include"Good.h"
+#include"Goods.h"
 #include<set>
 #include <algorithm>
 using namespace std;
