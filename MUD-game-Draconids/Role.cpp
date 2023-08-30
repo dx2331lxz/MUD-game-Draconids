@@ -112,3 +112,45 @@ void Role::Useskill(int choose)
     }
     
 }
+#include "Role.h"
+
+// ... (其他成员函数的定义)
+
+void Role::addExp(int addExp) {
+    EXP += addExp;
+}
+
+void Role::addMoney(int addMoney) {
+    money += addMoney;
+}
+
+int Role::getAgility() const {
+    return Agility;
+}
+
+int Role::getAttack() const {
+    return attack;
+}
+
+int Role::getDEF() const {
+    return DEF;
+}
+
+int Role::getHP() const {
+    return HP;
+}
+
+
+void Role::recoverHP(int amount) {
+    HP += amount;
+    if (HP > 100) {
+        HP = 100;
+    }
+}
+
+void Role::takeDamage(int damage) {
+    HP -= damage;
+    if (HP < 0) {
+        HP = 0;
+    }
+}

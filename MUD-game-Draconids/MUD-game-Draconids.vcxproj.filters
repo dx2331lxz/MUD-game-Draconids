@@ -25,12 +25,6 @@
     <ClCompile Include="Bag.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Good.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Good.h">
-      <Filter>头文件</Filter>
-    </ClCompile>
     <ClCompile Include="Role.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -38,6 +32,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Task.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="fight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Goods.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -55,6 +55,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Task.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="fight.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Goods.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,7 +2,7 @@
 #include "main.h"
 #include <vector>
 #include<string>
-#include"Good.h"
+#include"Goods.h"
 #include<set>
 #include <algorithm>
 using namespace std;
@@ -26,6 +26,15 @@ public:
     friend class GUI;
     friend class SHEN;
     friend class XI;
+    void addExp(int addExp);
+    void addMoney(int addMoney);
+    int getAgility() const;
+    int getAttack() const;
+    int getDEF() const;
+    int getHP() const;
+
+    void recoverHP(int amount);
+    void takeDamage(int damage);
 private:
     string name;
     int HP;          // ÑªÁ¿

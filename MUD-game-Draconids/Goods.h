@@ -1,5 +1,4 @@
 #pragma once
-#include"main.h"
 class Good
 {
 public:
@@ -9,6 +8,3 @@ public:
 private:
 
 };
-
-
-
