@@ -3,7 +3,7 @@
 #include<string>
 #include"Role.h"
 #include"Task.h"
-#include"Good.h"
+#include"Goods.h"
 #include"Skill.h"
 #include"Bag.h"
 #include <vector>
