@@ -33,9 +33,9 @@ Goods::Goods(int id)
 		name = "维克推多（“独裁者”）";
 		desc = "这把猎刀寄托着加图索家族对凯撒的厚望";
 		type = 0;
-		addAttack = ;
-		addAGI = ;
-		addDefend = ;
+		addAttack = 0;
+		addAGI = 0;
+		addDefend = 0;
 		priceBuy = 600;
 		priceSell = 200;
 		break;
@@ -45,9 +45,9 @@ Goods::Goods(int id)
 		name = "妖刀“村雨”";
 		desc = "不存于世的刀，楚子航的第一把佩刀";
 		type = 0;
-		addAttack = ;
-		addDefend = ;
-		addAGI = ;
+		addAttack = 0;
+		addDefend = 0;
+		addAGI = 0;
 		priceBuy = 800;
 		priceSell = 400;
 		break;
@@ -57,9 +57,9 @@ Goods::Goods(int id)
 		name = "巴雷特重型狙击步枪";
 		desc = "原为美国巴雷特公司研制的一型大口径狙击步枪";
 		type = 0;
-		addAttack = ;
-		addAGI = ;
-		addDefend = ;
+		addAttack = 0;
+		addAGI = 0;
+		addDefend = 0;
 		priceBuy = 1000;
 		priceSell = 500;
 		break;
@@ -69,9 +69,9 @@ Goods::Goods(int id)
 		name = "短弧刀";
 		desc = "日本分部赠与路明非，灵巧至极";
 		type = 0;
-		addAttack = ;
-		addAGI = ;
-		addDefend = ;
+		addAttack = 0;
+		addAGI = 0;
+		addDefend = 0;
 		priceBuy = 1200;
 		priceSell = 500;
 		break;
@@ -81,9 +81,9 @@ Goods::Goods(int id)
 		name = "蜘蛛切&童子切安钢";
 		desc = "剑源稚生赠与楚子航的两把日本国宝级宝刀";
 		type = 0;
-		addAttack = ;
-		addAGI = ;
-		addDefend = ;
+		addAttack = 0;
+		addAGI = 0;
+		addDefend = 0;
 		priceBuy = 1400;
 		priceSell = 600;
 		break;
@@ -93,9 +93,9 @@ Goods::Goods(int id)
 		name = "天羽羽斩";
 		desc = "传说为须佐之男斩断八岐大蛇的神剑";
 		type = 0;
-		addAttack = ;
-		addAGI = ;
-		addDefend = ;
+		addAttack = 0;
+		addAGI = 0;
+		addDefend = 0;
 		priceBuy = 1300;
 		priceSell = 600;
 		break;
@@ -105,9 +105,9 @@ Goods::Goods(int id)
 		name = "七宗罪";
 		desc = "以七宗罪为名的七把刀剑，需极高的龙血浓度才能拔出";
 		type = 0;
-		addAttack = ;
-		addAGI = ;
-		addDefend = ;
+		addAttack = 0;
+		addAGI = 0;
+		addDefend = 0;
 		priceBuy = 1200;
 		priceSell = 500;
 		break;
@@ -117,9 +117,9 @@ Goods::Goods(int id)
 		name = "天谴";
 		desc = "加图索家族联合俄罗斯联邦航天局共同开发的天基动能武器！！";
 		type = 0;
-		addAttack = ;
-		addAGI = ;
-		addDefend = ;
+		addAttack = 0;
+		addAGI = 0;
+		addDefend = 0;
 		priceBuy = 1500;
 		priceSell = 700;
 		break;
@@ -293,12 +293,9 @@ Goods::~Goods()
 {
 }
 
-int Goods::getDescd() {
-	return desc;
-}
 
-int Goods::getAddAPI() {
-	return addAPI;
+int Goods::getAddAGI() {
+	return addAGI;
 }
 
 string Goods::getName() {
@@ -314,7 +311,6 @@ string Goods::getDesc()
 {
 	return string(desc);
 }
-
 
 
 int Goods::getType()
@@ -360,13 +356,13 @@ void Goods::showGoods()
 	{
 		cout << "攻击力:" << addAttack << endl;
 		cout << "防御力:" << addDefend << endl;
-		cout << "敏捷:" << addAPI<< endl;
+		cout << "敏捷:" << addAGI<< endl;
 
 	}
 	if (type == 1) //防具
 	{
 		cout << "防御力:" << addDefend << endl;
-		cout << "敏捷:" << addAPI << endl;
+		cout << "敏捷:" << addAGI << endl;
 		cout << "血量:" << addMaxHP << endl;
 	}
 	if (type == 2) //药品

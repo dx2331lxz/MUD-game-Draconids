@@ -16,10 +16,9 @@ public:
 	string getName();
 	int getGoodsId();
 	string getDesc();
-	int getDescd();
 	int getType();
 	int getAddAttack();
-	int getAddAPI();
+	int getAddAGI();
 	int getAddDefend();
 	int getAddHP();
 	int getAddMaxHP();
@@ -33,7 +32,7 @@ private:
 	string desc;	//物品描述
 	int type;//物品属性：武器-0，防具-1，药品-2
 	int addAttack = 0;	//增加攻击
-	int addAPI = 0;	//增防敏捷
+	int addAGI = 0;	//增防敏捷
 	int addDefend = 0;	//增加防御
 	int addHP = 0;		//增加Hp
 	int addMaxHP = 0;	//增加max HP
