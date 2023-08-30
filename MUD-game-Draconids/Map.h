@@ -1,3 +1,34 @@
-ï»¿#pragma once
+#pragma once
+#include<iostream>
+using namespace std;
+#include<vector>
+#include<map>
+#include<string>
+#include<memory>
+#include<map>
+#include<unordered_map>
+#include"Npc.h"
+#include"Role.h"
+//½«µØÍ¼·Ö³É²»Í¬µÄ¿é,°´ÕÕ¿éµÄ²»Í¬½«Æä×éºÏ
+class Map
+{
+public:
+	Map();
+	~Map();
+	int GetPosition()//»ñÈ¡µ±Ç°ËùÔÚÎ»ÖÃ
+	{
+		return pos;
+	}
+	void ShowMap();
+	void move();
+	void Map_find(string& str);//²éÑ¯µ±Ç°µØÍ¼ÄÚµÄNpc
+private:
+	int pos;
+	unordered_map<string, int>search_map;//´æ´¢µØµãÃû³ÆºÍÊı×éÏÂ±ê
+	vector<string> posname = { "¿¨Èû¶ûÑ§Ôº","ÇàÍ­³Ç","±±¾©","ÈÕ±¾","¶íÂŞË¹","±±¼«","ÊËÀ¼ÖĞÑ§""°ÍÎ÷" };
+	//°ÍÎ÷ÎªÉÌµê
+	vector<shared_ptr<Npc>> allnpc;//µØÍ¼ÉÏµÄËùÓĞnpcÖ¸Õë
+	unordered_map<string, int>searchNPC_map;//²éÕÒnpcµÄ±í,ÎªµØµãºÍÊı×é
+};
 
 #includee<map>
