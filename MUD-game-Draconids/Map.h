@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include<iostream>
 using namespace std;
 #include<vector>
@@ -9,38 +9,38 @@ using namespace std;
 #include<unordered_map>
 #include"Npc.h"
 #include"Role.h"
-//½«µØÍ¼·Ö³É²»Í¬µÄ¿é,°´ÕÕ¿éµÄ²»Í¬½«Æä×éºÏ
+//å°†åœ°å›¾åˆ†æˆä¸åŒçš„å—,æŒ‰ç…§å—çš„ä¸åŒå°†å…¶ç»„åˆ
 class Map
 {
 public:
 	Map();
 	~Map();
-	int GetPosition()//»ñÈ¡µ±Ç°ËùÔÚÎ»ÖÃ
+	int GetPosition()//è·å–å½“å‰æ‰€åœ¨ä½ç½®
 	{
 		return pos;
 	}
 	void ShowMap();
 	void move();
-	void Map_find(string& str);//²éÑ¯µ±Ç°µØÍ¼ÄÚµÄNpc
+	void Map_find(string& str);//æŸ¥è¯¢å½“å‰åœ°å›¾å†…çš„Npc
 private:
 	int pos;
-	unordered_map<string, int>search_map;//´æ´¢µØµãÃû³ÆºÍÊı×éÏÂ±ê
-	vector<string> posname = { "¿¨Èû¶ûÑ§Ôº","ÇàÍ­³Ç","±±¾©","ÈÕ±¾","¶íÂŞË¹","±±¼«","ÊËÀ¼ÖĞÑ§" };
-	vector<shared_ptr<Npc>> allnpc;//µØÍ¼ÉÏµÄËùÓĞnpcÖ¸Õë
-	unordered_map<string, int>searchNPC_map;//²éÕÒnpcµÄ±í,ÎªµØµãºÍÊı×é
+	unordered_map<string, int>search_map;//å­˜å‚¨åœ°ç‚¹åç§°å’Œæ•°ç»„ä¸‹æ ‡
+	vector<string> posname = { "å¡å¡å°”å­¦é™¢","é’é“œåŸ","åŒ—äº¬","æ—¥æœ¬","ä¿„ç½—æ–¯","åŒ—æ","ä»•å…°ä¸­å­¦" };
+	vector<shared_ptr<Npc>> allnpc;//åœ°å›¾ä¸Šçš„æ‰€æœ‰npcæŒ‡é’ˆ
+	unordered_map<string, int>searchNPC_map;//æŸ¥æ‰¾npcçš„è¡¨,ä¸ºåœ°ç‚¹å’Œæ•°ç»„
 };
 
 
 
 
-class School_Map {   //¿¨Èû¶ûÑ§ÔºµØÍ¼
+class School_Map {   //å¡å¡å°”å­¦é™¢åœ°å›¾
 public:
 	School_Map();
 	void showmap();
-	void move();//ÒÆ¶¯ÊäÈëwasd,eÍË³ö Èç¹û³¬³öÎ»ÖÃ,Ö»ÄÜÔÚ´ËµØ´ô×Å
-	char isthere(int x,int y);//ÅĞ¶ÏÈËÎï´ËÊ±ÔÚ²»ÔÚÕâÀï,Èç¹ûÔÚ,·µ»Ø*
+	void move();//ç§»åŠ¨è¾“å…¥wasd,eé€€å‡º å¦‚æœè¶…å‡ºä½ç½®,åªèƒ½åœ¨æ­¤åœ°å‘†ç€
+	char isthere(int x,int y);//åˆ¤æ–­äººç‰©æ­¤æ—¶åœ¨ä¸åœ¨è¿™é‡Œ,å¦‚æœåœ¨,è¿”å›*
 private:
-	vector<vector<string>>posname = { {"½ÌÊÒ","ÑµÁ·ÊÒ"},{"µØ½Ñ","×°±¸²¿"},{"ĞİÏ¢ÊÒ","Í¼Êé¹İ"} };
+	vector<vector<string>>posname = { {"æ•™å®¤","è®­ç»ƒå®¤"},{"åœ°çª–","è£…å¤‡éƒ¨"},{"ä¼‘æ¯å®¤","å›¾ä¹¦é¦†"} };
 	int pos[2];
 };
 
@@ -49,20 +49,20 @@ private:
 
 
 
-class MapNode   //ÇàÍ­³Ç×¨ÓÃµØÍ¼¿é
+class MapNode   //é’é“œåŸä¸“ç”¨åœ°å›¾å—
 {
 public:
-	 //²»Í¬µÄÈËÎïÖ¸Õë
+	 //ä¸åŒçš„äººç‰©æŒ‡é’ˆ
 	MapNode();
 	MapNode(unique_ptr<Role>& role, shared_ptr<MapNode> left, shared_ptr<MapNode> right);
 	shared_ptr<MapNode> left;
 	shared_ptr<MapNode> right;
 	
-	void Getthere()//µ½´ï´ËµØÊ±µ÷ÓÃ
+	void Getthere()//åˆ°è¾¾æ­¤åœ°æ—¶è°ƒç”¨
 	{
 		isthere = true;
 	}
-	shared_ptr<MapNode> goaway();//Àë¿ªÊ±µ÷ÓÃ
+	shared_ptr<MapNode> goaway();//ç¦»å¼€æ—¶è°ƒç”¨
 	
 	char IsThere();
 	
@@ -75,7 +75,7 @@ class TreeMap {
 public:
 	//TreeMap();
 	TreeMap(shared_ptr<MapNode> root);
-	shared_ptr<MapNode> GetRoot() {//·µ»ØÈë¿Ú½Úµã
+	shared_ptr<MapNode> GetRoot() {//è¿”å›å…¥å£èŠ‚ç‚¹
 		return root;
 	}
 	void init()
