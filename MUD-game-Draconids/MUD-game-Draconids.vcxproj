@@ -134,6 +134,7 @@
     <ClCompile Include="Bag.cpp" />
     <ClCompile Include="Good.cpp" />
     <ClCompile Include="Good.h" />
+    <ClCompile Include="introduce.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Npc.cpp" />
     <ClCompile Include="Role.cpp" />
