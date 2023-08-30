@@ -27,5 +27,5 @@ private:
     Role& enemy;   // 战斗的敌人，使用 Role 类的实例
     int round;      // 回合数
     double hurt;    // 战斗产生的伤害值
-    Good goods[24];    // 物品列表，根据你的需求进行调整
+    Goods goods[24];    // 物品列表，根据你的需求进行调整
 };
