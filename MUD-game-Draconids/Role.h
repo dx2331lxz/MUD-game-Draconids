@@ -7,7 +7,7 @@
 #include <algorithm>
 using namespace std;
 class Skill;
-class Good;
+class Goods;
 class Bag;
 class Task;
 class Role
@@ -30,6 +30,7 @@ private:
     string name;
     int HP;          // ÑªÁ¿
     int attack;      // ¹¥»÷
+    
     int DEF;         // ·ÀÓù
     int Agility;     // Ãô½Ý
     double dodge;    // ÉÁ±Ü

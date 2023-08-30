@@ -18,6 +18,7 @@ void Role::showrole()
     cout << "ÉúÃü: " << life << "\t\t\t";
     cout << "¾­Ñé: " << EXP << endl;
     cout << endl;
+    system("pause");
 }
 
 int Role::showskill()

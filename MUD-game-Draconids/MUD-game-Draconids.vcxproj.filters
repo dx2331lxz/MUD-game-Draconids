@@ -25,10 +25,10 @@
     <ClCompile Include="Bag.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Good.cpp">
+    <ClCompile Include="Goods.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Good.h">
+    <ClCompile Include="Goods.h">
       <Filter>头文件</Filter>
     </ClCompile>
     <ClCompile Include="Role.cpp">
