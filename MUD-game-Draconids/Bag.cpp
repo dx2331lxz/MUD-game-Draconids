@@ -5,6 +5,7 @@ using namespace std;
 
 Bag::Bag() :saveGoods{} {
 }
+
 Bag::~Bag() {}
 
 void Bag::showBags() {

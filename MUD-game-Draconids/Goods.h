@@ -15,6 +15,7 @@ public:
 	string getName();
 	int getGoodsId();
 	string getDesc();
+	int getDescd();
 	int getType();
 	int getAddAttack();
 	int getAddAGI();
@@ -41,3 +42,5 @@ private:
 
 //物品实例化
 //Goods goods[24] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 };
+
+#endif
