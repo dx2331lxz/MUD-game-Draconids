@@ -32,6 +32,6 @@ void welcomePage() {
         std::this_thread::sleep_for(std::chrono::milliseconds(50));//Ê¹³ÌĞòÍ£Ö¹50ms
     }
     //ÑÓ³Ù50msÊä³ö×Ö·û
-
+    //
     std::cout << std::endl;
 }
