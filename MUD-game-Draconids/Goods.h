@@ -27,20 +27,20 @@ public:
 	void showGoods();
 
 private:
-	string name;	//ç‰©å“åç§°
+	string name;	//ÎïÆ·Ãû³Æ
 	int goodsId;
-	string desc;	//ç‰©å“æè¿°
-	int type;//ç‰©å“å±æ€§ï¼šæ­¦å™¨-0ï¼Œé˜²å…·-1ï¼Œè¯å“-2
-	int addAttack = 0;	//å¢åŠ æ”»å‡»
-	int addAGI = 0;	//å¢é˜²æ•æ·
-	int addDefend = 0;	//å¢åŠ é˜²å¾¡
-	int addHP = 0;		//å¢åŠ Hp
-	int addMaxHP = 0;	//å¢åŠ max HP
+	string desc;	//ÎïÆ·ÃèÊö
+	int type;//ÎïÆ·ÊôĞÔ£ºÎäÆ÷-0£¬·À¾ß-1£¬Ò©Æ·-2
+	int addAttack = 0;	//Ôö¼Ó¹¥»÷
+	int addAGI = 0;	//Ôö·ÀÃô½İ
+	int addDefend = 0;	//Ôö¼Ó·ÀÓù
+	int addHP = 0;		//Ôö¼ÓHp
+	int addMaxHP = 0;	//Ôö¼Ómax HP
 	int priceSell;
 	int priceBuy;
 };
 
-//ç‰©å“å®ä¾‹åŒ–
+//ÎïÆ·ÊµÀı»¯
 //Goods goods[24] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 };
 
 #endif

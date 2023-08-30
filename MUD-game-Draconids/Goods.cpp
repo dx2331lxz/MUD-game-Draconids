@@ -6,8 +6,8 @@ Goods::Goods(int id)
 	{
 	case 0: {
 		goodsId = id;
-		name = "æ‹³å¤´";
-		desc = "å¹³å¹³æ— å¥‡çš„æ‹³å¤´";
+		name = "È­Í·";
+		desc = "Æ½Æ½ÎÞÆæµÄÈ­Í·";
 		type = 0;
 		addAttack = 0;
 		addAGI = 0;
@@ -18,8 +18,8 @@ Goods::Goods(int id)
 	}
 	case 1: {
 		goodsId = id;
-		name = "æ²™æ¼ ä¹‹é¹°Â·é“¶ç‰ˆ";
-		desc = "åŽŸè‘—ä¸­å‡¯æ’’çš„æ ‡å¿—æ€§æ­¦å™¨ï¼ŒåŽèµ ä¸Žè·¯æ˜Žéž";
+		name = "É³Ä®Ö®Ó¥¡¤Òø°æ";
+		desc = "Ô­ÖøÖÐ¿­ÈöµÄ±êÖ¾ÐÔÎäÆ÷£¬ºóÔùÓëÂ·Ã÷·Ç";
 		type = 0;
 		addAttack = 20;
 		addAGI = 3;
@@ -30,8 +30,8 @@ Goods::Goods(int id)
 	}
 	case 2: {
 		goodsId = id;
-		name = "ç»´å…‹æŽ¨å¤šï¼ˆâ€œç‹¬è£è€…â€ï¼‰";
-		desc = "è¿™æŠŠçŒŽåˆ€å¯„æ‰˜ç€åŠ å›¾ç´¢å®¶æ—å¯¹å‡¯æ’’çš„åŽšæœ›";
+		name = "Î¬¿ËÍÆ¶à£¨¡°¶À²ÃÕß¡±£©";
+		desc = "Õâ°ÑÁÔµ¶¼ÄÍÐ×Å¼ÓÍ¼Ë÷¼Ò×å¶Ô¿­ÈöµÄºñÍû";
 		type = 0;
 		addAttack = 0;
 		addAGI = 0;
@@ -42,8 +42,8 @@ Goods::Goods(int id)
 	}
 	case 3: {
 		goodsId = id;
-		name = "å¦–åˆ€â€œæ‘é›¨â€";
-		desc = "ä¸å­˜äºŽä¸–çš„åˆ€ï¼Œæ¥šå­èˆªçš„ç¬¬ä¸€æŠŠä½©åˆ€";
+		name = "Ñýµ¶¡°´åÓê¡±";
+		desc = "²»´æÓÚÊÀµÄµ¶£¬³þ×Óº½µÄµÚÒ»°ÑÅåµ¶";
 		type = 0;
 		addAttack = 0;
 		addDefend = 0;
@@ -54,8 +54,8 @@ Goods::Goods(int id)
 	}
 	case 4: {
 		goodsId = id;
-		name = "å·´é›·ç‰¹é‡åž‹ç‹™å‡»æ­¥æžª";
-		desc = "åŽŸä¸ºç¾Žå›½å·´é›·ç‰¹å…¬å¸ç ”åˆ¶çš„ä¸€åž‹å¤§å£å¾„ç‹™å‡»æ­¥æžª";
+		name = "°ÍÀ×ÌØÖØÐÍ¾Ñ»÷²½Ç¹";
+		desc = "Ô­ÎªÃÀ¹ú°ÍÀ×ÌØ¹«Ë¾ÑÐÖÆµÄÒ»ÐÍ´ó¿Ú¾¶¾Ñ»÷²½Ç¹";
 		type = 0;
 		addAttack = 0;
 		addAGI = 0;
@@ -66,8 +66,8 @@ Goods::Goods(int id)
 	}
 	case 5: {
 		goodsId = id;
-		name = "çŸ­å¼§åˆ€";
-		desc = "æ—¥æœ¬åˆ†éƒ¨èµ ä¸Žè·¯æ˜Žéžï¼Œçµå·§è‡³æž";
+		name = "¶Ì»¡µ¶";
+		desc = "ÈÕ±¾·Ö²¿ÔùÓëÂ·Ã÷·Ç£¬ÁéÇÉÖÁ¼«";
 		type = 0;
 		addAttack = 0;
 		addAGI = 0;
@@ -78,8 +78,8 @@ Goods::Goods(int id)
 	}
 	case 6: {
 		goodsId = id;
-		name = "èœ˜è››åˆ‡&ç«¥å­åˆ‡å®‰é’¢";
-		desc = "å‰‘æºç¨šç”Ÿèµ ä¸Žæ¥šå­èˆªçš„ä¸¤æŠŠæ—¥æœ¬å›½å®çº§å®åˆ€";
+		name = "Ö©ÖëÇÐ&Í¯×ÓÇÐ°²¸Ö";
+		desc = "½£Ô´ÖÉÉúÔùÓë³þ×Óº½µÄÁ½°ÑÈÕ±¾¹ú±¦¼¶±¦µ¶";
 		type = 0;
 		addAttack = 0;
 		addAGI = 0;
@@ -90,8 +90,8 @@ Goods::Goods(int id)
 	}
 	case 7: {
 		goodsId = id;
-		name = "å¤©ç¾½ç¾½æ–©";
-		desc = "ä¼ è¯´ä¸ºé¡»ä½ä¹‹ç”·æ–©æ–­å…«å²å¤§è›‡çš„ç¥žå‰‘";
+		name = "ÌìÓðÓðÕ¶";
+		desc = "´«ËµÎªÐë×ôÖ®ÄÐÕ¶¶Ï°Ëáª´óÉßµÄÉñ½£";
 		type = 0;
 		addAttack = 0;
 		addAGI = 0;
@@ -102,8 +102,8 @@ Goods::Goods(int id)
 	}
 	case 8: {
 		goodsId = id;
-		name = "ä¸ƒå®—ç½ª";
-		desc = "ä»¥ä¸ƒå®—ç½ªä¸ºåçš„ä¸ƒæŠŠåˆ€å‰‘ï¼Œéœ€æžé«˜çš„é¾™è¡€æµ“åº¦æ‰èƒ½æ‹”å‡º";
+		name = "Æß×Ú×ï";
+		desc = "ÒÔÆß×Ú×ïÎªÃûµÄÆß°Ñµ¶½££¬Ðè¼«¸ßµÄÁúÑªÅ¨¶È²ÅÄÜ°Î³ö";
 		type = 0;
 		addAttack = 0;
 		addAGI = 0;
@@ -114,8 +114,8 @@ Goods::Goods(int id)
 	}
 	case 9: {
 		goodsId = id;
-		name = "å¤©è°´";
-		desc = "åŠ å›¾ç´¢å®¶æ—è”åˆä¿„ç½—æ–¯è”é‚¦èˆªå¤©å±€å…±åŒå¼€å‘çš„å¤©åŸºåŠ¨èƒ½æ­¦å™¨ï¼ï¼";
+		name = "ÌìÇ´";
+		desc = "¼ÓÍ¼Ë÷¼Ò×åÁªºÏ¶íÂÞË¹Áª°îº½Ìì¾Ö¹²Í¬¿ª·¢µÄÌì»ù¶¯ÄÜÎäÆ÷£¡£¡";
 		type = 0;
 		addAttack = 0;
 		addAGI = 0;
@@ -126,8 +126,8 @@ Goods::Goods(int id)
 	}
 	case 10: {
 		goodsId = id;
-		name = "é’å¸ƒè¡£";
-		desc = "æ™®é€šäººå®¶ç”·æ€§æ‰€ç©¿çš„æœé¥°,é¢æ–™ä¸Žå‰ªè£éƒ½å¾ˆæ™®é€š";
+		name = "Çà²¼ÒÂ";
+		desc = "ÆÕÍ¨ÈË¼ÒÄÐÐÔËù´©µÄ·þÊÎ,ÃæÁÏÓë¼ô²Ã¶¼ºÜÆÕÍ¨";
 		type = 1;
 		addDefend = 5;
 		addMaxHP = 10;
@@ -138,8 +138,8 @@ Goods::Goods(int id)
 	}
 	case 11: {
 		goodsId = id;
-		name = "ç²¾é’¢ç”²";
-		desc = "ä½¿ç”¨ç²¾é’¢çƒ§åˆ¶çš„ç›”ç”²,èƒ½å¤Ÿæœ‰æ•ˆé™ä½Žå¤–ç•Œçš„ä¼¤å®³";
+		name = "¾«¸Ö¼×";
+		desc = "Ê¹ÓÃ¾«¸ÖÉÕÖÆµÄ¿ø¼×,ÄÜ¹»ÓÐÐ§½µµÍÍâ½çµÄÉËº¦";
 		type = 1;
 		addDefend = 10;
 		addMaxHP = 20;
@@ -150,8 +150,8 @@ Goods::Goods(int id)
 	}
 	case 12: {
 		goodsId = id;
-		name = "çŽ¯é”é“ ";
-		desc = "ç”±é“ä¸æˆ–é“çŽ¯å¥—æ‰£ç¼€åˆæˆè¡£çŠ¶,æ¯çŽ¯ä¸Žå¦å››ä¸ªçŽ¯ç›¸å¥—æ‰£,å½¢å¦‚ç½‘é”";
+		name = "»·Ëøîø";
+		desc = "ÓÉÌúË¿»òÌú»·Ì×¿Û×ººÏ³ÉÒÂ×´,Ã¿»·ÓëÁíËÄ¸ö»·ÏàÌ×¿Û,ÐÎÈçÍøËø";
 		type = 1;
 		addDefend = 20;
 		addMaxHP = 30;
@@ -162,8 +162,8 @@ Goods::Goods(int id)
 	}
 	case 13: {
 		goodsId = id;
-		name = "å†°æ™¶æˆ˜è¡£";
-		desc = "å¤–è¡¨çœ‹æ¥å®›å¦‚é€æ˜Žæ°´æ™¶,å®žé™…ä¸Šå´æ˜¯ç”¨åƒå¹´ä¸åŒ–çš„å¤©å±±å¯’å†°åˆ¶æˆ,éžå¸¸çè´µ";
+		name = "±ù¾§Õ½ÒÂ";
+		desc = "Íâ±í¿´À´ÍðÈçÍ¸Ã÷Ë®¾§,Êµ¼ÊÉÏÈ´ÊÇÓÃÇ§Äê²»»¯µÄÌìÉ½º®±ùÖÆ³É,·Ç³£Õä¹ó";
 		type = 1;
 		addDefend = 30;
 		addMaxHP = 40;
@@ -174,8 +174,8 @@ Goods::Goods(int id)
 	}
 	case 14: {
 		goodsId = id;
-		name = "é‡‘ä¸è½¯çŒ¬ç”²";
-		desc = "ç”¨é‡‘ä¸å’Œåƒå¹´æ»•æžæ··åˆç¼–ç»‡è€Œæˆ,æŸ”è½¯ä¸”åˆ€æžªä¸å…¥,æ˜¯ä¸€ä»¶éš¾å¾—çš„çå®";
+		name = "½ðË¿Èíâ¬¼×";
+		desc = "ÓÃ½ðË¿ºÍÇ§ÄêëøÖ¦»ìºÏ±àÖ¯¶ø³É,ÈáÈíÇÒµ¶Ç¹²»Èë,ÊÇÒ»¼þÄÑµÃµÄÕä±¦";
 		type = 1;
 		addDefend = 40;
 		addMaxHP = 50;
@@ -186,8 +186,8 @@ Goods::Goods(int id)
 	}
 	case 15: {
 		goodsId = id;
-		name = "ç¥ç€æˆ˜ç”²";
-		desc = "ä»¥é’ç»¿è‰²çš„ç¥ç€ä¸ºä¸»ã€ä½ä»¥é‡‘è‰²ç¥ç€ä¸ºè¡¬ï¼Œç»¿è‰²çš„è‚©ç”²ä»¥æ‰‹å·¥äº®ç‰‡é•¶æˆï¼Œé›•å·¥ç²¾ç»†åŽä¸½";
+		name = "çúçêÕ½¼×";
+		desc = "ÒÔÇàÂÌÉ«µÄçúçêÎªÖ÷¡¢×ôÒÔ½ðÉ«çúçêÎª³Ä£¬ÂÌÉ«µÄ¼ç¼×ÒÔÊÖ¹¤ÁÁÆ¬Ïâ³É£¬µñ¹¤¾«Ï¸»ªÀö";
 		type = 1;
 		addDefend = 40;
 		addMaxHP = 50;
@@ -198,8 +198,8 @@ Goods::Goods(int id)
 	}
 	case 16: {
 		goodsId = id;
-		name = "é’äº‘æˆ˜è¢";
-		desc = "åŽä¸½æ— æ¯”ï¼Œè¿œè§‚è¡Œè‹¥æµäº‘ï¼Œæ›´æ˜¾çŽ‰æ ‘ä¸´é£Žã€‚";
+		name = "ÇàÔÆÕ½ÅÛ";
+		desc = "»ªÀöÎÞ±È£¬Ô¶¹ÛÐÐÈôÁ÷ÔÆ£¬¸üÏÔÓñÊ÷ÁÙ·ç¡£";
 		type = 1;
 		addDefend = 40;
 		addMaxHP = 50;
@@ -210,8 +210,8 @@ Goods::Goods(int id)
 	}
 	case 17: {
 		goodsId = id;
-		name = "äº‘ç»ƒå¤©è¡£";
-		desc = "å¤–å½¢é£˜é€¸è½»è–„çš„ä¸è¡£ï¼Œç©¿åœ¨èº«ä¸Šä»¿ä½›æœ‰äº‘æ°”çŽ¯ç»•";
+		name = "ÔÆÁ·ÌìÒÂ";
+		desc = "ÍâÐÎÆ®ÒÝÇá±¡µÄË¿ÒÂ£¬´©ÔÚÉíÉÏ·Â·ðÓÐÔÆÆø»·ÈÆ";
 		type = 1;
 		addDefend = 40;
 		addMaxHP = 50;
@@ -222,8 +222,8 @@ Goods::Goods(int id)
 	}
 	case 18: {
 		goodsId = id;
-		name = "å¤©èš•å®ç”²";
-		desc = "ç”¨å¤©èš•ä¸çº¿æ‰€ç»‡ï¼Œè‰²æ³½åç™½ï¼Œè´¨åœ°åšéŸ§ï¼Œçè´µå¼‚å¸¸";
+		name = "Ìì²Ï±¦¼×";
+		desc = "ÓÃÌì²ÏË¿ÏßËùÖ¯£¬É«ÔóÆ«°×£¬ÖÊµØ¼áÈÍ£¬Õä¹óÒì³£";
 		type = 1;
 		addDefend = 40;
 		addMaxHP = 50;
@@ -234,8 +234,8 @@ Goods::Goods(int id)
 	}
 	case 19: {
 		goodsId = id;
-		name = "ç´«é¾™å¤©ç½¡é“ ";
-		desc = "ä¼ è¯´æ˜¯ç”±é¾™æ°”åŒ–ä½œç´«è‰²é³žç‰‡é•¶åµŒè€Œæˆçš„æˆ˜ç”²ï¼Œä»Žå¤´åˆ°è„šç»µå¯†åŒ…è£¹";
+		name = "×ÏÁúÌìî¸îø";
+		desc = "´«ËµÊÇÓÉÁúÆø»¯×÷×ÏÉ«ÁÛÆ¬ÏâÇ¶¶ø³ÉµÄÕ½¼×£¬´ÓÍ·µ½½ÅÃàÃÜ°ü¹ü";
 		type = 1;
 		addDefend = 40;
 		addMaxHP = 50;
@@ -246,8 +246,8 @@ Goods::Goods(int id)
 	}
 	case 20: {
 		goodsId = id;
-		name = "é‡‘åˆ›è¯";
-		desc = "å¸¸è§çš„ç–—ä¼¤è¯,è¡¥å……å°‘é‡æ°”è¡€";
+		name = "½ð´´Ò©";
+		desc = "³£¼ûµÄÁÆÉËÒ©,²¹³äÉÙÁ¿ÆøÑª";
 		type = 2;
 		addHP = 30;
 		priceBuy = 90;
@@ -256,8 +256,8 @@ Goods::Goods(int id)
 	}
 	case 21: {
 		goodsId = id;
-		name = "å°è¿˜ä¸¹";
-		desc = "æ•£å‘ç€é¦™æ°”çš„ç´«è‰²è¯ä¸¸,è¡¥å……å¤§é‡æ°”è¡€";
+		name = "Ð¡»¹µ¤";
+		desc = "É¢·¢×ÅÏãÆøµÄ×ÏÉ«Ò©Íè,²¹³ä´óÁ¿ÆøÑª";
 		type = 2;
 		addHP = 60;
 		priceBuy = 110;
@@ -266,8 +266,8 @@ Goods::Goods(int id)
 	}
 		   /*case 22: {
 			   goodsId = id;
-			   name = "å®šç¥žé¦™";
-			   desc = "åè´µè¯ç‰©ç²¾å¿ƒç‚¼æˆçš„ä¸¹è¯,è¡¥å……å°‘é‡å†…åŠ›";
+			   name = "¶¨ÉñÏã";
+			   desc = "Ãû¹óÒ©Îï¾«ÐÄÁ¶³ÉµÄµ¤Ò©,²¹³äÉÙÁ¿ÄÚÁ¦";
 			   type = 2;
 			   addMP = 30;
 			   priceBuy = 80;
@@ -276,8 +276,8 @@ Goods::Goods(int id)
 		   }
 		   case 23: {
 			   goodsId = id;
-			   name = "é£Žæ°´æ··å…ƒä¸¹";
-			   desc = "æœ‰ç€æµ“éƒé¦™æ°”çš„è¯ä¸¸,è¡¥å……å¤§é‡å†…åŠ›";
+			   name = "·çË®»ìÔªµ¤";
+			   desc = "ÓÐ×ÅÅ¨ÓôÏãÆøµÄÒ©Íè,²¹³ä´óÁ¿ÄÚÁ¦";
 			   type = 2;
 			   addMP = 60;
 			   priceBuy = 100;
@@ -352,21 +352,21 @@ void Goods::showGoods()
 {
 	cout << name << endl;
 	cout << desc << endl;
-	if (type == 0) //æ­¦å™¨
+	if (type == 0) //ÎäÆ÷
 	{
-		cout << "æ”»å‡»åŠ›:" << addAttack << endl;
-		cout << "é˜²å¾¡åŠ›:" << addDefend << endl;
-		cout << "æ•æ·:" << addAGI << endl;
+		cout << "¹¥»÷Á¦:" << addAttack << endl;
+		cout << "·ÀÓùÁ¦:" << addDefend << endl;
+		cout << "Ãô½Ý:" << addAGI << endl;
 
 	}
-	if (type == 1) //é˜²å…·
+	if (type == 1) //·À¾ß
 	{
-		cout << "é˜²å¾¡åŠ›:" << addDefend << endl;
-		cout << "æ•æ·:" << addAGI << endl;
-		cout << "è¡€é‡:" << addMaxHP << endl;
+		cout << "·ÀÓùÁ¦:" << addDefend << endl;
+		cout << "Ãô½Ý:" << addAGI << endl;
+		cout << "ÑªÁ¿:" << addMaxHP << endl;
 	}
-	if (type == 2) //è¯å“
+	if (type == 2) //Ò©Æ·
 	{
-		cout << "å›žå¤è¡€é‡:" << addHP << endl;
+		cout << "»Ø¸´ÑªÁ¿:" << addHP << endl;
 	}
 }
