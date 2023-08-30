@@ -1,8 +1,8 @@
 
 #include"Npc.h"
 
-Npc::Npc(vector<string>& talk, string& communication)
-	:communication(communication)
+Npc::Npc(string &name,vector<string>& talk, string& communication,int pos)
+	:communication(communication),pos(pos)
 {
 	for (int i = 0; i < talk.size(); i++)
 		this->talk[i] = talk[i];
