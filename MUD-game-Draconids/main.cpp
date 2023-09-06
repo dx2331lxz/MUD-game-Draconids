@@ -22,8 +22,11 @@ int main() {
 	cin >> name;
 	Role character(name, 100, 10, 10, 10, 1, 0, 1);
 	Map map;
-	character.showrole();
-
-	choose(map);
+	
+	map.move();
+	map.Map_find();
+	system("pause");
+	//character.showrole();
+	//choose(map);
 	return 0;
 }

@@ -30,7 +30,6 @@ private:
 	vector<string> posname = { "卡塞尔学院","青铜城","北京","日本","俄罗斯","北极","仕兰中学","巴西" };
 	vector<shared_ptr<Npc>> allnpc;//地图上的所有npc指针
 	unordered_map<string, int>searchNPC_map;//查找npc的表,为地点和数组
-
 };
 
 

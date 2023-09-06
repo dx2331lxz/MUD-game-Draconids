@@ -64,6 +64,7 @@ void choose(Map& map) {
         cout << "Äã¸ÉÂï~~£¬°¥ßÏ£¡£¡" << endl;
         break;
     }
-    
-    cout << map.GetPosition();
+    //map.Map_find();
+    //map.move();
+    //cout << map.GetPosition();
 }
