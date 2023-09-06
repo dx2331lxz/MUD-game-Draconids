@@ -1,5 +1,8 @@
-
 #include"Npc.h"
+
+Npc::Npc()
+{
+}
 
 Npc::Npc(string &name,vector<string>& talk, string& communication,int pos)
 	:communication(communication),pos(pos)

@@ -9,38 +9,39 @@ using namespace std;
 #include<unordered_map>
 #include"Npc.h"
 #include"Role.h"
-//将地图分成不同的块,按照块的不同将其组合
+//����ͼ�ֳɲ�ͬ�Ŀ�,���տ�Ĳ�ͬ�������
 class Map
 {
 public:
 	Map();
 	~Map();
-	int GetPosition()//获取当前所在位置
+	int GetPosition()//��ȡ��ǰ����λ��
 	{
 		return pos;
 	}
 	void ShowMap();
 	void move();
-	void Map_find(string& str);//查询当前地图内的Npc
+	void Map_find(string& str);//��ѯ��ǰ��ͼ�ڵ�Npc
 private:
 	int pos;
-	unordered_map<string, int>search_map;//存储地点名称和数组下标
-	vector<string> posname = { "卡塞尔学院","青铜城","北京","日本","俄罗斯","北极","仕兰中学" };
-	vector<shared_ptr<Npc>> allnpc;//地图上的所有npc指针
-	unordered_map<string, int>searchNPC_map;//查找npc的表,为地点和数组
+	unordered_map<string, int>search_map;//�洢�ص����ƺ������±�
+	vector<string> posname = { "������ѧԺ","��ͭ��","����","�ձ�","����˹","����","������ѧ""����" };
+	//����Ϊ�̵�
+	vector<shared_ptr<Npc>> allnpc;//��ͼ�ϵ�����npcָ��
+	unordered_map<string, int>searchNPC_map;//����npc�ı�,Ϊ�ص������
 };
 
 
 
 
-class School_Map {   //卡塞尔学院地图
+class School_Map {   //������ѧԺ��ͼ
 public:
 	School_Map();
 	void showmap();
-	void move();//移动输入wasd,e退出 如果超出位置,只能在此地呆着
-	char isthere(int x, int y);//判断人物此时在不在这里,如果在,返回*
+	void move();//�ƶ�����wasd,e�˳� �������λ��,ֻ���ڴ˵ش���
+	char isthere(int x, int y);//�ж������ʱ�ڲ�������,�����,����*
 private:
-	vector<vector<string>>posname = { {"教室","训练室"},{"地窖","装备部"},{"休息室","图书馆"} };
+	vector<vector<string>>posname = { {"����","ѵ����"},{"�ؽ�","װ����"},{"��Ϣ��","ͼ���"} };
 	int pos[2];
 };
 
@@ -49,20 +50,20 @@ private:
 
 
 
-class MapNode   //青铜城专用地图块
+class MapNode   //��ͭ��ר�õ�ͼ��
 {
 public:
-	//不同的人物指针
+	//��ͬ������ָ��
 	MapNode();
 	MapNode(unique_ptr<Role>& role, shared_ptr<MapNode> left, shared_ptr<MapNode> right);
 	shared_ptr<MapNode> left;
 	shared_ptr<MapNode> right;
 
-	void Getthere()//到达此地时调用
+	void Getthere()//����˵�ʱ����
 	{
 		isthere = true;
 	}
-	shared_ptr<MapNode> goaway();//离开时调用
+	shared_ptr<MapNode> goaway();//�뿪ʱ����
 
 	char IsThere();
 
@@ -75,7 +76,7 @@ class TreeMap {
 public:
 	//TreeMap();
 	TreeMap(shared_ptr<MapNode> root);
-	shared_ptr<MapNode> GetRoot() {//返回入口节点
+	shared_ptr<MapNode> GetRoot() {//������ڽڵ�
 		return root;
 	}
 	void init()

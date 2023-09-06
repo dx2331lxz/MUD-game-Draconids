@@ -184,9 +184,9 @@ void School_Map::move()//移动输入wasd,e退出 如果超出位置,只能在此地呆着
 			pos[0]--;
 		else if (action == 'a')
 			pos[1]--;
-		else if (action == 'e')
-			return;
-		else pos[1]++;
+		else if (action == 'd')
+			pos[1]++;			
+		else return;
 	}
 	
 
