@@ -15,5 +15,6 @@
 #include <thread>
 #include"Map.h"
 #include"welcomePage.h"
+#include"fight.h"
 using namespace std;
 

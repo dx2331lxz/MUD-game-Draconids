@@ -14,11 +14,33 @@
 //	return 0;
 //}
 
+void fight(Role& character, Role& enemy) {
+	FightSystem fight(character, enemy);
+	while (true)
+	{
+		if (fight.fightRound()) {
+			fight.addround();
+		}
+		else
+		{
+			break;
+		}
+	}
+	fight.endFight();
+}
+
+
+
 int main() {
 	string name;
 	cout << "输入身份：" << endl;
 	cin >> name;
+	Map map;
+	//map.ShowMap();
 	Role character(name, 100, 10, 10, 10, 1, 0, 1);
+	Role enemy_beijing("周口店人", 10, 1, 1, 0, 1, 0, 1);
 	character.showrole();
+	fight(character, enemy_beijing);
+	
 	return 0;
 }

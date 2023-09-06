@@ -118,6 +118,16 @@ void Role::Useskill(int choose)
 
 void Role::addExp(int addExp) {
     EXP += addExp;
+    auto level_ = level;
+    for (int i = 0; i < 29; i++) {
+        if (levelExp_Max[i] <= EXP) {
+
+            level = i + 1;
+        }
+    }
+    if (level_ < level) {
+        cout << "生啦生啦， 恭喜你已经到达" << level << "级啦！！" << endl;
+    }
 }
 
 void Role::addMoney(int addMoney) {

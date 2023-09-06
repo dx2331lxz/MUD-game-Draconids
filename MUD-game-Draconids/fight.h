@@ -15,12 +15,13 @@ public:
     Role& runEndFight();  // 逃跑结束战斗
     void addMoney(int addMoney);    // 添加金钱
     void addFightEndGoods(int* addGoods, int* num);   // 添加物品
-    void addExp(int addExp);    // 添加经验
+    void addExp(int Exp);    // 添加经验
     void recoverHp();   // 回复生命值
     bool evadeAttack(); // 闪避攻击
     void playerAttack(); // 武器攻击
     void GameEnd();     // 判断游戏是否结束，如果结束，程序会退出
     void enemyAttack();
+    int addround();
 
 private:
     Role& player;   // 战斗的角色
