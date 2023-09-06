@@ -48,7 +48,7 @@ private:
     std::unique_ptr<Bag> bag; // 背包
     int money; // 金币
     std::unique_ptr<Task> task; // 任务
-    int level; // 等级
+    int level; // 等级 
     int EXP; // 经验
     const int levelExp_Max[29] = { 6,12,18,24,30,36,42,48,54,60,69,78,87,96,105,114,123,132,141,150,162,174,186,198,210,225,240,270,300 }; // 每个对应等级的最高经验值
 };

@@ -15,5 +15,6 @@
 #include <thread>
 #include"Map.h"
 #include"welcomePage.h"
+#include <fstream>
 using namespace std;
 
