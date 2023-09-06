@@ -31,4 +31,57 @@ private:
 	unordered_map<string, int>searchNPC_map;//查找npc的表,为地点和数组
 };
 
-#includee<map>
+
+
+
+class School_Map {   //卡塞尔学院地图
+public:
+	School_Map();
+	void showmap();
+	void move();//移动输入wasd,e退出 如果超出位置,只能在此地呆着
+	char isthere(int x,int y);//判断人物此时在不在这里,如果在,返回*
+private:
+	vector<vector<string>>posname = { {"教室","训练室"},{"地窖","装备部"},{"休息室","图书馆"} };
+	int pos[2];
+};
+
+
+
+
+
+
+class MapNode   //青铜城专用地图块
+{
+public:
+//不同的人物指针
+	MapNode();
+	MapNode(unique_ptr<Role>& role, shared_ptr<MapNode> left, shared_ptr<MapNode> right);
+	shared_ptr<MapNode> left;
+	shared_ptr<MapNode> right;
+	void Getthere()//到达此地时调用
+	{
+		isthere = true;
+	}
+	shared_ptr<MapNode> goaway();//离开时调用
+	char IsThere();
+private:
+	unique_ptr<Role> role;
+	bool isthere = false;
+};
+
+class TreeMap {
+public:
+	//TreeMap();
+	TreeMap(shared_ptr<MapNode> root);
+	shared_ptr<MapNode> GetRoot() {//返回入口节点
+		return root;
+	}
+	void init()
+	{
+		now->Getthere();
+	}
+	void showmap();
+private:
+	shared_ptr<MapNode> root;
+	shared_ptr<MapNode> now;
+};
