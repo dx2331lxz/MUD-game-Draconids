@@ -142,7 +142,7 @@ int Role::getAttack() const {
 }
 
 int Role::getDEF() const {
-    return DEF;
+    return DEF; 
 }
 
 int Role::getHP() const {

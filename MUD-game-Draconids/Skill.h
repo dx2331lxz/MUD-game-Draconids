@@ -16,6 +16,9 @@ public:
 	virtual void Motor_skill_end(Role& role) = 0;
 	// 展示技能（名称，介绍，效果）
 	void show();
+	string getname();
+	string geteffect();
+	string getintroduce();
 private:
 	string name;
 	string effect;
