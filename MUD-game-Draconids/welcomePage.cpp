@@ -80,7 +80,7 @@ void welcomePage() {
 
         }
         else {
-            std::cerr << "存档失败！" << std::endl;
+            std::cout << "存档失败！" << std::endl;
         }
     }
     }// 建立新的存档，进入introduce，开始游戏
