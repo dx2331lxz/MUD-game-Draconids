@@ -21,7 +21,7 @@ public:
 	}
 	void ShowMap();
 	void move();
-	void Map_find(string& str);//查询当前地图内的Npc
+	void Map_find();//查询当前地图内的Npc
 private:
 	int pos;
 	unordered_map<string, int>search_map;//存储地点名称和数组下标

@@ -15,6 +15,8 @@ void Npc::GetTask()
 	for (int i = 0; i < talk.size(); i++)
 		cout << talk[i] << endl;	
 }
+
+
 void Npc::conversation()
 {
 	cout << communication << endl; 

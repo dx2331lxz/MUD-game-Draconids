@@ -112,10 +112,9 @@ void Map::move() {//根据输入地点来到不同位置,若输入错误,退出函数重新输入
 
 
 
-void Map::Map_find(string& str)//在map中查找npc
+void Map::Map_find()//在map中查找npc
 {
-	unordered_map<string, int>::iterator it = searchNPC_map.find(str);
-	
+	unordered_map<string, int>::iterator it = searchNPC_map.find(posname[pos]);
 	cout << "当前地图存在Npc:" << allnpc[(*it).second]->GetName();
 	if (it != searchNPC_map.end())
 	{
