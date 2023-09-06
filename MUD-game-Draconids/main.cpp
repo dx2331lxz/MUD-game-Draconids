@@ -134,7 +134,7 @@ int main() {
 	//		break;
 	//	}
 	//}
-	if (0 == PlaySound(TEXT("L:\DownLoad\01_°®¸øÍø_aigei_com.wav"), NULL, SND_FILENAME | SND_ASYNC))
+	if (0 == PlaySound(MAKEINTRESOURCE(IDR_WAVE1), NULL, SND_RESOURCE | SND_ASYNC))
 	{
 		printf("playsound false");
 	}
