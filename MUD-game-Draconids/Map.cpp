@@ -98,7 +98,7 @@ string Map::move() {//根据输入地点来到不同位置,若输入错误,退出函数重新输入
 		cout << "请输入前往位置:" << endl;
 		string str;
 		cin >> str;
-		unordered_map<string, int>::iterator it = search_map.find(posname[pos]);
+		unordered_map<string, int>::iterator it = search_map.find(str);
 		if (it != search_map.end()) {
 			pos = (*it).second;
 			cout << "当前来到" << str << endl;
