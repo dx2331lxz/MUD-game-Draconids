@@ -224,12 +224,15 @@ bool fight(Role& character, Role& enemy) {
 			break;
 		}
 	}
-	return fight.endFight();
+	bool i;
+	i = fight.endFight();
+	std::this_thread::sleep_for(std::chrono::seconds(3));
+	return i;
 }
 
 void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此地呆着
 {
-	
+	Role enemy("怪兽", 10, 1, 1, 1, 1, 10, 1);
 	while (true) {
 		system("cls");
 		showmap();
@@ -254,8 +257,7 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 				pos[1]++;
 			else return;
 		}
-		Role enemy("怪兽", 10, 10, 10, 10, 1, 10, 1);
-		if (isthere(2, 0) && (enemy.getHP() != 0)) {
+		if ((isthere(2, 0) == '*') && (enemy.getHP() != 0)) {
 			cout << "你遇到了敌人, 你有以下几种选择（输入数字）：" << endl;
 			while (true)
 			{
@@ -291,33 +293,37 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 
 
 
-MapNode::MapNode()
-	:left(nullptr), right(nullptr), role(nullptr) {}
+MapNode::MapNode(string name)
+	:left(nullptr), right(nullptr), role(nullptr),name(name) {}
 MapNode::MapNode(unique_ptr<Role>& role, shared_ptr<MapNode> left, shared_ptr<MapNode> right)
 	:role(move(role)), left(left), right(right)
 {
 
 }
+string MapNode::getname()
+{
+	return string(name);
+}
 //TreeMap::TreeMap()
 //:root(nullptr),now(nullptr){}
 TreeMap::TreeMap()
 {
-	root = make_shared<MapNode>();
+	root = make_shared<MapNode>("root");
 	now = root;
-	shared_ptr<MapNode> new_L = make_shared<MapNode>();
-	shared_ptr<MapNode> new_R = make_shared<MapNode>();
+	shared_ptr<MapNode> new_L = make_shared<MapNode>("new_L");
+	shared_ptr<MapNode> new_R = make_shared<MapNode>("new_R");
 
 	root->left = new_L;
 	root->right = new_R;
-	shared_ptr<MapNode> new_LL = make_shared<MapNode>();
-	shared_ptr<MapNode> new_RR = make_shared<MapNode>();
+	shared_ptr<MapNode> new_LL = make_shared<MapNode>("new_LL");
+	shared_ptr<MapNode> new_RR = make_shared<MapNode>("new_RR");
 	new_L->left = new_LL;
 	new_R->right = new_RR;
-	shared_ptr<MapNode> new_LR = make_shared<MapNode>();
-	shared_ptr<MapNode> new_RL = make_shared<MapNode>();
+	shared_ptr<MapNode> new_LR = make_shared<MapNode>("new_LR");
+	shared_ptr<MapNode> new_RL = make_shared<MapNode>("new_RL");
 	new_L->right = new_LR;
 	new_R->left = new_RL;
-	shared_ptr<MapNode> new_End = make_shared<MapNode>();
+	shared_ptr<MapNode> new_End = make_shared<MapNode>("new_End");
 	new_LL->right = new_End;
 	new_LR->right = new_End;
 	new_RL->left = new_End;
@@ -370,6 +376,46 @@ shared_ptr<MapNode> MapNode::goaway()//离开时调用
 	} while (1);
 }
 
-void TreeMap::go() {
-	now->goaway();
+void TreeMap::go(Role& character) {
+	while (true)
+	{
+		if (now->getname() == "new_End") {
+			cout << "恭喜你通过了青铜城的试炼，正在将你传送出小世界.....";
+			std::this_thread::sleep_for(std::chrono::seconds(3));
+			break;
+		}
+		now = now->goaway();
+		if (now->getname() == "new_L") {
+			cout << "你遇到了敌人, 你有以下几种选择（输入数字）：" << endl;
+			Role enemy("凯撒", 10, 1, 1, 1, 1, 10, 1);
+			while (true)
+			{
+				cout << "1. 查看敌人信息 2. 与他战斗 3. 离开" << endl;
+				int foo = 0; // 决定循环是否结束
+				int choice = 0;
+				cin >> choice;
+				switch (choice)
+				{
+				case 1:
+					enemy.showrole();
+					break;
+				case 2:
+					if (fight(character, enemy)) {
+						foo = 1;
+					}
+					break;
+				case 3:
+					foo = 1;
+					break;
+				default:
+					cout << "别闹" << endl;
+					break;
+				}
+				if (foo) {
+					break;
+				}
+			}
+		}
+		showmap();
+	}
 }
