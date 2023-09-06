@@ -21,7 +21,7 @@ public:
 	}
 	void ShowMap();
 	string move();
-	void Map_find(string& str);//查询当前地图内的Npc
+	void Map_find();//查询当前地图内的Npc
 	char isthere(int);
 private:
 	int pos;

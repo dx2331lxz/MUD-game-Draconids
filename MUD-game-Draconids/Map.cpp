@@ -117,9 +117,9 @@ char Map::isthere(int a)
 	return ' ';
 }
 
-void Map::Map_find(string& str)//在map中查找npc
+void Map::Map_find()//在map中查找npc
 {
-	unordered_map<string, int>::iterator it = searchNPC_map.find(str);
+	unordered_map<string, int>::iterator it = searchNPC_map.find(posname[pos]);
 
 	cout << "当前地图存在Npc:" << allnpc[(*it).second]->GetName();
 	if (it != searchNPC_map.end())
