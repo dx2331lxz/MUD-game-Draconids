@@ -7,7 +7,7 @@ class Npc
 {
 public:
 
-	Npc() {}
+	Npc();
 	Npc(string &name,vector<string>& task,string & communication,int pos);
 	void GetTask();//任务对话
 	void conversation();//自由谈话

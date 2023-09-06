@@ -1,6 +1,6 @@
 #include"Role.h"
 
-Role::Role(string name, int HP, int attack, int DEF, int Agility, double dodge, int life, int money, int level):name(name), HP(HP), attack(attack), DEF(DEF), Agility(Agility), dodge(dodge), life(life), money(money), level(level), EXP(0)
+Role::Role(string name, int HP, int attack, int DEF, int Agility, int life, int money, int level):name(name), HP(HP), attack(attack), DEF(DEF), Agility(Agility), life(life), money(money), level(level), EXP(0)
 {
 }
 void Role::showrole()
@@ -14,10 +14,10 @@ void Role::showrole()
     cout << "防御: " << DEF << "\t\t";
     cout << "金钱: " << money << endl;
     cout << "敏捷: " << Agility << "\t\t";
-    cout << "闪避: " << dodge << "\t\t";
     cout << "生命: " << life << "\t\t\t";
     cout << "经验: " << EXP << endl;
     cout << endl;
+    system("pause");
 }
 
 int Role::showskill()
@@ -111,4 +111,46 @@ void Role::Useskill(int choose)
         }
     }
     
+}
+#include "Role.h"
+
+// ... (其他成员函数的定义)
+
+void Role::addExp(int addExp) {
+    EXP += addExp;
+}
+
+void Role::addMoney(int addMoney) {
+    money += addMoney;
+}
+
+int Role::getAgility() const {
+    return Agility;
+}
+
+int Role::getAttack() const {
+    return attack;
+}
+
+int Role::getDEF() const {
+    return DEF;
+}
+
+int Role::getHP() const {
+    return HP;
+}
+
+
+void Role::recoverHP(int amount) {
+    HP += amount;
+    if (HP > 100) {
+        HP = 100;
+    }
+}
+
+void Role::takeDamage(int damage) {
+    HP -= damage;
+    if (HP < 0) {
+        HP = 0;
+    }
 }

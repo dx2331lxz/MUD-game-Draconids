@@ -1,8 +1,4 @@
-#pragma once
-#include <iostream>
-#include <thread>
-#include "main.h"
-
+#include"welcomePage.h"
 //ª∂”≠ΩÁ√Ê
 void welcomePage() {
     std::cout << "                                                                                   " << std::endl;
@@ -12,11 +8,11 @@ void welcomePage() {
     std::cout << "         000000000000000000000000        000000000000  0                           " << std::endl;
     std::cout << "               0    00                       0          0  0000000                 " << std::endl;
     std::cout << "               0    00                       0         0      0                    " << std::endl;
-    std::cout << "               0    00                       0  0000    0000000000000              " << std::endl;
-    std::cout << "              0     00     0                0      0          0                    " << std::endl;
+    std::cout << "               0    00                       0 00000    0000000000000              " << std::endl;
+    std::cout << "              0     00     0                 0      0          0                    " << std::endl;
     std::cout << "              0     00    0                 0      0         0 0                   " << std::endl;
     std::cout << "              0     00   0                 0      0         0   0                  " << std::endl;
-    std::cout << "             0         0            0    0      0         0      0                 " << std::endl;
+    std::cout << "             0         0            0    0       0         0      0                 " << std::endl;
     std::cout << "            0        0  0000000000000           0        0        0                " << std::endl;
     std::cout << "___________________________________________________________________________________" << std::endl;
     std::cout << "|Œƒ◊÷∞Ê°∂¡˙◊Â°∑                                                                   |" << std::endl;
@@ -33,6 +29,6 @@ void welcomePage() {
         std::this_thread::sleep_for(std::chrono::milliseconds(50));// π≥Ã–ÚÕ£÷π50ms
     }
     //—”≥Ÿ50ms ‰≥ˆ◊÷∑˚
-    //
+
     std::cout << std::endl;
 }
