@@ -11,7 +11,7 @@ public:
     void showFight();     // 显示战斗状态
     void enemyFight();    // 敌人的随机攻击
     bool isFightEnd();    // 判断战斗是否结束
-    Role& endFight();     // 结束战斗，返回战斗后的角色，可能覆盖主程序中的角色
+    bool endFight();     // 结束战斗，返回战斗后的角色，可能覆盖主程序中的角色
     Role& runEndFight();  // 逃跑结束战斗
     void addMoney(int addMoney);    // 添加金钱
     void addFightEndGoods(int* addGoods, int* num);   // 添加物品

@@ -94,18 +94,19 @@ bool FightSystem::isFightEnd()
     return player.getHP() <= 0 || enemy.getHP() <= 0;
 }
 
-Role& FightSystem::endFight()
+bool FightSystem::endFight()
 {
     if (enemy.getHP() > 0)
     {
         cout << "战斗失败。" << endl;
+        return false;
     }
     else
     {
         cout << "恭喜！你赢得了战斗。" << endl;
         addExp(20); // 添加经验值
+        return true;
     }
-    return player;
 }
 
 Role& FightSystem::runEndFight()

@@ -41,7 +41,7 @@ class School_Map {   //卡塞尔学院地图
 public:
 	School_Map();
 	void showmap();
-	void move();//移动输入wasd,e退出 如果超出位置,只能在此地呆着
+	void move(Role& character);//移动输入wasd,e退出 如果超出位置,只能在此地呆着
 	char isthere(int x, int y);//判断人物此时在不在这里,如果在,返回*
 private:
 	vector<vector<string>>posname = { {"教室","训练室"},{"地窖","装备部"},{"休息室","图书馆"} };
@@ -69,16 +69,15 @@ public:
 	shared_ptr<MapNode> goaway();//离开时调用
 
 	char IsThere();
-
+	bool isthere = false;
 private:
 	unique_ptr<Role> role;
-	bool isthere = false;
+
 };
 
 class TreeMap {
 public:
-	//TreeMap();
-	TreeMap(shared_ptr<MapNode> root);
+	TreeMap();
 	shared_ptr<MapNode> GetRoot() {//返回入口节点
 		return root;
 	}
@@ -87,6 +86,7 @@ public:
 		now->Getthere();
 	}
 	void showmap();
+	void go();
 private:
 	shared_ptr<MapNode> root;
 	shared_ptr<MapNode> now;

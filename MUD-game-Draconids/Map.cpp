@@ -116,14 +116,52 @@ char Map::isthere(int a)
 	return ' ';
 }
 
+//void Map::Map_find()//在map中查找npc
+//{
+//	if (pos == 0) {
+//		cout << "*****" << endl;
+//	}
+//
+//	if (searchNPC_map[pos])
+//		allnpc[pos - 2]->GetTask();
+//	/*cout << "当前地图存在Npc:" << allnpc[(*it).second]->GetName();
+//	if (it != searchNPC_map.end())
+//	{
+//		cout << ",是否与其对话?" << endl;
+//		cout << "请输入Y/N" << endl;
+//		char choice;
+//		cin >> choice;
+//		if (choice == 'Y')
+//			allnpc[(*it).second]->GetTask();
+//	}*/
+//
+//
+//}
 void Map::Map_find()//在map中查找npc
 {
 	if (pos == 0) {
-		cout << "*****" << endl;
+		cout << "找到npc，姓名为：零" << endl;
+		cout << "学院任务,前往青铜城,斩杀复苏龙族。" << endl;
 	}
 
-	if (searchNPC_map[pos])
-		allnpc[pos - 1]->GetTask();
+
+	if (searchNPC_map[pos]) {
+		cout << "找到npc，姓名为：" << allnpc[pos - 2]->GetName() << endl;
+		while (1) {
+			cout << "选项：1.talk，2.task,3.leave" << endl;
+			string choice;
+			cin >> choice;
+			if (choice == "talk")
+				allnpc[pos - 2]->conversation();
+			else if (choice == "task")
+				allnpc[pos - 2]->GetTask();
+			else if (choice == "leave")
+				break;
+			else
+				cout << "输入错误，请重新输入" << endl;
+		}
+	}
+
 	/*cout << "当前地图存在Npc:" << allnpc[(*it).second]->GetName();
 	if (it != searchNPC_map.end())
 	{
@@ -173,10 +211,28 @@ void School_Map::showmap()
 
 }
 
-void School_Map::move()//移动输入wasd,e退出 如果超出位置,只能在此地呆着
+
+bool fight(Role& character, Role& enemy) {
+	FightSystem fight(character, enemy);
+	while (true)
+	{
+		if (fight.fightRound()) {
+			fight.addround();
+		}
+		else
+		{
+			break;
+		}
+	}
+	return fight.endFight();
+}
+
+void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此地呆着
 {
-	showmap();
+	
 	while (true) {
+		system("cls");
+		showmap();
 		cout << "输入wasd移动,输入e退出" << endl;
 		char action;
 		cin >> action;
@@ -186,18 +242,51 @@ void School_Map::move()//移动输入wasd,e退出 如果超出位置,只能在此地呆着
 		{
 			cout << "输入有误,请重新输入." << endl;
 		}
-		if (action == 'w')
-			pos[0]++;
-		else if (action == 's')
-			pos[0]--;
-		else if (action == 'a')
-			pos[1]--;
-		else if (action == 'd')
-			pos[1]++;
-		else return;
+		else
+		{
+			if (action == 'w')
+				pos[0]--;
+			else if (action == 's')
+				pos[0]++;
+			else if (action == 'a')
+				pos[1]--;
+			else if (action == 'd')
+				pos[1]++;
+			else return;
+		}
+		Role enemy("怪兽", 10, 10, 10, 10, 1, 10, 1);
+		if (isthere(2, 0) && (enemy.getHP() != 0)) {
+			cout << "你遇到了敌人, 你有以下几种选择（输入数字）：" << endl;
+			while (true)
+			{
+				cout << "1. 查看敌人信息 2. 与他战斗 3. 离开" << endl;
+				int foo = 0; // 决定循环是否结束
+				int choice = 0;
+				cin >> choice;
+				switch (choice)
+				{
+				case 1:
+					enemy.showrole();
+					break;
+				case 2:
+					if (fight(character, enemy)) {
+						foo = 1;
+					}
+					break;
+				case 3:
+					foo = 1;
+					break;
+				default:
+					cout << "别闹"<< endl;
+					break;
+				}
+				if (foo) {
+					break;
+				}
+			}
+
+		}
 	}
-
-
 }
 
 
@@ -211,9 +300,10 @@ MapNode::MapNode(unique_ptr<Role>& role, shared_ptr<MapNode> left, shared_ptr<Ma
 }
 //TreeMap::TreeMap()
 //:root(nullptr),now(nullptr){}
-TreeMap::TreeMap(shared_ptr<MapNode> root)
-	:root(root), now(root)
+TreeMap::TreeMap()
 {
+	root = make_shared<MapNode>();
+	now = root;
 	shared_ptr<MapNode> new_L = make_shared<MapNode>();
 	shared_ptr<MapNode> new_R = make_shared<MapNode>();
 
@@ -232,6 +322,7 @@ TreeMap::TreeMap(shared_ptr<MapNode> root)
 	new_LR->right = new_End;
 	new_RL->left = new_End;
 	new_RR->left = new_End;
+	init();
 }
 
 void TreeMap::showmap()
@@ -250,7 +341,7 @@ void TreeMap::showmap()
 
 char MapNode::IsThere()
 {
-	if (isthere)
+	if (isthere == true)
 		return '*';
 	else
 		return'0';
@@ -277,4 +368,8 @@ shared_ptr<MapNode> MapNode::goaway()//离开时调用
 		else
 			cout << "输入有误,请重新输入" << endl;
 	} while (1);
+}
+
+void TreeMap::go() {
+	now->goaway();
 }

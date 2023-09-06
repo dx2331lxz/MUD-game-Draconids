@@ -29,8 +29,13 @@ void fight(Role& character, Role& enemy) {
 	fight.endFight();
 }
 
-int choose(Map& map) {
-	cout << "1. 寻找NPC 2. 传送至地图别处 3. 退出地图" << endl;
+int choose(Map& map, Role & character) {
+	if (map.GetPosition() == 0) {
+		cout << "1. 寻找NPC 2. 传送至地图别处 3. 退出地图 4. 进入学院" << endl;
+	}
+	else {
+		cout << "1. 寻找NPC 2. 传送至地图别处 3. 退出地图" << endl;
+	}
 	int i;
 	cin >> i;
 	switch (i)
@@ -46,6 +51,11 @@ int choose(Map& map) {
 	}
 	case 3:
 		return false;
+	case 4: {
+		School_Map school_map;
+		school_map.move(character);
+		break;
+	}
 	default:
 		cout << "你干嘛~~，诶呦" << endl;
 		break;
@@ -68,7 +78,7 @@ int main() {
 	cout << endl;
 	while (true)
 	{
-		if (!choose(map)) {
+		if (!choose(map, character)) {
 			break;
 		}
 	}
