@@ -38,7 +38,7 @@ public:
 	School_Map();
 	void showmap();
 	void move();//移动输入wasd,e退出 如果超出位置,只能在此地呆着
-	char isthere(int x,int y);//判断人物此时在不在这里,如果在,返回*
+	char isthere(int x, int y);//判断人物此时在不在这里,如果在,返回*
 private:
 	vector<vector<string>>posname = { {"教室","训练室"},{"地窖","装备部"},{"休息室","图书馆"} };
 	int pos[2];
@@ -52,23 +52,23 @@ private:
 class MapNode   //青铜城专用地图块
 {
 public:
-	 //不同的人物指针
+	//不同的人物指针
 	MapNode();
 	MapNode(unique_ptr<Role>& role, shared_ptr<MapNode> left, shared_ptr<MapNode> right);
 	shared_ptr<MapNode> left;
 	shared_ptr<MapNode> right;
-	
+
 	void Getthere()//到达此地时调用
 	{
 		isthere = true;
 	}
 	shared_ptr<MapNode> goaway();//离开时调用
-	
+
 	char IsThere();
-	
+
 private:
 	unique_ptr<Role> role;
-	bool isthere=false;
+	bool isthere = false;
 };
 
 class TreeMap {
