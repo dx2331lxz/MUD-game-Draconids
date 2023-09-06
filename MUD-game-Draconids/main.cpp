@@ -1,11 +1,24 @@
 #include"main.h"
+#include <string>
 
+//int main()
+//{
+//    welcomePage();
+//	shared_ptr<MapNode> root=make_shared< MapNode>();
+//	
+//	TreeMap map(root);
+//
+//	map.showmap();
+//	system("pause");
+//
+//	return 0;
+//}
 
 int main() {
 	string name;
-	cout << "输入角色名：" << endl;
+	cout << "输入身份：" << endl;
 	cin >> name;
-	Role character(name, 100, 10, 10,10, 0.1, 1, 0, 1);
+	Role character(name, 100, 10, 10, 10, 1, 0, 1);
 	character.showrole();
 	return 0;
 }

@@ -53,17 +53,20 @@ private:
 class MapNode   //青铜城专用地图块
 {
 public:
-//不同的人物指针
+	 //不同的人物指针
 	MapNode();
 	MapNode(unique_ptr<Role>& role, shared_ptr<MapNode> left, shared_ptr<MapNode> right);
 	shared_ptr<MapNode> left;
 	shared_ptr<MapNode> right;
+	
 	void Getthere()//到达此地时调用
 	{
 		isthere = true;
 	}
 	shared_ptr<MapNode> goaway();//离开时调用
+	
 	char IsThere();
+	
 private:
 	unique_ptr<Role> role;
 	bool isthere = false;

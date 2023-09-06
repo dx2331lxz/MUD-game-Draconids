@@ -25,19 +25,25 @@
     <ClCompile Include="Bag.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Good.cpp">
+    <ClCompile Include="Goods.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Good.h">
+    <ClCompile Include="Goods.h">
       <Filter>头文件</Filter>
     </ClCompile>
-    <ClCompile Include="Role.cpp">
+    <ClCompile Include="fight.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Skill.cpp">
+    <ClCompile Include="Goods.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Task.cpp">
+    <ClCompile Include="fight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Npc.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -55,6 +61,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Task.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Npc.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

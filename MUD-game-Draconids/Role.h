@@ -2,18 +2,18 @@
 #include "main.h"
 #include <vector>
 #include<string>
-#include"Good.h"
+#include"Goods.h"
 #include<set>
 #include <algorithm>
 using namespace std;
 class Skill;
-class Good;
+class Goods;
 class Bag;
 class Task;
 class Role
 {
 public:
-    Role(string name, int HP, int attack, int DEF, int Agility, double dodge, int life, int money, int level); //构造函数
+    Role(string name, int HP, int attack, int DEF, int Agility, int life, int money, int level); //构造函数
     // 展示角色信息
     void showrole();
     // 展示角色技能
@@ -26,13 +26,22 @@ public:
     friend class GUI;
     friend class SHEN;
     friend class XI;
+    void addExp(int addExp);
+    void addMoney(int addMoney);
+    int getAgility() const;
+    int getAttack() const;
+    int getDEF() const;
+    int getHP() const;
+
+    void recoverHP(int amount);
+    void takeDamage(int damage);
 private:
     string name;
     int HP;          // 血量
     int attack;      // 攻击
+    
     int DEF;         // 防御
     int Agility;     // 敏捷
-    double dodge;    // 闪避
     std::set<std::unique_ptr<Skill>> Skill_vector; // 技能
     int life; // 生命
     //std::unique_ptr<Good> weapon; // 武器（只能装备一把）
