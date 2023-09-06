@@ -297,7 +297,7 @@ Goods::~Goods()
 {
 }
 
-int Goods::getDescd() {
+string Goods::getDescd() {
 	return desc;
 }
 

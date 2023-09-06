@@ -1,8 +1,5 @@
-#include <iostream>
-#include <thread>
-#include <Windows.h>
-
-using namespace std;
+#include"introduce.h"
+#include"main.h"
 int index;
 
 void introduce() {
@@ -16,7 +13,7 @@ void introduce() {
     while (index < backgroundSentence.length()) {
         std::cout << backgroundSentence[index++];
         std::cout.flush();
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }//±³¾°½éÉÜ
     std::cout << std::endl;
     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);//»Ö¸´Ä¬ÈÏÑÕÉ«
@@ -30,7 +27,7 @@ void introduce() {
     while (index < roleSentence.length()) {
         std::cout << roleSentence[index++];
         std::cout.flush();
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }//ÈËÎï½éÉÜ
     std::cout << std::endl;
     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);//»Ö¸´Ä¬ÈÏÑÕÉ«
@@ -44,10 +41,29 @@ void introduce() {
     while (index < setSentence.length()) {
         std::cout << setSentence[index++];
         std::cout.flush();
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1));
     }//Éè¶¨½éÉÜ
     std::cout << std::endl;
     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);//»Ö¸´Ä¬ÈÏÑÕÉ«
     system("pause");
     system("cls");
+}
+
+
+
+void choose(Map& map) {
+    cout << "Ñ¡Ôñ 1. ½øÈëµØÍ¼" << endl;
+    int choose = 0;
+    cin >> choose;
+    switch (choose)
+    {
+    case 1:
+        map.ShowMap();
+        break;
+    default:
+        cout << "Äã¸ÉÂï~~£¬°¥ßÏ£¡£¡" << endl;
+        break;
+    }
+    
+    cout << map.GetPosition();
 }

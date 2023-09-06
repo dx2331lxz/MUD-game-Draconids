@@ -37,56 +37,56 @@ void welcomePage() {
     std::cout << std::endl;
     int startChoose = 0;
     cin >> startChoose;
-    if (startChoose == 1) {
-        // 打开文件
-        std::ofstream outFile("role.dat", std::ios::binary);
+    //if (startChoose == 1) {
+    //    // 打开文件
+    //    std::ofstream outFile("role.dat", std::ios::binary);
 
-        // 将对象的数据写入文件
-        if (outFile.is_open()) {
-            // 写入姓名
-            int nameLength = Role.name.length();
-            outFile.write(reinterpret_cast<char*>(&nameLength), sizeof(int));
-            outFile.write(Role.name.c_str(), nameLength);
+    //    // 将对象的数据写入文件
+    //    if (outFile.is_open()) {
+    //        // 写入姓名
+    //        int nameLength = Role.name.length();
+    //        outFile.write(reinterpret_cast<char*>(&nameLength), sizeof(int));
+    //        outFile.write(Role.name.c_str(), nameLength);
 
-            // 写入HP
-            outFile.write(reinterpret_cast<char*>(&Role.HP), sizeof(int));
-            
-            // 写入攻击
-            outFile.write(reinterpret_cast<char*>(&Role.attack), sizeof(int));
+    //        // 写入HP
+    //        outFile.write(reinterpret_cast<char*>(&Role.HP), sizeof(int));
+    //        
+    //        // 写入攻击
+    //        outFile.write(reinterpret_cast<char*>(&Role.attack), sizeof(int));
 
-            // 写入防御
-            outFile.write(reinterpret_cast<char*>(&Role.DEF), sizeof(int));
+    //        // 写入防御
+    //        outFile.write(reinterpret_cast<char*>(&Role.DEF), sizeof(int));
 
-            // 写入敏捷
-            outFile.write(reinterpret_cast<char*>(&Role.Agility), sizeof(int));
+    //        // 写入敏捷
+    //        outFile.write(reinterpret_cast<char*>(&Role.Agility), sizeof(int));
 
-            // 写入闪避
-            outFile.write(reinterpret_cast<char*>(&Role.dodge), sizeof(double));
+    //        // 写入闪避
+    //        outFile.write(reinterpret_cast<char*>(&Role.dodge), sizeof(double));
 
-            // 写入生命
-            outFile.write(reinterpret_cast<char*>(&Role.life), sizeof(int));
+    //        // 写入生命
+    //        outFile.write(reinterpret_cast<char*>(&Role.life), sizeof(int));
 
-            // 写入金币
-            outFile.write(reinterpret_cast<char*>(&Role.money), sizeof(int));
+    //        // 写入金币
+    //        outFile.write(reinterpret_cast<char*>(&Role.money), sizeof(int));
 
-            // 写入等级
-            outFile.write(reinterpret_cast<char*>(&Role.level), sizeof(int));
+    //        // 写入等级
+    //        outFile.write(reinterpret_cast<char*>(&Role.level), sizeof(int));
 
-            // 写入经验
-            outFile.write(reinterpret_cast<char*>(&Role.EXP), sizeof(int));
+    //        // 写入经验
+    //        outFile.write(reinterpret_cast<char*>(&Role.EXP), sizeof(int));
 
-            // 关闭文件
-            outFile.close();
+    //        // 关闭文件
+    //        outFile.close();
 
-        }
-        else {
-            std::cerr << "存档失败！" << std::endl;
-        }
-    }
-    }// 建立新的存档，进入introduce，开始游戏
-    if (startChoose == 2) {
+    //    }
+    //    else {
+    //        std::cerr << "存档失败！" << std::endl;
+    //    }
+    //}
+    //}// 建立新的存档，进入introduce，开始游戏
+    //if (startChoose == 2) {
 
-    }//读取旧的存档，开始游戏
+    //}//读取旧的存档，开始游戏
     if (startChoose == 3) {
         std::string byeSentence = "再会";
         index = 0;
