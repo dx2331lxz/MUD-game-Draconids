@@ -17,7 +17,6 @@ void Role::showrole()
     cout << "ÉúÃü: " << life << "\t\t\t";
     cout << "¾­Ñé: " << EXP << endl;
     cout << endl;
-    system("pause");
 }
 
 int Role::showskill()
@@ -148,6 +147,31 @@ int Role::getDEF() const {
 
 int Role::getHP() const {
     return HP;
+}
+
+string Role::getname()
+{
+    return string(name);
+}
+
+int Role::getlife()
+{
+    return life;
+}
+
+int Role::getmoney()
+{
+    return money;
+}
+
+int Role::getlevel()
+{
+    return level;
+}
+
+int Role::getEXP()
+{
+    return EXP;
 }
 
 

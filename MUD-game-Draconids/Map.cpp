@@ -1,5 +1,5 @@
 #include"Map.h"
-Map::Map():pos(1)
+Map::Map():pos(0)
 {
 	search_map.insert(pair<string, int>("卡塞尔学院", 0));
 	search_map.insert(pair<string, int>("青铜城", 1));
@@ -88,7 +88,7 @@ void Map::ShowMap()
 	cout << endl;
 	cout << endl;
 	cout << endl;
-
+	cout << "*表示您当前的位置" << endl;
 }
 
 string Map::move() {//根据输入地点来到不同位置,若输入错误,退出函数重新输入
@@ -118,6 +118,9 @@ char Map::isthere(int a)
 
 void Map::Map_find()//在map中查找npc
 {
+	if (pos == 0) {
+		cout << "*****" << endl;
+	}
 
 	if (searchNPC_map[pos])
 		allnpc[pos - 1]->GetTask();

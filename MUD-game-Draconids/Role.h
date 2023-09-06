@@ -32,7 +32,11 @@ public:
     int getAttack() const;
     int getDEF() const;
     int getHP() const;
-
+    string getname();
+    int getlife();
+    int getmoney();
+    int getlevel();
+    int getEXP();
     void recoverHP(int amount);
     void takeDamage(int damage);
 private:

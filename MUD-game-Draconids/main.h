@@ -16,5 +16,6 @@
 #include"Map.h"
 #include"welcomePage.h"
 #include"fight.h"
+#include<fstream>
 using namespace std;
 
