@@ -10,7 +10,7 @@ class Skill;
 class Goods;
 class Bag;
 class Task;
-class Role
+class 00
 {
 public:
     Role(string name, int HP, int attack, int DEF, int Agility, double dodge, int life, int money, int level); //¹¹Ôìº¯Êý

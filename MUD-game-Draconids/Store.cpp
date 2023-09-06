@@ -8,7 +8,7 @@ using namespace std;
 
 Store::Store()
 {
-	for (int i = 0; i < 24; ++i)
+	for (int i = 0; i < 22; ++i)
 	{
 		stores.insert(pair<int, int>(i, 999));//商店物品初始化 数量为999
 	}
@@ -29,10 +29,10 @@ void Store::showStores()
 		cout << left << setw(2) << i << "." << setw(10) << goods[iter->first].getName() << "   "
 			<< setw(76) << goods[iter->first].getDesc() << "   "
 			<< goods[iter->first].getPriceBuy() << endl;
-		if (getType() == 0) cout << "  攻击加成：" << goods[iter->first].getAddAttack() << "  " << "防御加成：" << goods[iter->first].getAddDefend() << "  " << "敏捷加成：" << goods[iter->first].getAddAPI() << endl;
-		else if (getType() == 1) cout << "  血量加成：" << goods[iter->first].getAddMaxHP() << "  " << "防御加成：" << goods[iter->first].getAddDefend() << "  " << "敏捷加成：" << goods[iter->first].getAddAPI() << endl;
+		if (goods[iter->first].getType() == 0) cout << "  攻击加成：" << goods[iter->first].getAddAttack() << "  " << "防御加成：" << goods[iter->first].getAddDefend() << "  " << "敏捷加成：" << goods[iter->first].getAddAPI() << endl;
+		else if (goods[iter->first].getType() == 1) cout << "  血量加成：" << goods[iter->first].getAddMaxHP() << "  " << "防御加成：" << goods[iter->first].getAddDefend() << "  " << "敏捷加成：" << goods[iter->first].getAddAPI() << endl;
 		else
-			cout << "  恢复血量" << goods[iter->first].getAddMP();
+			cout << "  恢复血量" << goods[iter->first].getAddHP();
 		++i;//物品序号
 	}
 }
@@ -71,7 +71,7 @@ Role Store::playerToStore(Role player)
 	cout << "请输入要卖出的数量(输入0退出)" << endl;
 	cin >> goodsNum;
 	if (goodsNum == 0) return player;
-	if (player.subGoodsToBag(goodsId, goodsNum)) {
+	if (player.subGood00sToBag(goodsId, goodsNum)) {
 		int totalPrice = int(goods[goodsId].getPriceSell()) * int(goodsNum);
 
 		player.setMoney(player.getMoney() + totalPrice);
