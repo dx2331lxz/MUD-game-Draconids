@@ -22,7 +22,8 @@
 #include <random>
 #include <windows.h>
 #include <mmsystem.h>
-#include"resource.h"
+
+
 #pragma comment(lib,"winmm.lib")
 using namespace std;
 

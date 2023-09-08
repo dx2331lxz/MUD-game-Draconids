@@ -115,28 +115,34 @@ int choose(Map& map, Role & character) {
 	return true;
 }
 
+void show1() { cout << "choice1\n"; }
+void show2() { cout << "choice2\n"; }
+
+
 int main() {
-	// 初始化人物信息
-	//string name;
-	//cout << "输入身份：" << endl;
-	//cin >> name;
-	//Role character(name, 100, 10, 10, 10, 1, 0, 1);
-	//character.showrole();
-	//// 初始化地图
-	//cout << "欢迎来到 ****" << endl;
-	//cout << endl;
-	//Map map;
-	//map.ShowMap();
-	//cout << endl;
-	//while (true)
-	//{
-	//	if (!choose(map, character)) {
-	//		break;
-	//	}
-	//}
-	if (0 == PlaySound(MAKEINTRESOURCE(IDR_WAVE1), NULL, SND_RESOURCE | SND_ASYNC))
+
+
+	PlaySound(L"kaichang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+	//this_thread::sleep_for(std::chrono::seconds(20));
+	 //初始化人物信息
+	string name;
+	cout << "输入身份：" << endl;
+	cin >> name;
+	Role character(name, 100, 10, 10, 10, 1, 0, 1);
+	character.showrole();
+	// 初始化地图
+	cout << "欢迎来到 ****" << endl;
+	cout << endl;
+	Map map;
+	map.ShowMap();
+	cout << endl;
+	while (true)
 	{
-		printf("playsound false");
+		if (!choose(map, character)) {
+			break;
+		}
 	}
+
+
 	return 0;
 }
