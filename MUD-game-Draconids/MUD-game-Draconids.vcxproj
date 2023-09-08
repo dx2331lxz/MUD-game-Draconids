@@ -135,6 +135,7 @@
     <ClCompile Include="Bag.cpp" />
     <ClCompile Include="fight.cpp" />
     <ClCompile Include="Goods.cpp" />
+    <ClCompile Include="introduce.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Npc.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -149,6 +150,7 @@
     <ClInclude Include="Bag.h" />
     <ClInclude Include="fight.h" />
     <ClInclude Include="Goods.h" />
+    <ClInclude Include="introduce.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Npc.h" />
     <ClInclude Include="Role.h" />
