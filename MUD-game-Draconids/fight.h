@@ -6,7 +6,6 @@
 class FightSystem {
 public:
     FightSystem(Role& player, Role& enemy); // 修改这里的参数类型为 Role&
-
     bool fightRound();    // 显示当前回合的战斗情况，返回是否逃跑
     void showFight();     // 显示战斗状态
     void enemyFight();    // 敌人的随机攻击
@@ -27,5 +26,6 @@ private:
     Role& enemy;   // 战斗的敌人，使用 Role 类的实例
     int round;      // 回合数
     double hurt;    // 战斗产生的伤害值
-    Goods goods[24];    // 物品列表，根据你的需求进行调整
+    Good goods[24];    // 物品列表，根据你的需求进行调整
+    bool whetherrun;
 };

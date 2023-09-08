@@ -19,20 +19,33 @@ bool FightSystem::fightRound()
     cout << "2. 技能" << endl;
     cout << "3. 逃跑" << endl;
 
-    int choice;
-    cin >> choice;
+    int choice1,choice2;
+    cin >> choice1;
 
-    switch (choice)
+    switch (choice1)
     {
     case 1:
         playerAttack();
         break;
     case 2:
-        // 调用技能相关函数
+        cout << "请选择你要使用的技能 ";        // todo 调用技能相关函数
+        cin >> choice2;
+        switch (choice2)
+        {
+        case 1:
+            Skill::show();
+            GUI::Skill;
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        }
         break;
     case 3:
         cout << "你选择逃跑了。" << endl;
-        return true; // 逃跑
+        whetherrun = 1;
+        return false; // 逃跑
     default:
         cout << "无效的选择，继续战斗。" << endl;
         break;
@@ -44,7 +57,7 @@ bool FightSystem::fightRound()
     }
     enemyAttack();
 
-    return false; // 继续战斗
+    return true; // 继续战斗
 }
 
 void FightSystem::playerAttack()
@@ -103,6 +116,7 @@ Role& FightSystem::endFight()
     return player;
 }
 
+
 Role& FightSystem::runEndFight()
 {
     cout << "你选择逃跑了。" << endl;
@@ -130,7 +144,7 @@ void FightSystem::addExp(int addExp)
 
 void FightSystem::recoverHp()
 {
-    player.recoverHP(100);
+    player.recoverHP(10);
     cout << "你恢复了一些生命值。" << endl;
 }
 

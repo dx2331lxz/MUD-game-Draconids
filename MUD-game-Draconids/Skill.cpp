@@ -64,4 +64,3 @@ void XI::Motor_skill_end(Role& role)
 {
 	role.attack = atteck;
 }
-
