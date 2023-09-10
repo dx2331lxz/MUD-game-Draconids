@@ -3,6 +3,7 @@
 #include <vector>
 #include<iomanip>
 #include "Store.h"
+#include <SFML/Graphics.hpp>
 
 using namespace std;
 
@@ -19,9 +20,26 @@ Store::~Store()
 {
 }
 
-void Store::showStores()
-{
-	cout << left << setw(17) << "物品ID" << setw(76) << "描述" << "价格" << endl;
+//void Store::showStores()
+//{
+//	cout << left << setw(17) << "物品ID" << setw(76) << "描述" << "价格" << endl;
+//	map<int, int>::iterator iter;
+//	int i = 0;//物品序号
+//	for (iter = stores.begin(); iter != stores.end(); ++iter)
+//	{
+//		cout << left << setw(2) << i << "." << setw(10) << goods[iter->first].getName() << "   "
+//			<< setw(76) << goods[iter->first].getDesc() << "   "
+//			<< goods[iter->first].getPriceBuy() << endl;
+//		if (goods[iter->first].getType() == 0) cout << "  攻击加成：" << goods[iter->first].getAddAttack() << "  " << "防御加成：" << goods[iter->first].getAddDefend() << "  " << "敏捷加成：" << goods[iter->first].getAddAPI() << endl;
+//		else if (goods[iter->first].getType() == 1) cout << "  血量加成：" << goods[iter->first].getAddMaxHP() << "  " << "防御加成：" << goods[iter->first].getAddDefend() << "  " << "敏捷加成：" << goods[iter->first].getAddAPI() << endl;
+//		else
+//			cout << "  恢复血量" << goods[iter->first].getAddHP();
+//		++i;//物品序号
+//	}
+//}
+void Store::showStores() {
+	system("cls");
+	cout << left << setw(17) << "物品ID" << setw(76) <<left<< "描述" << " 价格" << endl;
 	map<int, int>::iterator iter;
 	int i = 0;//物品序号
 	for (iter = stores.begin(); iter != stores.end(); ++iter)
@@ -29,13 +47,32 @@ void Store::showStores()
 		cout << left << setw(2) << i << "." << setw(10) << goods[iter->first].getName() << "   "
 			<< setw(76) << goods[iter->first].getDesc() << "   "
 			<< goods[iter->first].getPriceBuy() << endl;
-		if (goods[iter->first].getType() == 0) cout << "  攻击加成：" << goods[iter->first].getAddAttack() << "  " << "防御加成：" << goods[iter->first].getAddDefend() << "  " << "敏捷加成：" << goods[iter->first].getAddAPI() << endl;
-		else if (goods[iter->first].getType() == 1) cout << "  血量加成：" << goods[iter->first].getAddMaxHP() << "  " << "防御加成：" << goods[iter->first].getAddDefend() << "  " << "敏捷加成：" << goods[iter->first].getAddAPI() << endl;
-		else
-			cout << "  恢复血量" << goods[iter->first].getAddHP();
+
 		++i;//物品序号
 	}
+	while (window.isOpen())
+	{
+		// 处理事件
+		sf::Event event;
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::MouseButtonPressed)
+			{
+				// 获取鼠标点击的坐标
+				int mouseX = event.mouseButton.x;
+				int mouseY = event.mouseButton.y;		
+				
+			}
+		}
+
+		// 渲染窗口
+		window.clear();
+		window.display();
+	}
 }
+
+
+
 
 Role Store::storeToPlayer(Role player)
 {

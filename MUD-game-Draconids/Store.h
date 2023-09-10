@@ -17,6 +17,7 @@ public:
 	void showStores();
 	Role storeToPlayer(Role player);		//返回一个已经操作过的背包
 	Role playerToStore(Role player);
+	bool showProductDetails(int i);
 
 private:
 	map<int, int> stores;
