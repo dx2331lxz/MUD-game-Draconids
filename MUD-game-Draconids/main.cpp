@@ -120,16 +120,22 @@ void show2() { cout << "choice2\n"; }
 
 
 int main() {
-
-
 	PlaySound(L"kaichang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+	introduce();
+
+	for (int i = 0; i < 2; i++) {
+		std::cout << ""; // 输出空格覆盖之前输出的"....."
+	}
+	std::cout << "\b\b";
 	//this_thread::sleep_for(std::chrono::seconds(20));
 	 //初始化人物信息
 	string name;
-	cout << "输入身份：" << endl;
+	cout << "输入身份：";
+
 	cin >> name;
 	Role character(name, 100, 10, 10, 10, 1, 0, 1);
 	character.showrole();
+	PlaySound(NULL, 0, SND_PURGE);
 	// 初始化地图
 	cout << "欢迎来到 ****" << endl;
 	cout << endl;
