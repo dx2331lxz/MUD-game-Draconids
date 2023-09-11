@@ -12,6 +12,5 @@
 #include"Skill.h"
 #include"Bag.h"
 using namespace std;
-int index = 0;
 
 void save(Role& character);
