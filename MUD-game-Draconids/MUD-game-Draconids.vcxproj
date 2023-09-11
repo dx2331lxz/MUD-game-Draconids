@@ -161,6 +161,7 @@
     <ClInclude Include="welcomePage.h" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="daoguang.wav" />
     <Media Include="kaichang.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
