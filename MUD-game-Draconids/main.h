@@ -15,5 +15,15 @@
 #include <thread>
 #include"Map.h"
 #include"welcomePage.h"
-using namespace std;
+#include"fight.h"
+#include<fstream>
+#include <thread>
+#include <chrono>
+#include <random>
+#include <windows.h>
+#include <mmsystem.h>
+#include"introduce.h"
+#include <atomic>
 
+#pragma comment(lib,"winmm.lib")
+using namespace std;
