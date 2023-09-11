@@ -2,37 +2,49 @@
 #include "main.h"
 #include <vector>
 #include<string>
-#include"Good.h"
+#include"Goods.h"
 #include<set>
 #include <algorithm>
 using namespace std;
 class Skill;
-class Good;
+class Goods;
 class Bag;
 class Task;
 class Role
 {
 public:
-    Role(string name, int HP, int attack, int DEF, int Agility, double dodge, int life, int money, int level); //构造函数
+    Role(string name, int HP, int attack, int DEF, int Agility, int life, int money, int level); //构造函数
     // 展示角色信息
     void showrole();
     // 展示角色技能
     int showskill();
     // 添加技能
-    int Addskill(unique_ptr<Skill> skill);
+    void Addskill(int choose = 0);
     // 使用技能
-    void Useskill(int choose);
+    void Useskill(Role& enemy);
  // 声明技能为Role友元类
     friend class GUI;
     friend class SHEN;
     friend class XI;
+    void addExp(int addExp);
+    void addMoney(int addMoney);
+    int getAgility() const;
+    int getAttack() const;
+    int getDEF() const;
+    int getHP() const;
+    string getname();
+    int getlife();
+    int getmoney();
+    int getlevel();
+    int getEXP();
+    void recoverHP(int amount);
+    void takeDamage(int damage);
 private:
     string name;
     int HP;          // 血量
     int attack;      // 攻击
     int DEF;         // 防御
     int Agility;     // 敏捷
-    double dodge;    // 闪避
     std::set<std::unique_ptr<Skill>> Skill_vector; // 技能
     int life; // 生命
     //std::unique_ptr<Good> weapon; // 武器（只能装备一把）
@@ -43,6 +55,8 @@ private:
     int EXP; // 经验
     const int levelExp_Max[29] = { 6,12,18,24,30,36,42,48,54,60,69,78,87,96,105,114,123,132,141,150,162,174,186,198,210,225,240,270,300 }; // 每个对应等级的最高经验值
 };
+
+
 
 //初始路明非:
 //血量:50

@@ -118,6 +118,7 @@ bool Store::showProductDetails(int y) {
 
 Role Store::storeToPlayer(Role player) {
 	int goodsId, goodsNum;
+	cout << "22.退出" << endl;
 	cout << "请输入要购买的物品ID号" << endl;
 	cin >> goodsId;
 	if (goodsId == 22) return player;

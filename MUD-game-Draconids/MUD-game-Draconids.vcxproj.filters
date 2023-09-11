@@ -25,11 +25,23 @@
     <ClCompile Include="Bag.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Good.cpp">
+    <ClCompile Include="Goods.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Good.h">
-      <Filter>头文件</Filter>
+    <ClCompile Include="fight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Goods.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="fight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Npc.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Role.cpp">
       <Filter>源文件</Filter>
@@ -38,6 +50,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Task.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="welcomePage.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="introduce.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -57,5 +75,34 @@
     <ClInclude Include="Task.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Npc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="fight.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Goods.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="sdf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="welcomePage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="introduce.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="kaichang.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="daoguang.wav">
+      <Filter>资源文件</Filter>
+    </Media>
   </ItemGroup>
 </Project>
