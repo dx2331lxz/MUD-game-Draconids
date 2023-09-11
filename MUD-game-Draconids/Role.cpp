@@ -17,7 +17,6 @@ void Role::showrole()
     cout << "生命: " << life << "\t\t\t";
     cout << "经验: " << EXP << endl;
     cout << endl;
-    system("pause");
 }
 
 int Role::showskill()
@@ -118,6 +117,16 @@ void Role::Useskill(int choose)
 
 void Role::addExp(int addExp) {
     EXP += addExp;
+    auto level_ = level;
+    for (int i = 0; i < 29; i++) {
+        if (levelExp_Max[i] <= EXP) {
+
+            level = i + 1;
+        }
+    }
+    if (level_ < level) {
+        cout << "生啦生啦， 恭喜你已经到达" << level << "级啦！！" << endl;
+    }
 }
 
 void Role::addMoney(int addMoney) {
@@ -138,6 +147,31 @@ int Role::getDEF() const {
 
 int Role::getHP() const {
     return HP;
+}
+
+string Role::getname()
+{
+    return string(name);
+}
+
+int Role::getlife()
+{
+    return life;
+}
+
+int Role::getmoney()
+{
+    return money;
+}
+
+int Role::getlevel()
+{
+    return level;
+}
+
+int Role::getEXP()
+{
+    return EXP;
 }
 
 
