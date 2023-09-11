@@ -13,6 +13,10 @@
 //
 //	return 0;
 //}
+
+}
+
+
 void print() {
 	string sentence = ".....";
 	int index = 0;
@@ -30,7 +34,7 @@ void print() {
 	int randomNumber = dist(gen);
 	for (int i = 0; i < randomNumber; i++) {
 		index = 0;
-
+		
 		while (index < sentence.length()) {
 			std::cout << sentence[index++];
 			std::cout.flush();//立刻输出缓冲区里的字符
@@ -43,7 +47,6 @@ void print() {
 		}
 		std::cout << "\b\b\b\b\b";
 	}
-
 }
 
 
@@ -62,7 +65,7 @@ void fight(Role& character, Role& enemy) {
 	fight.endFight();
 }
 
-int choose(Map& map, Role& character) {
+int choose(Map& map, Role & character) {
 	if (map.GetPosition() == 0 || map.GetPosition() == 1) {
 		cout << "1. 寻找NPC 2. 传送至地图别处 3. 退出地图 4. 进入学院" << endl;
 	}
@@ -94,12 +97,13 @@ int choose(Map& map, Role& character) {
 			School_Map school_map;
 			school_map.move(character);
 		}
-		else if (map.GetPosition() == 1)
+		else if(map.GetPosition() == 1)
 		{
 			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 			SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN);
 			cout << "正在进入小世界";
 			print();
+			cout << endl;
 			SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 
 			TreeMap treemap;
@@ -120,7 +124,7 @@ void show2() { cout << "choice2\n"; }
 
 
 int main() {
-
+	
 	PlaySound(L"daoguang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	welcomePage();
 	PlaySound(NULL, 0, SND_PURGE);
@@ -140,10 +144,6 @@ int main() {
 	Role character(name, 100, 10, 10, 10, 1, 0, 1);
 	character.showrole();
 	PlaySound(NULL, 0, SND_PURGE);
-
-
-
-
 	// 初始化地图
 	cout << "欢迎来到 ****" << endl;
 	cout << endl;
@@ -156,7 +156,6 @@ int main() {
 			break;
 		}
 	}
-
 
 	return 0;
 }

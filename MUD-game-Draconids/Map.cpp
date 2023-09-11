@@ -376,18 +376,85 @@ shared_ptr<MapNode> MapNode::goaway()//离开时调用
 	} while (1);
 }
 
+
+
 void TreeMap::go(Role& character) {
 	while (true)
 	{
 		if (now->getname() == "new_End") {
-			cout << "恭喜你通过了青铜城的试炼，正在将你传送出小世界.....";
-			std::this_thread::sleep_for(std::chrono::seconds(3));
+			cout << "恭喜你通过了青铜城的试炼，正在将你传送出小世界";
+			print();
+			cout << endl;
 			break;
 		}
 		now = now->goaway();
 		if (now->getname() == "new_L") {
 			cout << "你遇到了敌人, 你有以下几种选择（输入数字）：" << endl;
 			Role enemy("凯撒", 10, 1, 1, 1, 1, 10, 1);
+			while (true)
+			{
+				cout << "1. 查看敌人信息 2. 与他战斗 3. 离开" << endl;
+				int foo = 0; // 决定循环是否结束
+				int choice = 0;
+				cin >> choice;
+				switch (choice)
+				{
+				case 1:
+					enemy.showrole();
+					break;
+				case 2:
+					if (fight(character, enemy)) {
+						foo = 1;
+					}
+					break;
+				case 3:
+					foo = 1;
+					break;
+				default:
+					cout << "别闹" << endl;
+					break;
+				}
+				if (foo) {
+					break;
+				}
+			}
+		}
+
+		if (now->getname() == "new_RL") {
+			cout << "你遇到了敌人, 你有以下几种选择（输入数字）：" << endl;
+			Role enemy("阿巴巴怪", 10, 4, 1, 1, 1, 10, 1);
+			while (true)
+			{
+				cout << "1. 查看敌人信息 2. 与他战斗 3. 离开" << endl;
+				int foo = 0; // 决定循环是否结束
+				int choice = 0;
+				cin >> choice;
+				switch (choice)
+				{
+				case 1:
+					enemy.showrole();
+					break;
+				case 2:
+					if (fight(character, enemy)) {
+						foo = 1;
+					}
+					break;
+				case 3:
+					foo = 1;
+					break;
+				default:
+					cout << "别闹" << endl;
+					break;
+				}
+				if (foo) {
+					break;
+				}
+			}
+		}
+
+		if (now->getname() == "new_RR") {
+			cout << "你遇到了敌人, 你有以下几种选择（输入数字）：" << endl;
+			Role enemy("猩红石像", 18, 6, 3, 1, 1, 10, 1);
 			while (true)
 			{
 				cout << "1. 查看敌人信息 2. 与他战斗 3. 离开" << endl;

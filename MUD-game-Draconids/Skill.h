@@ -8,7 +8,7 @@ class Skill
 {
 public:
 	Skill();
-	Skill(string name, string effect, string introduce):name(name),effect(effect), introduce(introduce),is_can_use(false) {};
+	Skill(string name, string effect, string introduce):name(name),effect(effect), introduce(introduce), is_can(false) {};
 	~Skill();
 	// 使用技能
 	virtual void Motor_skill_start(Role& role, Role& enemy) = 0;
@@ -17,12 +17,12 @@ public:
 	// 展示技能（名称，介绍，效果）
 	void show();
 	void can();
-	bool get_is_can_use();
+	bool get_is_can();
 private:
 	string name;
 	string effect;
 	string introduce;
-	bool is_can_use;
+	bool is_can;
 };
 
 

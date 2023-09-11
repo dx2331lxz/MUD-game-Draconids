@@ -15,8 +15,8 @@ FightSystem::FightSystem(Role& player, Role& enemy)
 
 bool FightSystem::fightRound()
 {
-    cout << "第 " << round << " 回合" << endl;
-
+    cout << "第 " << round << " 回合" << endl; 
+    enemy.showrole();
     cout << "请选择行动：" << endl;
     cout << "1. 普通攻击" << endl;
     cout << "2. 技能" << endl;
@@ -31,11 +31,12 @@ bool FightSystem::fightRound()
         playerAttack();
         break;
     case 2:
+        // 调用技能相关函数
         player.Useskill(enemy);
         break;
     case 3:
         cout << "你选择逃跑了。" << endl;
-        return true; // 逃跑
+        return false; // 逃跑
     default:
         cout << "无效的选择，继续战斗。" << endl;
         break;
@@ -47,7 +48,7 @@ bool FightSystem::fightRound()
     }
     enemyAttack();
 
-    return false; // 继续战斗
+    return true; // 继续战斗
 }
 
 void FightSystem::playerAttack()
@@ -77,6 +78,11 @@ void FightSystem::enemyAttack()
     cout << "敌人使用普通攻击对玩家造成 " << damage << " 伤害。" << endl;
 }
 
+int FightSystem::addround()
+{
+    return ++round;
+}
+
 bool FightSystem::evadeAttack()
 {
     int evadeChance = rand() % 100;
@@ -92,11 +98,12 @@ bool FightSystem::isFightEnd()
     return player.getHP() <= 0 || enemy.getHP() <= 0;
 }
 
-Role& FightSystem::endFight()
+bool FightSystem::endFight()
 {
-    if (player.getHP() <= 0)
+    if (enemy.getHP() > 0)
     {
         cout << "战斗失败。" << endl;
+        return false;
     }
     else
     {
@@ -104,7 +111,6 @@ Role& FightSystem::endFight()
         addExp(40); // 添加经验值
         return true;
     }
-    return player;
 }
 
 Role& FightSystem::runEndFight()
@@ -126,15 +132,15 @@ void FightSystem::addFightEndGoods(int* addGoods, int* num)
     // 根据 Goods 类和背包系统的实际情况实现这部分
 }
 
-void FightSystem::addExp(int addExp)
+void FightSystem::addExp(int Exp)
 {
-    player.addExp(addExp);
-    cout << "你获得了 " << addExp << " 经验值。" << endl;
+    player.addExp(Exp);
+    cout << "你获得了 " << Exp << " 经验值。" << endl;
 }
 
 void FightSystem::recoverHp()
 {
-    player.recoverHP(100);
+    player.recoverHP(10);
     cout << "你恢复了一些生命值。" << endl;
 }
 

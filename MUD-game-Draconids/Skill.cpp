@@ -31,6 +31,16 @@ Skill::~Skill()
 
 
 
+void Skill::can()
+{
+	is_can = true;
+}
+
+bool Skill::get_is_can()
+{
+	return is_can;
+}
+
 GUI::GUI():Skill("言灵·鬼胜", "攻击提升100%(只能释放一次)", "该言灵的有效范围是释放者自身，释放者命令自己的身体完全忘记疼痛，从而发挥出极限的力量")
 {
 }
