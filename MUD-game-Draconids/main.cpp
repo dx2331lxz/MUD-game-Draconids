@@ -140,6 +140,10 @@ int main() {
 	Role character(name, 100, 10, 10, 10, 1, 0, 1);
 	character.showrole();
 	PlaySound(NULL, 0, SND_PURGE);
+
+
+
+
 	// 初始化地图
 	cout << "欢迎来到 ****" << endl;
 	cout << endl;

@@ -9,7 +9,7 @@
 using namespace std;
 
 FightSystem::FightSystem(Role& player, Role& enemy)
-    : player(player), enemy(enemy), round(1), hurt(0)
+    :player(player), enemy(enemy), round(1), hurt(0)
 {
 }
 
@@ -31,7 +31,7 @@ bool FightSystem::fightRound()
         playerAttack();
         break;
     case 2:
-        // 调用技能相关函数
+        player.Useskill(enemy);
         break;
     case 3:
         cout << "你选择逃跑了。" << endl;
@@ -101,7 +101,8 @@ Role& FightSystem::endFight()
     else
     {
         cout << "恭喜！你赢得了战斗。" << endl;
-        addExp(100); // 添加经验值
+        addExp(40); // 添加经验值
+        return true;
     }
     return player;
 }

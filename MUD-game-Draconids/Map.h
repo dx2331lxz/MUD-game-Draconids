@@ -10,6 +10,8 @@ using namespace std;
 #include"Npc.h"
 #include"Role.h"
 #include"main.h"
+
+class Role;
 //将地图分成不同的块,按照块的不同将其组合
 class Map
 {
