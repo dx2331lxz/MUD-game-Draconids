@@ -55,6 +55,9 @@
     <ClCompile Include="welcomePage.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="introduce.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -90,9 +93,15 @@
     <ClInclude Include="welcomePage.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="introduce.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Media Include="kaichang.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="daoguang.wav">
       <Filter>资源文件</Filter>
     </Media>
   </ItemGroup>
