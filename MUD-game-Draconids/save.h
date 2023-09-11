@@ -5,7 +5,6 @@
 #include <fstream>
 #include<set>
 #include"Role.h"
-#include"main.h"
 #include <memory>
 #include <string>
 #include <vector>
