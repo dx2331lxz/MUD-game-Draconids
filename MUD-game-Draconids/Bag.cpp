@@ -4,7 +4,7 @@
 using namespace std;
 
 Bag::Bag() {
-	saveGoods[20][2] = { 0 };
+	saveGoods[14][2] = { 0 };
 }
 
 Bag::~Bag() {}
@@ -69,7 +69,7 @@ void Bag::saveBag() {
 bool Bag::isUseDrug() {
 	map<int, int>::iterator iter;
 	for (iter = bags.begin(); iter != bags.end(); ++iter) {
-		if (goods[iter->first].getGoodsId() == 20 || goods[iter->first].getGoodsId() == 21 )
+		if (goods[iter->first].getGoodsId() == 13 || goods[iter->first].getGoodsId() == 12 )
 			return true;
 	}
 	return false;

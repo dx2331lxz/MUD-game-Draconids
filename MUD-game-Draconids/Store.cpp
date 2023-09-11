@@ -6,8 +6,6 @@
 #include <windows.h>
 #define KEY_DOWN(VK_NONAME) ((GetAsyncKeyState(VK_NONAME) & 0x8000) ? 1:0)  //用来检测按键的点击事件
 
-using namespace std;
-
 void CloseQuickEditMode()
 {
 	HANDLE hIn;
@@ -22,7 +20,7 @@ void CloseQuickEditMode()
 
 Store::Store()
 {
-	for (int i = 0; i < 22; ++i)
+	for (int i = 0; i < 14; ++i)
 	{
 		stores.insert(pair<int, int>(i, 999));//商店物品初始化 数量为999
 	}
@@ -35,51 +33,47 @@ Store::~Store()
 
 //void Store::showStores()
 //{
-//	cout << left << setw(17) << "物品ID" << setw(76) << "描述" << "价格" << endl;
+//	cout << left << setw(17) << "物品ID" << setw(76) << left << "描述" << " 价格" << endl;
 //	map<int, int>::iterator iter;
 //	int i = 0;//物品序号
 //	for (iter = stores.begin(); iter != stores.end(); ++iter)
 //	{
-//		cout << left << setw(2) << i << "." << setw(10) << goods[iter->first].getName() << "   "
-//			<< setw(76) << goods[iter->first].getDesc() << "   "
+//		cout <<left<<setw(2) <<i << "." <<setw(10)<< goods[iter->first].getName() << "   "
+//			<<setw(76)<< goods[iter->first].getDesc() << "   "
 //			<< goods[iter->first].getPriceBuy() << endl;
-//		if (goods[iter->first].getType() == 0) cout << "  攻击加成：" << goods[iter->first].getAddAttack() << "  " << "防御加成：" << goods[iter->first].getAddDefend() << "  " << "敏捷加成：" << goods[iter->first].getAddAGI() << endl;
-//		else if (goods[iter->first].getType() == 1) cout << "  血量加成：" << goods[iter->first].getAddMaxHP() << "  " << "防御加成：" << goods[iter->first].getAddDefend() << "  " << "敏捷加成：" << goods[iter->first].getAddAGI() << endl;
-//		else
-//			cout << "  恢复血量" << goods[iter->first].getAddHP();
+//
 //		++i;//物品序号
 //	}
 //}
 void Store::showStores() {
+	system("cls");
 	bool exitProgram = false; // 控制程序是否退出
+	//----------移除快速编辑模式(对于win10用户)----------
+	CloseQuickEditMode();
+	HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
+	DWORD prevMode;
+	GetConsoleMode(hInput, &prevMode);
 	SetConsoleMode(hInput, ENABLE_MOUSE_INPUT);
+
+	INPUT_RECORD inputBuffer;
+	DWORD eventsRead;
 	while (!exitProgram) {
-		system("cls");
+
 		cout << left << setw(17) << "物品ID" << setw(76) << left << "描述" << " 价格" << endl;
 		map<int, int>::iterator iter;
 		int i = 0;//物品序号
 		for (iter = stores.begin(); iter != stores.end(); ++iter)
 		{
-			cout << left << setw(2) << i + 1 << "." << setw(10) << goods[iter->first].getName() << "   " << setw(76) << goods[iter->first].getDesc() << "   " << goods[iter->first].getPriceBuy() << endl;
+			cout << left << setw(2) << i + 1 << "." << setw(30) << left << goods[iter->first].getName() << setw(80) << left << goods[iter->first].getDesc() << goods[iter->first].getPriceBuy() << endl;
 			++i;//物品序号
 		}
-		cout << "22.退出" << endl;
-		//----------移除快速编辑模式(对于win10用户)----------
-		CloseQuickEditMode();
-		HANDLE hInput = GetStdHandle(STD_INPUT_HANDLE);
-		DWORD prevMode;
-		GetConsoleMode(hInput, &prevMode);
-		
-
-		INPUT_RECORD inputBuffer;
-		DWORD eventsRead;
-
+		cout << "15.退出" << endl;
+		int mouseY;
 		//----------循环检测----------
 		while (true) {
 			ReadConsoleInput(hInput, &inputBuffer, 1, &eventsRead);
-			if (inputBuffer.EventType == MOUSE_EVENT) {
-				int mouseX = inputBuffer.Event.MouseEvent.dwMousePosition.X;
-				int mouseY = inputBuffer.Event.MouseEvent.dwMousePosition.Y;
+			if (inputBuffer.EventType == MOUSE_EVENT && inputBuffer.Event.MouseEvent.dwButtonState & FROM_LEFT_1ST_BUTTON_PRESSED) {
+				mouseY = inputBuffer.Event.MouseEvent.dwMousePosition.Y;
 			}
 			if (showProductDetails(y)) {
 				exitProgram = true;
@@ -93,10 +87,9 @@ void Store::showStores() {
 
 bool Store::showProductDetails(int y) {
 		map<int, int>::iterator iter = stores.begin();
-		iter[4];
-		for (int Y = 顶部下坐标; iter != stores.end(); ++iter) {
+		for (int Y = 1; iter != stores.end(); ++iter) {
 			if (y < Y) break;
-			Y + 行间距;
+			Y ++;
 		}
 		if (iter == stores.end()) return false;
 		else{
@@ -117,7 +110,7 @@ Role Store::storeToPlayer(Role player){
 	int goodsId, goodsNum;
 	cout << "请输入要购买的物品ID号" << endl;
 	cin >> goodsId;
-	if (goodsId == 22) return player;
+	if (goodsId == 15) return player;
 	cout << "请输入要购买的数量(输入0退出)" << endl;
 	cin >> goodsNum;
 	if (goodsNum == 0) return player;
