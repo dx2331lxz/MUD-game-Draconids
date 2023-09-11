@@ -194,10 +194,17 @@ Goods::Goods(int id)
 	}
 }
 
+Goods::Goods()
+{
+}
+
 Goods::~Goods()
 {
 }
 
+string Goods::getDescd() {
+	return desc;
+}
 
 int Goods::getAddAGI() {
 	return addAGI;
@@ -216,6 +223,7 @@ string Goods::getDesc()
 {
 	return string(desc);
 }
+
 
 
 int Goods::getType()
@@ -261,7 +269,7 @@ void Goods::showGoods()
 	{
 		cout << "¹¥»÷Á¦:" << addAttack << endl;
 		cout << "·ÀÓùÁ¦:" << addDefend << endl;
-		cout << "Ãô½Ý:" << addAGI<< endl;
+		cout << "Ãô½Ý:" << addAGI << endl;
 
 	}
 	if (type == 1) //·À¾ß

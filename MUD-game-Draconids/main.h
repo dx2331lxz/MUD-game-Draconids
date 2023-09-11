@@ -12,4 +12,21 @@
 #include <iomanip> // 包含这个头文件以使用格式化输出相关功能
 #include <set> // set容器
 #include <algorithm> //算法
+#include <thread>
+#include"Map.h"
+#include"welcomePage.h"
+#include"fight.h"
+#include<fstream>
+#include <thread>
+#include <chrono>
+#include <random>
+#include <windows.h>
+#include <mmsystem.h>
+#include"introduce.h"
+#include <atomic>
+
+#pragma comment(lib,"winmm.lib")
 using namespace std;
+
+
+void print();

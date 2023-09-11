@@ -132,9 +132,9 @@ Role Store::storeToPlayer(Role player){
 Role Store::playerToStore(Role player)
 {
 	int goodsId, goodsNum;
-	cout << "请输入要卖出的物品ID(输入22退出)" << endl;
+	cout << "请输入要卖出的物品ID(输入15退出)" << endl;
 	cin >> goodsId;
-	if (goodsId == 22) return player;
+	if (goodsId == 15) return player;
 	cout << "请输入要卖出的数量(输入0退出)" << endl;
 	cin >> goodsNum;
 	if (goodsNum == 0) return player;
