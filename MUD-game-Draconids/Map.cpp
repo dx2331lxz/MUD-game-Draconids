@@ -235,7 +235,9 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 	Role enemy("怪兽", 10, 1, 1, 1, 1, 10, 1);
 	while (true) {
 		system("cls");
-		school_map_show();
+		if (!school_map_show()) {
+			break;
+		}
 		if ((pos[0]==2&&pos[1]==0) && (enemy.getHP() != 0)) {
 			cout << "你遇到了敌人, 你有以下几种选择（输入数字）：" << endl;
 			while (true)
@@ -399,7 +401,7 @@ void TreeMap::go(Role& character) {
 	}
 }
 
-void School_Map::school_map_show()
+bool School_Map::school_map_show()
 {
 	cout << 111 << endl;
 	initgraph(400, 480, EX_SHOWCONSOLE);
@@ -465,10 +467,24 @@ void School_Map::school_map_show()
 		}
 		else
 			outtextxy(280, 400, s6);
-		ExMessage msg = { 0 };
-		if (peekmessage(&msg, EM_MOUSE))
+	
+		while (!MouseHit())  // 等待鼠标事件发生
 		{
-			switch (msg.message)
+			// 在此处添加其他需要执行的代码
+		}
+
+		MOUSEMSG msg = GetMouseMsg();  // 获取鼠标消息
+		while (msg.uMsg != WM_LBUTTONDOWN && msg.uMsg != WM_RBUTTONDOWN)
+		{
+			while (!MouseHit())  // 等待鼠标事件发生
+			{
+				// 在此处添加其他需要执行的代码
+			}
+
+			msg = GetMouseMsg();  // 获取鼠标消息
+		}
+		
+			switch (msg.uMsg)
 			{
 			case WM_LBUTTONDOWN:
 				if (msg.x >= 0 && msg.x <= 200 && msg.y >= 0 && msg.y <= 160) {
@@ -476,7 +492,7 @@ void School_Map::school_map_show()
 					pos[0] = 0;
 					pos[1] = 0;
 					closegraph();
-					return
+					return true;
 ;
 				}
 				else if (msg.x > 200 && msg.x <= 400 && msg.y >= 0 && msg.y <= 160) {
@@ -484,41 +500,39 @@ void School_Map::school_map_show()
 					pos[0] = 0;
 					pos[1] = 1;
 					closegraph();
-					return;
+					return true;
 				}
 				else if (msg.x >= 0 && msg.x <= 200 && msg.y > 160 && msg.y <= 320) {
 					cout << "区域3" << endl;
 					pos[0] = 1;
 					pos[1] = 0;
 					closegraph();
-					return;
+					return true;
 				}
 				else if (msg.x > 200 && msg.x <= 400 && msg.y > 160 && msg.y <= 320) {
 					cout << "区域4" << endl;
 					pos[0] = 1;
 					pos[1] = 1;
 					closegraph();
-					return;
+					return true;
 				}
 				else if (msg.x >= 0 && msg.x <= 200 && msg.y > 320 && msg.y <= 480) {
 					cout << "区域5" << endl;
 					pos[0] = 2;
 					pos[1] = 0;
 					closegraph();
-					return;
+					return true;
 				}
 				else {
 					cout << "区域6" << endl;
 					pos[0] = 2;
 					pos[1] = 1;
 					closegraph();
-					return;
+					return true;
 				}
-				break;
 			default:
-				break;
-			}
-		}
+				closegraph();
+				return false;		
+			}	
 	}
-	
 }

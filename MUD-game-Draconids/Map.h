@@ -46,7 +46,7 @@ public:
 	void showmap();
 	void move(Role& character);//移动输入wasd,e退出 如果超出位置,只能在此地呆着
 	char isthere(int x, int y);//判断人物此时在不在这里,如果在,返回*
-	void school_map_show();
+	bool school_map_show();
 private:
 	vector<vector<string>>posname = { {"����","ѵ����"},{"�ؽ�","װ����"},{"��Ϣ��","ͼ���"} };
 	int pos[2];
