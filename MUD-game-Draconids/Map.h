@@ -10,6 +10,8 @@ using namespace std;
 #include"Npc.h"
 #include"Role.h"
 #include"main.h"
+#include<graphics.h>
+#define SHOWCONSOLE  1
 //将地图分成不同的块,按照块的不同将其组合
 class Map
 {
@@ -44,6 +46,7 @@ public:
 	void showmap();
 	void move(Role& character);//移动输入wasd,e退出 如果超出位置,只能在此地呆着
 	char isthere(int x, int y);//判断人物此时在不在这里,如果在,返回*
+	void school_map_show();
 private:
 	vector<vector<string>>posname = { {"����","ѵ����"},{"�ؽ�","װ����"},{"��Ϣ��","ͼ���"} };
 	int pos[2];

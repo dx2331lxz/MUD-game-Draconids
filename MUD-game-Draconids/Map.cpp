@@ -235,29 +235,8 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 	Role enemy("怪兽", 10, 1, 1, 1, 1, 10, 1);
 	while (true) {
 		system("cls");
-		showmap();
-		cout << "输入wasd移动,输入e退出" << endl;
-		char action;
-		cin >> action;
-		if (pos[0] == 0 && action == 'w' || pos[0] == 2 && action == 's'
-			||
-			pos[1] == 0 && action == 'a' || pos[1] == 1 && action == 'd')
-		{
-			cout << "输入有误,请重新输入." << endl;
-		}
-		else
-		{
-			if (action == 'w')
-				pos[0]--;
-			else if (action == 's')
-				pos[0]++;
-			else if (action == 'a')
-				pos[1]--;
-			else if (action == 'd')
-				pos[1]++;
-			else return;
-		}
-		if ((isthere(2, 0) == '*') && (enemy.getHP() != 0)) {
+		school_map_show();
+		if ((pos[0]==2&&pos[1]==0) && (enemy.getHP() != 0)) {
 			cout << "你遇到了敌人, 你有以下几种选择（输入数字）：" << endl;
 			while (true)
 			{
@@ -418,4 +397,128 @@ void TreeMap::go(Role& character) {
 		}
 		showmap();
 	}
+}
+
+void School_Map::school_map_show()
+{
+	cout << 111 << endl;
+	initgraph(400, 480, EX_SHOWCONSOLE);
+	IMAGE img;
+	loadimage(&img, L"./school_map.png", 400, 480);
+	putimage(0, 0, &img);
+	//int pos[2] = { 0,0 };//school——map自带pos，进入成员方法后删除
+	while (true) {
+		wchar_t s1[] = L"教室";//宽字符，特殊编码
+		wchar_t s2[] = L"训练室";
+		wchar_t s3[] = L"地窖";
+		wchar_t s4[] = L"装备库";
+		wchar_t s5[] = L"休息室";
+		wchar_t s6[] = L"图书馆";
+		if (pos[0] == 0 && pos[1] == 0)
+		{
+			settextcolor(RED);
+			outtextxy(80, 60, s1);
+			settextcolor(WHITE);
+		}
+
+		else
+			outtextxy(80, 60, s1);
+		if (pos[0] == 0 && pos[1] == 1)
+		{
+			settextcolor(RED);
+			outtextxy(280, 60, s2);
+			settextcolor(WHITE);
+		}
+		else
+			outtextxy(280, 60, s2);
+		if (pos[0] == 1 && pos[1] == 0)
+		{
+			settextcolor(RED);
+			outtextxy(80, 240, s3);
+			settextcolor(WHITE);
+		}
+
+		else
+			outtextxy(80, 240, s3);
+		if (pos[0] == 1 && pos[1] == 1)
+		{
+			settextcolor(RED);
+			outtextxy(280, 240, s4);
+			settextcolor(WHITE);
+		}
+
+		else
+			outtextxy(280, 240, s4);
+		if (pos[0] == 2 && pos[1] == 0)
+		{
+			settextcolor(RED);
+			outtextxy(80, 400, s5);
+			settextcolor(WHITE);
+		}
+		else
+			outtextxy(80, 400, s5);
+		if (pos[0] == 2 && pos[1] == 1)
+		{
+			settextcolor(RED);
+			outtextxy(280, 400, s6);
+			settextcolor(WHITE);
+		}
+		else
+			outtextxy(280, 400, s6);
+		ExMessage msg = { 0 };
+		if (peekmessage(&msg, EM_MOUSE))
+		{
+			switch (msg.message)
+			{
+			case WM_LBUTTONDOWN:
+				if (msg.x >= 0 && msg.x <= 200 && msg.y >= 0 && msg.y <= 160) {
+					cout << "区域1" << endl;
+					pos[0] = 0;
+					pos[1] = 0;
+					closegraph();
+					return
+;
+				}
+				else if (msg.x > 200 && msg.x <= 400 && msg.y >= 0 && msg.y <= 160) {
+					cout << "区域2" << endl;
+					pos[0] = 0;
+					pos[1] = 1;
+					closegraph();
+					return;
+				}
+				else if (msg.x >= 0 && msg.x <= 200 && msg.y > 160 && msg.y <= 320) {
+					cout << "区域3" << endl;
+					pos[0] = 1;
+					pos[1] = 0;
+					closegraph();
+					return;
+				}
+				else if (msg.x > 200 && msg.x <= 400 && msg.y > 160 && msg.y <= 320) {
+					cout << "区域4" << endl;
+					pos[0] = 1;
+					pos[1] = 1;
+					closegraph();
+					return;
+				}
+				else if (msg.x >= 0 && msg.x <= 200 && msg.y > 320 && msg.y <= 480) {
+					cout << "区域5" << endl;
+					pos[0] = 2;
+					pos[1] = 0;
+					closegraph();
+					return;
+				}
+				else {
+					cout << "区域6" << endl;
+					pos[0] = 2;
+					pos[1] = 1;
+					closegraph();
+					return;
+				}
+				break;
+			default:
+				break;
+			}
+		}
+	}
+	
 }
