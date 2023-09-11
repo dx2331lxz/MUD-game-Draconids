@@ -2,6 +2,7 @@
 #include "Role.h"
 #include "Goods.h"
 #include"main.h"
+#include"Skill.h"
 
 class FightSystem {
 public:

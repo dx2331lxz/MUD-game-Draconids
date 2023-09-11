@@ -23,6 +23,8 @@ public:
     // 使用技能
     void Useskill(Role& enemy);
  // 声明技能为Role友元类
+    void increaseDEF(int defenseIncrease);//增加防御
+    void setDEF(int i);//重置防御
     friend class GUI;
     friend class SHEN;
     friend class XI;

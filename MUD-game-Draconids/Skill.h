@@ -83,4 +83,3 @@ public:
 private:
 	int atteck;
 };
-*/

@@ -8,6 +8,7 @@ Role::Role(string name, int HP, int attack, int DEF, int Agility, int life, int 
 }
 void Role::showrole()
 {
+
     cout << endl;
     cout << "当前人物属性:" << endl;
     cout << "姓名: " << name << "\t\t";
@@ -21,7 +22,6 @@ void Role::showrole()
     cout << "经验: " << EXP << endl;
     cout << endl;
 }
-
 int Role::showskill()
 {
     int size = 0;
@@ -100,7 +100,6 @@ void Role::Useskill(Role& enemy)
             cout << "并不存在您输入的技能" << endl;
         }
         int i = 0;
-
         switch (choose)
         {
         case 1: {
@@ -108,8 +107,8 @@ void Role::Useskill(Role& enemy)
             for (const unique_ptr<Skill>& element : Skill_vector) {
                 i++;
                 if (i == 1) {
-                    element->Motor_skill_start(*this, enemy);
-                    element->Motor_skill_end(*this, enemy);
+                    element->Motor_skill_start(*this);
+                    element->Motor_skill_end(*this);
                 }
             }
             break;
@@ -230,4 +229,11 @@ void Role::takeDamage(int damage) {
     if (HP < 0) {
         HP = 0;
     }
+}
+void Role::increaseDEF(int defenseIncrease) {
+    DEF += defenseIncrease;
+}
+//增加防御
+void Role::setDEF(int i) {
+    DEF = i;
 }

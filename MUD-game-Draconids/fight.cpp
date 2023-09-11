@@ -3,10 +3,13 @@
 #include <cstdlib> // 用于生成随机数
 #include "Skill.h" // 包含 Skill 头文件
 #include "Role.h"  // 包含 Role 头文件
+#include <fstream>
+#include <vector>
+
 using namespace std;
 
 FightSystem::FightSystem(Role& player, Role& enemy)
-    : player(player), enemy(enemy), round(1), hurt(0)
+    :player(player), enemy(enemy), round(1), hurt(0)
 {
 }
 
