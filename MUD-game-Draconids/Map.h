@@ -9,6 +9,7 @@ using namespace std;
 #include<unordered_map>
 #include"Npc.h"
 #include"Role.h"
+#include"main.h"
 //将地图分成不同的块,按照块的不同将其组合
 class Map
 {
@@ -57,11 +58,11 @@ class MapNode   //青铜城专用地图块
 {
 public:
 	//不同的人物指针
-	MapNode();
+	MapNode(string name);
 	MapNode(unique_ptr<Role>& role, shared_ptr<MapNode> left, shared_ptr<MapNode> right);
 	shared_ptr<MapNode> left;
 	shared_ptr<MapNode> right;
-
+	string getname();
 	void Getthere()//到达此地时调用
 	{
 		isthere = true;
@@ -72,7 +73,7 @@ public:
 	bool isthere = false;
 private:
 	unique_ptr<Role> role;
-
+	string name;
 };
 
 class TreeMap {
@@ -85,8 +86,12 @@ public:
 	{
 		now->Getthere();
 	}
+	shared_ptr<MapNode>GetNow()
+	{
+		return now;
+	}
 	void showmap();
-	void go();
+	void go(Role& character);
 private:
 	shared_ptr<MapNode> root;
 	shared_ptr<MapNode> now;
