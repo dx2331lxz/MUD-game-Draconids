@@ -24,6 +24,7 @@
 #include <mmsystem.h>
 #include"introduce.h"
 #include <atomic>
+#include"save.h"
 
 #pragma comment(lib,"winmm.lib")
 using namespace std;
