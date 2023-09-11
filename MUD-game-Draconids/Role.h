@@ -19,10 +19,12 @@ public:
     // 展示角色技能
     int showskill();
     // 添加技能
-    int Addskill(unique_ptr<Skill> skill);
+    int Addskill(int choose);
     // 使用技能
-    void Useskill(int choose);
+    void Useskill(Role& enemy);
  // 声明技能为Role友元类
+    void increaseDEF(int defenseIncrease);//增加防御
+    void setDEF(int i);//重置防御
     friend class GUI;
     friend class SHEN;
     friend class XI;

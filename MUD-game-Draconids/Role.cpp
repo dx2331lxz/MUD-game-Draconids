@@ -2,9 +2,13 @@
 
 Role::Role(string name, int HP, int attack, int DEF, int Agility, double dodge, int life, int money, int level):name(name), HP(HP), attack(attack), DEF(DEF), Agility(Agility), dodge(dodge), life(life), money(money), level(level), EXP(0)
 {
+    Skill_vector.insert(make_unique<XI>());
+    Skill_vector.insert(make_unique<SHEN>());
+    Skill_vector.insert(make_unique<GUI>());
 }
 void Role::showrole()
 {
+
     cout << endl;
     cout << "当前人物属性:" << endl;
     cout << "姓名: " << name << "\t\t";
@@ -19,60 +23,86 @@ void Role::showrole()
     cout << "经验: " << EXP << endl;
     cout << endl;
 }
-
 int Role::showskill()
 {
     int size = 0;
-    if (Skill_vector.size() == 0) {
-        cout << "技能不存在" << endl;
-    }
-    else {
-        // 使用迭代器遍历 set
-        for (const unique_ptr<Skill>& element : Skill_vector) {
-            cout << size + 1 << ". ";
-            size++;
+    int count = 0;
+    // 使用迭代器遍历 set
+    for (const unique_ptr<Skill>& element : Skill_vector) {
+        
+        size++;
+        if (element->get_is_can_use()) {
+            cout << size << ". ";
             element->show();
+            count = 1;
         }
     }
-    return Skill_vector.size();
+    return count;
 }
 
-int Role::Addskill(unique_ptr<Skill> skill)
+int Role::Addskill(int choose)
 {
-    //auto it = std::find(Skill_vector.begin(), Skill_vector.end(), skill);
-    //if (it != Skill_vector.end()) {
-    //    std::cout << "不可重复添加技能" << std::endl;
-    //}
-    //else {
-    //    cout << "添加成功" << endl;
-    //    Skill_vector.push_back(skill);
-    //}
-    //return Skill_vector.size();
-    auto result = Skill_vector.insert(std::move(skill));
-
-    if (result.second) {
-        std::cout << "添加成功" << std::endl;
+    int i = 0;
+    switch (choose)
+    {
+    case 1: {
+        // 使用迭代器遍历 set 并访问元素
+        for (const unique_ptr<Skill>& element : Skill_vector) {
+            i++;
+            if (i == 1) {
+                if (!element->get_is_can_use()) {
+                    cout << "获得技能" << endl;
+                    element->show();
+                }
+                element->can();
+            }
+        }
+        return 1;
     }
-    else {
-        std::cout << "不可重复添加技能" << std::endl;
+    case 2: {
+        for (const unique_ptr<Skill>& element : Skill_vector) {
+            i++;
+            if (i == 2) {
+                if (!element->get_is_can_use()) {
+                    cout << "获得技能" << endl;
+                    element->show();
+                }
+                element->can();
+            }
+        }
+        return 1;
     }
-
-    return Skill_vector.size();
+    case 3:
+        for (const unique_ptr<Skill>& element : Skill_vector) {
+            i++;
+            if (i == 3) {
+                if (!element->get_is_can_use()) {
+                    cout << "获得技能" << endl;
+                    element->show();
+                }
+                element->can();
+            }
+        }
+        return 1;
+    default:
+        cout << "并不存在您输入的技能" << endl;
+        break;
+    }
 }
 // TODO: 添加对战逻辑（目前使用技能和技能结束之间没有对战）
-void Role::Useskill(int choose)
+void Role::Useskill(Role& enemy)
 {
-    if (showskill()) {
+    int choose = 0;
+    if (!showskill()) {
+        cout << "您没有技能可以使用" << endl;
     }
-    else
-    {
+    else {
         cout << "选择你想要使用的技能(只接受技能前面的数字)：" << endl;
         cin >> choose;
         if (choose == 0) {
             cout << "并不存在您输入的技能" << endl;
         }
         int i = 0;
-
         switch (choose)
         {
         case 1: {
@@ -80,8 +110,9 @@ void Role::Useskill(int choose)
             for (const unique_ptr<Skill>& element : Skill_vector) {
                 i++;
                 if (i == 1) {
-                    element->Motor_skill_start(*this);
-                    element->Motor_skill_end(*this);
+                    cout << "您使用了1技能";
+                    element->Motor_skill_start(*this, enemy);
+                    element->Motor_skill_end(*this, enemy);
                 }
             }
             break;
@@ -90,8 +121,9 @@ void Role::Useskill(int choose)
             for (const unique_ptr<Skill>& element : Skill_vector) {
                 i++;
                 if (i == 2) {
-                    element->Motor_skill_start(*this);
-                    element->Motor_skill_end(*this);
+                    cout << "您使用了2技能";
+                    element->Motor_skill_start(*this, enemy);
+                    element->Motor_skill_end(*this, enemy);
                 }
             }
             break;
@@ -100,8 +132,9 @@ void Role::Useskill(int choose)
             for (const unique_ptr<Skill>& element : Skill_vector) {
                 i++;
                 if (i == 3) {
-                    element->Motor_skill_start(*this);
-                    element->Motor_skill_end(*this);
+                    cout << "您使用了3技能";
+                    element->Motor_skill_start(*this, enemy);
+                    element->Motor_skill_end(*this, enemy);
                 }
             }
             break;
@@ -112,12 +145,36 @@ void Role::Useskill(int choose)
     }
     
 }
-#include "Role.h"
+
 
 // ... (其他成员函数的定义)
 
 void Role::addExp(int addExp) {
     EXP += addExp;
+    auto level_ = level;
+    for (int i = 0; i < 29; i++) {
+        if (levelExp_Max[i] <= EXP) {
+
+            level = i + 1;
+        }
+    }
+    if (level_ < level) {
+        cout << "生啦生啦， 恭喜你已经到达" << level << "级啦！！" << endl;
+        
+        if (level > 4 && level < 7) {
+            Addskill(1);
+        }
+        else if(level < 10) {
+            Addskill(1);
+            Addskill(2);
+        }
+        else {
+            Addskill(1);
+            Addskill(2);
+            Addskill(3);
+        }
+    }
+
 }
 
 void Role::addMoney(int addMoney) {
@@ -153,4 +210,11 @@ void Role::takeDamage(int damage) {
     if (HP < 0) {
         HP = 0;
     }
+}
+void Role::increaseDEF(int defenseIncrease) {
+    DEF += defenseIncrease;
+}
+//增加防御
+void Role::setDEF(int i) {
+    DEF = i;
 }
