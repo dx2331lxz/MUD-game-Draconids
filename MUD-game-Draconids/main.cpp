@@ -13,6 +13,9 @@
 //
 //	return 0;
 //}
+
+
+
 void print() {
 	string sentence = ".....";
 	int index = 0;
@@ -43,7 +46,6 @@ void print() {
 		}
 		std::cout << "\b\b\b\b\b";
 	}
-	
 }
 
 
@@ -100,6 +102,7 @@ int choose(Map& map, Role & character) {
 			SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN);
 			cout << "正在进入小世界";
 			print();
+			cout << endl;
 			SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 
 			TreeMap treemap;
@@ -152,7 +155,6 @@ int main() {
 			break;
 		}
 	}
-
 
 	return 0;
 }
