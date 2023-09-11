@@ -3,10 +3,13 @@
 #include <cstdlib> // 用于生成随机数
 #include "Skill.h" // 包含 Skill 头文件
 #include "Role.h"  // 包含 Role 头文件
+#include <fstream>
+#include <vector>
+
 using namespace std;
 
 FightSystem::FightSystem(Role& player, Role& enemy)
-    :player(player), enemy(enemy), round(1), hurt(0)
+    : player(player), enemy(enemy), round(1), hurt(0)
 {
 }
 
@@ -28,7 +31,7 @@ bool FightSystem::fightRound()
         playerAttack();
         break;
     case 2:
-        player.Useskill(enemy);
+        // 调用技能相关函数
         break;
     case 3:
         cout << "你选择逃跑了。" << endl;
@@ -98,8 +101,7 @@ Role& FightSystem::endFight()
     else
     {
         cout << "恭喜！你赢得了战斗。" << endl;
-        addExp(20); // 添加经验值
-        return true;
+        addExp(100); // 添加经验值
     }
     return player;
 }
