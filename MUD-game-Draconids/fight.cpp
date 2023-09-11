@@ -28,19 +28,8 @@ bool FightSystem::fightRound()
         playerAttack();
         break;
     case 2:
-        cout << "请选择你要使用的技能 ";        // todo 调用技能相关函数
-        cin >> choice2;
-        switch (choice2)
-        {
-        case 1:
-            Skill::show();
-            GUI::Skill;
-            break;
-        case 2:
-            break;
-        case 3:
-            break;
-        }
+        // 调用技能相关函数
+        player.Useskill(enemy);
         break;
     case 3:
         cout << "你选择逃跑了。" << endl;
@@ -117,7 +106,7 @@ bool FightSystem::endFight()
     else
     {
         cout << "恭喜！你赢得了战斗。" << endl;
-        addExp(20); // 添加经验值
+        addExp(40); // 添加经验值
         return true;
     }
 }
