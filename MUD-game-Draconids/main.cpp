@@ -120,6 +120,10 @@ void show2() { cout << "choice2\n"; }
 
 
 int main() {
+	
+	PlaySound(L"daoguang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+	welcomePage();
+	PlaySound(NULL, 0, SND_PURGE);
 	PlaySound(L"kaichang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	introduce();
 
