@@ -141,6 +141,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Role.cpp" />
+    <ClCompile Include="save.cpp" />
     <ClCompile Include="Skill.cpp" />
     <ClCompile Include="Task.cpp" />
     <ClCompile Include="Map.cpp" />
@@ -154,11 +155,11 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="Npc.h" />
     <ClInclude Include="Role.h" />
-    <ClInclude Include="sdf.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="Task.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="welcomePage.h" />
+    <ClInclude Include="save.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="kaichang.wav" />
