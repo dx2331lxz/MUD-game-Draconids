@@ -16,16 +16,26 @@ void Skill::show()
 	cout << "技能效果：" << effect << endl;
 }
 
+void Skill::can()
+{
+	is_can = true;
+}
+
+bool Skill::get_is_can()
+{
+	return is_can;
+}
+
 GUI::GUI():Skill("言灵·鬼胜", "攻击提升100%(只能释放一次)", "该言灵的有效范围是释放者自身，释放者命令自己的身体完全忘记疼痛，从而发挥出极限的力量")
 {
 }
 
-void GUI::Motor_skill_start(Role& role)
+void GUI::Motor_skill_start(Role& role, Role& enemy)
 {
 	role.attack = role.attack * 2;
 }
 
-void GUI::Motor_skill_end(Role& role)
+void GUI::Motor_skill_end(Role& role, Role& enemy)
 {
 	role.attack = role.attack / 2;
 }
@@ -36,13 +46,13 @@ SHEN::SHEN():Skill("言灵·深血","若被攻击, 则扣除敌方血量(或者降低其攻击)","使自
 {
 }
 
-void SHEN::Motor_skill_start(Role& role)
+void SHEN::Motor_skill_start(Role& role, Role& enemy)
 {
 	role.HP -= 5;
 	role.attack -= 5;
 }
 
-void SHEN::Motor_skill_end(Role& role)
+void SHEN::Motor_skill_end(Role& role, Role& enemy)
 {
 }
 
@@ -50,7 +60,7 @@ XI::XI():Skill("言灵·吸血镰", "释放一次攻击1.5倍伤害, 吸收攻击力30% 血量", "我t
 {
 }
 
-void XI::Motor_skill_start(Role& role)
+void XI::Motor_skill_start(Role& role, Role& enemy)
 {
 	role.HP += static_cast<int>(role.attack * 0.3);
 	if (role.HP > 100) {
@@ -60,7 +70,7 @@ void XI::Motor_skill_start(Role& role)
 	role.attack = static_cast<int>(role.attack * 1.5);
 }
 
-void XI::Motor_skill_end(Role& role)
+void XI::Motor_skill_end(Role& role, Role& enemy)
 {
 	role.attack = atteck;
 }

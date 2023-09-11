@@ -29,6 +29,7 @@ bool FightSystem::fightRound()
         break;
     case 2:
         // 调用技能相关函数
+        player.Useskill(enemy);
         break;
     case 3:
         cout << "你选择逃跑了。" << endl;
@@ -104,7 +105,7 @@ bool FightSystem::endFight()
     else
     {
         cout << "恭喜！你赢得了战斗。" << endl;
-        addExp(20); // 添加经验值
+        addExp(40); // 添加经验值
         return true;
     }
 }
