@@ -140,7 +140,8 @@ char Map::isthere(int a)
 void Map::Map_find()//在map中查找npc
 {
 	if (pos == 0) {
-		PlaySound(L"daoguang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+		PlaySound(L"NPC1.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+		std::this_thread::sleep_for(std::chrono::seconds(6));
 		cout << "找到npc，姓名为：零" << endl;
 		cout << "学院任务,前往青铜城,斩杀复苏龙族。" << endl;
 	}
