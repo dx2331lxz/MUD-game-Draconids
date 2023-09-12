@@ -47,7 +47,7 @@ void KeyboardInputThread(Role& character) {
 
 void print() {
 	string sentence = ".....";
-	int index = 0;
+	int n = 0;
 	std::random_device rd;
 	std::mt19937 gen(rd());
 
@@ -61,10 +61,10 @@ void print() {
 	// 生成随机整数并输出
 	int randomNumber = dist(gen);
 	for (int i = 0; i < randomNumber; i++) {
-		index = 0;
+		n = 0;
 		
-		while (index < sentence.length()) {
-			std::cout << sentence[index++];
+		while (n < sentence.length()) {
+			std::cout << sentence[n++];
 			std::cout.flush();//立刻输出缓冲区里的字符
 			std::this_thread::sleep_for(std::chrono::milliseconds(200));//使程序停止50ms
 		}
@@ -130,9 +130,12 @@ int choose(Map& map, Role & character) {
 		{
 			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 			SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN);
+			PlaySound(L"daoxuan.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 			cout << "正在进入小世界";
 			print();
 			cout << endl;
+			std::this_thread::sleep_for(std::chrono::seconds(3));
+			PlaySound(NULL, 0, SND_PURGE);
 			SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 
 			TreeMap treemap;
@@ -166,42 +169,100 @@ int main() {
 	std::thread keyboardThread1;
 	PlaySound(L"daoguang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	welcomePage();
-	loading();
+	int startChoose = 0;
+	std::cin >> startChoose;
 	PlaySound(NULL, 0, SND_PURGE);
-	PlaySound(L"kaichang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-	introduce();
+	loading();
 
-	for (int i = 0; i < 2; i++) {
-		std::cout << ""; // 输出空格覆盖之前输出的"....."
-	}
-	std::cout << "\b\b";
 	//this_thread::sleep_for(std::chrono::seconds(20));
 	 //初始化人物信息
-	string name;
-	cout << "输入身份：";
 
-	cin >> name;
-	Role character(name, 100, 10, 10, 10, 1, 0, 1);
-	character.showrole();
-	PlaySound(NULL, 0, SND_PURGE);
-	// 初始化地图
-	PlaySound(L"lhh.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-	std::this_thread::sleep_for(std::chrono::seconds(3));
-	PlaySound(NULL, 0, SND_PURGE);
-	PlaySound(L"welcome.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-	std::this_thread::sleep_for(std::chrono::seconds(3));
-	PlaySound(NULL, 0, SND_PURGE);
-	cout << "欢迎来到提瓦特大陆" << endl;
-	cout << endl;
-	Map map;
-	map.ShowMap();
-	cout << endl;
-	while (true)
-	{
-		if (!choose(map, character)) {
-			break;
+	
+
+	if (startChoose == 1) {
+
+
+
+		// 建立新的存档，进入introduce，开始游戏
+		
+		PlaySound(L"kaichang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+		introduce();
+
+		for (int i = 0; i < 2; i++) {
+			std::cout << ""; // 输出空格覆盖之前输出的"....."
 		}
-	}
+		std::cout << "\b\b";
 
-	return 0;
+		string name;
+		cout << "输入身份：";
+
+		cin >> name;
+		Role character(name, 100, 10, 10, 10, 1, 0, 1);
+
+
+		character.showrole();
+		PlaySound(NULL, 0, SND_PURGE);
+		// 初始化地图
+		PlaySound(L"lhh.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+		std::this_thread::sleep_for(std::chrono::seconds(3));
+		PlaySound(NULL, 0, SND_PURGE);
+		PlaySound(L"welcome.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+		std::this_thread::sleep_for(std::chrono::seconds(4));
+		PlaySound(NULL, 0, SND_PURGE);
+		cout << "欢迎来到提瓦特大陆" << endl;
+		cout << endl;
+		Map map;
+		map.ShowMap();
+		cout << endl;
+		while (true)
+		{
+			if (!choose(map, character)) {
+				break;
+			}
+		}
+		save(character);
+		return 0;
+	}
+	if (startChoose == 2) {
+		
+		Role character(load());
+		character.showrole();
+
+		Map map;
+		map.ShowMap();
+		cout << endl;
+		while (true)
+		{
+			if (!choose(map, character)) {
+				break;
+			}
+		}
+		save(character);
+		return 0;
+	}//读取旧的存档，开始游戏
+	if (startChoose == 3) {
+		std::string byeSentence = "再会";
+		int n;
+		n = 0;
+
+		while (n < byeSentence.length()) {
+			std::cout << byeSentence[n++];
+			std::cout.flush();
+			std::this_thread::sleep_for(std::chrono::milliseconds(50));
+		}
+		std::cout << std::endl;
+		std::string quitSentence = "press any key to quit...";
+		n = 0;
+
+		while (n < quitSentence.length()) {
+			std::cout << quitSentence[n++];
+			std::cout.flush();
+			std::this_thread::sleep_for(std::chrono::milliseconds(50));
+		}
+		std::cout << std::endl;
+		getchar();
+		exit(0);
+	}//退出游戏
 }
+
+

@@ -12,6 +12,7 @@ using namespace std;
 #include"Store.h"
 #include"main.h"
 #include<graphics.h>
+
 #define SHOWCONSOLE 1
 
 //将地图分成不同的块,按照块的不同将其组合
