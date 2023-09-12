@@ -1,6 +1,6 @@
 #include"introduce.h"
 #include"main.h"
-int index;
+
 
 std::atomic<bool> enterPressed(false);
 
@@ -21,6 +21,7 @@ void KeyboardInputThread() {
 
 
 void print_introduce(string backgroundSentence) {
+    int n;
     std::thread keyboardThread;
     cout << "按Ctrl键加速" << endl;
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -29,10 +30,9 @@ void print_introduce(string backgroundSentence) {
     SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);//设置字体为绿色
     
     keyboardThread = std::thread(KeyboardInputThread); // 启动检测键盘输入的线程
-    index = 0;
-
-    while (index < backgroundSentence.length() && !enterPressed.load()) {
-        std::cout << backgroundSentence[index++];
+    n = 0;
+    while (n < backgroundSentence.length() && !enterPressed.load()) {
+        std::cout << backgroundSentence[n++];
         std::cout.flush();
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
@@ -40,8 +40,8 @@ void print_introduce(string backgroundSentence) {
     keyboardThread.join();
 
     // 显示剩余文本（如果有的话）
-    while (index < backgroundSentence.length()) {
-        std::cout << backgroundSentence[index++];
+    while (n < backgroundSentence.length()) {
+        std::cout << backgroundSentence[n++];
     }
 
     std::cout << std::endl;
@@ -207,9 +207,6 @@ void loading()									//等待界面，模拟动态进度条过程
 
 // 个人菜单
 
-
-
-
 int menu(Role& character) {
 
     cout << "姓名: "<< character.getname() << endl;
@@ -226,5 +223,6 @@ int menu(Role& character) {
     cout << "经验: " << character.getEXP() << endl;
     cout << "技能: "<<endl;
     character.showskill();
+    cout << endl;
     return 1;
 }

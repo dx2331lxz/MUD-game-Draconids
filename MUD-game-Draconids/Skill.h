@@ -18,6 +18,9 @@ public:
 	void show();
 	void can();
 	bool get_is_can();
+	string get_name();
+	string get_effect();
+	string get_introduce();
 private:
 	string name;
 	string effect;

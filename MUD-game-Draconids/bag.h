@@ -1,6 +1,5 @@
-#ifndef BAG_H
-#define BAG_H
-
+#pragma once
+#include"main.h"
 #include <map>  
 #include "Goods.h"
 
@@ -31,4 +30,4 @@ private:
 	Goods goods[14] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13};
 };
 
-#endif 
+

@@ -1,6 +1,5 @@
 #pragma once
 #include<iostream>
-using namespace std;
 #include<vector>
 #include<map>
 #include<string>
@@ -9,9 +8,10 @@ using namespace std;
 #include<unordered_map>
 #include"Npc.h"
 #include"Role.h"
-#include "Store.h"
+#include"Store.h"
 #include"main.h"
 #include<graphics.h>
+
 #define SHOWCONSOLE 1
 
 //将地图分成不同的块,按照块的不同将其组合

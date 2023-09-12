@@ -31,20 +31,6 @@ Store::~Store()
 {
 }
 
-//void Store::showStores()
-//{
-//	cout << left << setw(17) << "物品ID" << setw(76) << left << "描述" << " 价格" << endl;
-//	map<int, int>::iterator iter;
-//	int i = 0;//物品序号
-//	for (iter = stores.begin(); iter != stores.end(); ++iter)
-//	{
-//		cout <<left<<setw(2) <<i << "." <<setw(10)<< goods[iter->first].getName() << "   "
-//			<<setw(76)<< goods[iter->first].getDesc() << "   "
-//			<< goods[iter->first].getPriceBuy() << endl;
-//
-//		++i;//物品序号
-//	}
-//}
 void Store::showStores() {
 	system("cls");
 	bool exitProgram = false; // 控制程序是否退出
@@ -83,7 +69,7 @@ void Store::showStores() {
 			else if (canHandleLeftClick) {
 				showProductDetails(MouseY);
 				canHandleLeftClick = false;
-			}
+			}		
 			break;
 		}
 	}
