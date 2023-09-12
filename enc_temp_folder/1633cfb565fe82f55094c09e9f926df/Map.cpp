@@ -301,7 +301,7 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 			cout << "欢迎来到卡塞尔的装备库, 你有以下几种选择（输入数字）：" << endl;
 			while (true)
 			{
-				Goods goods[14] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13};
+				Goods goods[24] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 };
 				Store store;
 				cout << "1. 进入商店 2. 离开" << endl;
 				int foo = 0; // 决定循环是否结束

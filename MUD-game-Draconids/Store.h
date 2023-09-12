@@ -15,8 +15,8 @@ public:
 	~Store();
 
 	void showStores();
-	Role storeToPlayer(Role player);		//返回一个已经操作过的背包
-	Role playerToStore(Role player);
+	void storeToPlayer(Role &player);		//返回一个已经操作过的背包
+	void playerToStore(Role &player);
 	bool showProductDetails(int i);
 
 private:

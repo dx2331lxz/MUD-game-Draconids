@@ -60,7 +60,7 @@ void Store::showStores() {
 
 	bool canHandleLeftClick = true;
 	bool choice = true;
-	cout << left << setw(32) << "物品ID" << setw(80) << left << "描述" << " 价格" << endl;
+	cout << left << setw(17) << "物品ID" << setw(76) << left << "描述" << " 价格" << endl;
 	map<int, int>::iterator iter;
 	int i = 0;//物品序号
 	for (iter = stores.begin(); iter != stores.end(); ++iter)
@@ -120,17 +120,17 @@ void Store::storeToPlayer(Role &player) {
 	int goodsId, goodsNum;
 	cout << "请输入要购买的物品ID号" << endl;
 	cin >> goodsId;
-	if (goodsId >14 ) return;
+	if (goodsId == 15) return;
 	cout << "请输入要购买的数量(输入0退出)" << endl;
 	cin >> goodsNum;
 	if (goodsNum == 0) return;
-	int totalPrice = int(goods[goodsId-1].getPriceBuy()) * int(goodsNum);
+	int totalPrice = int(goods[goodsId].getPriceBuy()) * int(goodsNum);
 	if (player.getMoney() >= totalPrice)
 	{
-		player.addGoodsToBag(goodsId-1, goodsNum);
+		player.addGoodsToBag(goodsId, goodsNum);
 		player.setMoney(player.getMoney() - totalPrice);
 		cout << "购买成功" << endl;
-		cout << "获得 " << goods[goodsId-1].getName() << " * " << goodsNum;
+		cout << "获得 " << goods[goodsId].getName() << " * " << goodsNum;
 	}
 	else
 	{
@@ -144,7 +144,7 @@ void Store::playerToStore(Role &player)
 	int goodsId, goodsNum;
 	cout << "请输入要卖出的物品ID(输入15退出)" << endl;
 	cin >> goodsId;
-	if (goodsId >14 ) return ;
+	if (goodsId == 15) return ;
 	cout << "请输入要卖出的数量(输入0退出)" << endl;
 	cin >> goodsNum;
 	if (goodsNum == 0) return ;

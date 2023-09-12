@@ -231,3 +231,111 @@ void Role::takeDamage(int damage) {
         HP = 0;
     }
 }
+
+Bag Role::getBag() {
+    return bag;
+}
+
+int Role::getMoney() {
+    return money;
+}
+
+void Role::setMoney(int m) {
+    money = m;
+}
+
+
+void Role::showBag() {
+    bag.showBags();
+}
+
+int Role::getBagWhichGoodsId(int whichGoods) {
+    return bag.getWhichGoodsId(whichGoods);
+
+}
+
+int Role::getBagWhichGoodsNum(int whichGoods) {
+    return bag.getWhichGoodsNum(whichGoods);
+
+}
+
+void Role::addGoodsToBag(int* goodsId, int* num) {
+    cout << endl << "得到了：" << endl;
+
+    bag.showGoods(goodsId, num);
+    for (int i = 0; goodsId[i] >= 0; i++)
+        /*if (goodsId[i] == 6 || goodsId[i] == 8 || goodsId[i] == 19) {
+            task.setGoods(goods[goodsId[i]]);
+            task.setIsTaskEnd();
+        }*/
+    if (bag.getGoodsNum() > 20) {
+        cout << "背包已满，无法添加。" << endl;
+    }
+    else if (bag.getGoodsNum() + num[0] + num[1] + num[2] + num[3] > 20) {
+        cout << "背包剩余空位不足，无法完全添加。" << endl;
+        cout << "你仅能添加" << 20 - bag.getGoodsNum() << "件。" << endl;
+        cout << "请选择要添加的物品：";
+        for (int chioce = 0; num[chioce] == 0 || bag.getGoodsNum() >= 20;) {
+            cin >> chioce;
+            if (num[chioce] + bag.getGoodsNum() > 20) {
+                bag.addGoods(goodsId[chioce], 20 - bag.getGoodsNum());
+                cout << "成功添加" << 20 - bag.getGoodsNum() << "件到背包！" << endl << endl;
+            }
+            else {
+                bag.addGoods(goodsId[chioce], num[chioce]);
+                cout << "成功添加" << num[chioce] << "件到背包！" << endl << endl;
+            }
+        }
+    }
+    else {
+        for (int i = 0; goodsId[i] >= 0; i++)
+            bag.addGoods(goodsId[i], num[i]);
+        cout << "全部成功添加到背包！" << endl << endl;
+    }
+}
+
+void Role::addSaveGoodsToBag(int goodsId, int num) {
+    bag.addGoods(goodsId, num);
+}
+
+void Role::addGoodsToBag(int goodsId, int num) {
+    cout << endl << "得到了：" << endl;
+
+    bag.showGoods(goodsId, num);
+    if (bag.getGoodsNum() > 20) {
+        cout << "背包已满，无法添加。" << endl;
+    }
+    else if (bag.getGoodsNum() + num > 20) {
+        cout << "背包剩余空位不足，无法完全添加。" << endl;
+        cout << "你仅能添加" << 20 - bag.getGoodsNum() << "件。" << endl;
+        cout << "请选择要添加的物品：";
+        for (int chioce = 0; num == 0 || bag.getGoodsNum() >= 20;) {
+            cin >> chioce;
+            if (num + bag.getGoodsNum() > 20) {
+                bag.addGoods(goodsId, 20 - bag.getGoodsNum());
+                cout << "成功添加" << 20 - bag.getGoodsNum() << "件到背包！" << endl << endl;
+            }
+            else {
+                bag.addGoods(goodsId, num);
+                cout << "成功添加" << num << "件到背包！" << endl << endl;
+            }
+        }
+    }
+    else {
+        bag.addGoods(goodsId, num);
+        cout << "全部成功添加到背包！" << endl << endl;
+    }
+}
+
+bool Role::subGoodsToBag(int goodsId, int num) {
+    return bag.reduceGoods(goodsId, num);
+}
+
+void Role::setBag(Bag &bags) {
+    bag = bags;
+}
+
+void Role::newBag() {
+    Bag bags;
+    bag = bags;
+}
