@@ -26,6 +26,8 @@
 #include <atomic>
 #include <time.h>
 #include <conio.h>
+#include"save.h"
+#include"load.h"
 #pragma comment(lib,"winmm.lib")
 using namespace std;
 
