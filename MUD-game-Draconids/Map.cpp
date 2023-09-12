@@ -294,8 +294,46 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 					break;
 				}
 			}
-
+			
 		}
+		else if (pos[0] == 1 && pos[1] == 1) system("cls");
+		cout << "欢迎来到卡塞尔的装备库, 你有以下几种选择（输入数字）：" << endl;
+		while (true)
+		{
+			cout << "1. 进入商店 2. 离开" << endl;
+			int foo = 0; // 决定循环是否结束
+			int choice = 0;
+			cin >> choice;
+			switch (choice)
+			{
+			case 1:
+				cout << "1.购买物品		2.售出物品		3.退出" << endl;
+				int choiceStore = 1;
+				//cin >> choiceStore;
+				if (choiceStore == 1) {
+					store.showStores();
+					player = store.storeToPlayer(player);
+				}
+				else if (choiceStore == 2) {
+					player.showBag();
+					player = store.playerToStore(player);
+
+				}
+				if (choiceStore == 3)
+				break;
+			case 2:
+				foo = 1;
+				break;
+			default:
+				cout << "别闹" << endl;
+				break;
+			}
+			if (foo) {
+				break;
+			}
+		}
+
+	}
 	}
 }
 
