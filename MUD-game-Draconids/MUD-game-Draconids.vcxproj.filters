@@ -58,6 +58,12 @@
     <ClCompile Include="introduce.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="load.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="save.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -87,13 +93,16 @@
     <ClInclude Include="Goods.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="sdf.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="welcomePage.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="introduce.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="load.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="save.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
