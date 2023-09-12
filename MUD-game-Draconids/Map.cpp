@@ -1,5 +1,5 @@
 #include"Map.h"
-Map::Map():pos(0)
+Map::Map() :pos(0)
 {
 	search_map.insert(pair<string, int>("卡塞尔学院", 0));
 	search_map.insert(pair<string, int>("青铜城", 1));
@@ -140,8 +140,12 @@ char Map::isthere(int a)
 void Map::Map_find()//在map中查找npc
 {
 	if (pos == 0) {
+
 		cout << "找到npc，姓名为：零" << endl;
 		cout << "学院任务,前往青铜城,斩杀复苏龙族。" << endl;
+		PlaySound(L"NPC1.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+		std::this_thread::sleep_for(std::chrono::seconds(6));
+		PlaySound(NULL, 0, SND_PURGE);
 	}
 
 
@@ -235,7 +239,14 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 	Role enemy("怪兽", 10, 1, 1, 1, 1, 10, 1);
 	while (true) {
 		system("cls");
-		showmap();
+		cout << "鼠标左键选择进入房间，鼠标右键退出选择界面" << endl;
+		Sleep(1000);
+		if (!school_map_show()) {
+			system("cls");
+			break;
+		}
+
+		/*showmap();
 		cout << "输入wasd移动,输入e退出" << endl;
 		char action;
 		cin >> action;
@@ -256,8 +267,9 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 			else if (action == 'd')
 				pos[1]++;
 			else return;
-		}
-		if ((isthere(2, 0) == '*') && (enemy.getHP() != 0)) {
+		}*/
+		if ((pos[0] == 2 && pos[1] == 0) && (enemy.getHP() != 0)) {
+			system("cls");
 			cout << "你遇到了敌人, 你有以下几种选择（输入数字）：" << endl;
 			while (true)
 			{
@@ -279,7 +291,7 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 					foo = 1;
 					break;
 				default:
-					cout << "别闹"<< endl;
+					cout << "别闹" << endl;
 					break;
 				}
 				if (foo) {
@@ -294,7 +306,7 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 
 
 MapNode::MapNode(string name)
-	:left(nullptr), right(nullptr), role(nullptr),name(name) {}
+	:left(nullptr), right(nullptr), role(nullptr), name(name) {}
 MapNode::MapNode(unique_ptr<Role>& role, shared_ptr<MapNode> left, shared_ptr<MapNode> right)
 	:role(move(role)), left(left), right(right)
 {
@@ -484,5 +496,136 @@ void TreeMap::go(Role& character) {
 			}
 		}
 		showmap();
+	}
+}
+
+
+bool School_Map::school_map_show()
+{
+	initgraph(400, 480, EX_SHOWCONSOLE);
+	IMAGE img;
+	loadimage(&img, L"./school_map.png", 400, 480);
+	putimage(0, 0, &img);
+	//int pos[2] = { 0,0 };//school——map自带pos，进入成员方法后删除
+	while (true) {
+		wchar_t s1[] = L"教室";//宽字符，特殊编码
+		wchar_t s2[] = L"训练室";
+		wchar_t s3[] = L"地窖";
+		wchar_t s4[] = L"装备库";
+		wchar_t s5[] = L"休息室";
+		wchar_t s6[] = L"图书馆";
+		if (pos[0] == 0 && pos[1] == 0)
+		{
+			settextcolor(RED);
+			outtextxy(80, 60, s1);
+			settextcolor(WHITE);
+		}
+
+		else
+			outtextxy(80, 60, s1);
+		if (pos[0] == 0 && pos[1] == 1)
+		{
+			settextcolor(RED);
+			outtextxy(280, 60, s2);
+			settextcolor(WHITE);
+		}
+		else
+			outtextxy(280, 60, s2);
+		if (pos[0] == 1 && pos[1] == 0)
+		{
+			settextcolor(RED);
+			outtextxy(80, 240, s3);
+			settextcolor(WHITE);
+		}
+
+		else
+			outtextxy(80, 240, s3);
+		if (pos[0] == 1 && pos[1] == 1)
+		{
+			settextcolor(RED);
+			outtextxy(280, 240, s4);
+			settextcolor(WHITE);
+		}
+
+		else
+			outtextxy(280, 240, s4);
+		if (pos[0] == 2 && pos[1] == 0)
+		{
+			settextcolor(RED);
+			outtextxy(80, 400, s5);
+			settextcolor(WHITE);
+		}
+		else
+			outtextxy(80, 400, s5);
+		if (pos[0] == 2 && pos[1] == 1)
+		{
+			settextcolor(RED);
+			outtextxy(280, 400, s6);
+			settextcolor(WHITE);
+		}
+		else
+			outtextxy(280, 400, s6);
+
+		while (!MouseHit())  // 等待鼠标事件发生
+		{
+			// 在此处添加其他需要执行的代码
+		}
+
+		MOUSEMSG msg = GetMouseMsg();  // 获取鼠标消息
+		while (msg.uMsg != WM_LBUTTONDOWN && msg.uMsg != WM_RBUTTONDOWN)
+		{
+			while (!MouseHit())  // 等待鼠标事件发生
+			{
+				// 在此处添加其他需要执行的代码
+			}
+
+			msg = GetMouseMsg();  // 获取鼠标消息
+		}
+
+		switch (msg.uMsg)
+		{
+		case WM_LBUTTONDOWN:
+			if (msg.x >= 0 && msg.x <= 200 && msg.y >= 0 && msg.y <= 160) {
+				pos[0] = 0;
+				pos[1] = 0;
+				closegraph();
+				return true;
+				;
+			}
+			else if (msg.x > 200 && msg.x <= 400 && msg.y >= 0 && msg.y <= 160) {
+
+				pos[0] = 0;
+				pos[1] = 1;
+				closegraph();
+				return true;
+			}
+			else if (msg.x >= 0 && msg.x <= 200 && msg.y > 160 && msg.y <= 320) {
+				pos[0] = 1;
+				pos[1] = 0;
+				closegraph();
+				return true;
+			}
+			else if (msg.x > 200 && msg.x <= 400 && msg.y > 160 && msg.y <= 320) {
+				pos[0] = 1;
+				pos[1] = 1;
+				closegraph();
+				return true;
+			}
+			else if (msg.x >= 0 && msg.x <= 200 && msg.y > 320 && msg.y <= 480) {
+				pos[0] = 2;
+				pos[1] = 0;
+				closegraph();
+				return true;
+			}
+			else {
+				pos[0] = 2;
+				pos[1] = 1;
+				closegraph();
+				return true;
+			}
+		default:
+			closegraph();
+			return false;
+		}
 	}
 }
