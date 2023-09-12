@@ -24,7 +24,10 @@
 #include <mmsystem.h>
 #include"introduce.h"
 #include <atomic>
-#include"save.h"
-
+#include <time.h>
+#include <conio.h>
 #pragma comment(lib,"winmm.lib")
 using namespace std;
+
+
+void print();

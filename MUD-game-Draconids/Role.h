@@ -19,9 +19,9 @@ public:
     // 展示角色技能
     int showskill();
     // 添加技能
-    int Addskill(unique_ptr<Skill> skill);
+    void Addskill(int choose = 0);
     // 使用技能
-    void Useskill(int choose);
+    void Useskill(Role& enemy);
  // 声明技能为Role友元类
     friend class GUI;
     friend class SHEN;
@@ -43,7 +43,6 @@ private:
     string name;
     int HP;          // 血量
     int attack;      // 攻击
-    
     int DEF;         // 防御
     int Agility;     // 敏捷
     std::set<std::unique_ptr<Skill>> Skill_vector; // 技能

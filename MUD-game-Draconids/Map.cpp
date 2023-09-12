@@ -235,7 +235,9 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 	Role enemy("怪兽", 10, 1, 1, 1, 1, 10, 1);
 	while (true) {
 		system("cls");
-		showmap();
+		if (!school_map_show())
+			break;
+		/*showmap();
 		cout << "输入wasd移动,输入e退出" << endl;
 		char action;
 		cin >> action;
@@ -256,8 +258,8 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 			else if (action == 'd')
 				pos[1]++;
 			else return;
-		}
-		if ((isthere(2, 0) == '*') && (enemy.getHP() != 0)) {
+		}*/
+		if ((pos[0]==2&&pos[1]==0) && (enemy.getHP() != 0)) {
 			cout << "你遇到了敌人, 你有以下几种选择（输入数字）：" << endl;
 			while (true)
 			{
@@ -376,12 +378,15 @@ shared_ptr<MapNode> MapNode::goaway()//离开时调用
 	} while (1);
 }
 
+
+
 void TreeMap::go(Role& character) {
 	while (true)
 	{
 		if (now->getname() == "new_End") {
-			cout << "恭喜你通过了青铜城的试炼，正在将你传送出小世界.....";
-			std::this_thread::sleep_for(std::chrono::seconds(3));
+			cout << "恭喜你通过了青铜城的试炼，正在将你传送出小世界";
+			print();
+			cout << endl;
 			break;
 		}
 		now = now->goaway();
@@ -416,6 +421,206 @@ void TreeMap::go(Role& character) {
 				}
 			}
 		}
+
+		if (now->getname() == "new_RL") {
+			cout << "你遇到了敌人, 你有以下几种选择（输入数字）：" << endl;
+			Role enemy("阿巴巴怪", 10, 4, 1, 1, 1, 10, 1);
+			while (true)
+			{
+				cout << "1. 查看敌人信息 2. 与他战斗 3. 离开" << endl;
+				int foo = 0; // 决定循环是否结束
+				int choice = 0;
+				cin >> choice;
+				switch (choice)
+				{
+				case 1:
+					enemy.showrole();
+					break;
+				case 2:
+					if (fight(character, enemy)) {
+						foo = 1;
+					}
+					break;
+				case 3:
+					foo = 1;
+					break;
+				default:
+					cout << "别闹" << endl;
+					break;
+				}
+				if (foo) {
+					break;
+				}
+			}
+		}
+
+		if (now->getname() == "new_RR") {
+			cout << "你遇到了敌人, 你有以下几种选择（输入数字）：" << endl;
+			Role enemy("猩红石像", 18, 6, 3, 1, 1, 10, 1);
+			while (true)
+			{
+				cout << "1. 查看敌人信息 2. 与他战斗 3. 离开" << endl;
+				int foo = 0; // 决定循环是否结束
+				int choice = 0;
+				cin >> choice;
+				switch (choice)
+				{
+				case 1:
+					enemy.showrole();
+					break;
+				case 2:
+					if (fight(character, enemy)) {
+						foo = 1;
+					}
+					break;
+				case 3:
+					foo = 1;
+					break;
+				default:
+					cout << "别闹" << endl;
+					break;
+				}
+				if (foo) {
+					break;
+				}
+			}
+		}
 		showmap();
+	}
+}
+
+
+bool School_Map::school_map_show()
+{
+	initgraph(400, 480, EX_SHOWCONSOLE);
+	IMAGE img;
+	loadimage(&img, L"./school_map.png", 400, 480);
+	putimage(0, 0, &img);
+	//int pos[2] = { 0,0 };//school——map自带pos，进入成员方法后删除
+	while (true) {
+		wchar_t s1[] = L"教室";//宽字符，特殊编码
+		wchar_t s2[] = L"训练室";
+		wchar_t s3[] = L"地窖";
+		wchar_t s4[] = L"装备库";
+		wchar_t s5[] = L"休息室";
+		wchar_t s6[] = L"图书馆";
+		if (pos[0] == 0 && pos[1] == 0)
+		{
+			settextcolor(RED);
+			outtextxy(80, 60, s1);
+			settextcolor(WHITE);
+		}
+
+		else
+			outtextxy(80, 60, s1);
+		if (pos[0] == 0 && pos[1] == 1)
+		{
+			settextcolor(RED);
+			outtextxy(280, 60, s2);
+			settextcolor(WHITE);
+		}
+		else
+			outtextxy(280, 60, s2);
+		if (pos[0] == 1 && pos[1] == 0)
+		{
+			settextcolor(RED);
+			outtextxy(80, 240, s3);
+			settextcolor(WHITE);
+		}
+
+		else
+			outtextxy(80, 240, s3);
+		if (pos[0] == 1 && pos[1] == 1)
+		{
+			settextcolor(RED);
+			outtextxy(280, 240, s4);
+			settextcolor(WHITE);
+		}
+
+		else
+			outtextxy(280, 240, s4);
+		if (pos[0] == 2 && pos[1] == 0)
+		{
+			settextcolor(RED);
+			outtextxy(80, 400, s5);
+			settextcolor(WHITE);
+		}
+		else
+			outtextxy(80, 400, s5);
+		if (pos[0] == 2 && pos[1] == 1)
+		{
+			settextcolor(RED);
+			outtextxy(280, 400, s6);
+			settextcolor(WHITE);
+		}
+		else
+			outtextxy(280, 400, s6);
+
+		while (!MouseHit())  // 等待鼠标事件发生
+		{
+			// 在此处添加其他需要执行的代码
+		}
+
+		MOUSEMSG msg = GetMouseMsg();  // 获取鼠标消息
+		while (msg.uMsg != WM_LBUTTONDOWN && msg.uMsg != WM_RBUTTONDOWN)
+		{
+			while (!MouseHit())  // 等待鼠标事件发生
+			{
+				// 在此处添加其他需要执行的代码
+			}
+
+			msg = GetMouseMsg();  // 获取鼠标消息
+		}
+
+		switch (msg.uMsg)
+		{
+		case WM_LBUTTONDOWN:
+			if (msg.x >= 0 && msg.x <= 200 && msg.y >= 0 && msg.y <= 160) {
+				cout << "区域1" << endl;
+				pos[0] = 0;
+				pos[1] = 0;
+				closegraph();
+				return true;
+				;
+			}
+			else if (msg.x > 200 && msg.x <= 400 && msg.y >= 0 && msg.y <= 160) {
+				cout << "区域2" << endl;
+				pos[0] = 0;
+				pos[1] = 1;
+				closegraph();
+				return true;
+			}
+			else if (msg.x >= 0 && msg.x <= 200 && msg.y > 160 && msg.y <= 320) {
+				cout << "区域3" << endl;
+				pos[0] = 1;
+				pos[1] = 0;
+				closegraph();
+				return true;
+			}
+			else if (msg.x > 200 && msg.x <= 400 && msg.y > 160 && msg.y <= 320) {
+				cout << "区域4" << endl;
+				pos[0] = 1;
+				pos[1] = 1;
+				closegraph();
+				return true;
+			}
+			else if (msg.x >= 0 && msg.x <= 200 && msg.y > 320 && msg.y <= 480) {
+				cout << "区域5" << endl;
+				pos[0] = 2;
+				pos[1] = 0;
+				closegraph();
+				return true;
+			}
+			else {
+				cout << "区域6" << endl;
+				pos[0] = 2;
+				pos[1] = 1;
+				closegraph();
+				return true;
+			}
+		default:
+			closegraph();
+			return false;
+		}
 	}
 }
