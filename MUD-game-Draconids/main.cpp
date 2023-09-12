@@ -130,9 +130,12 @@ int choose(Map& map, Role & character) {
 		{
 			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 			SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN);
+			PlaySound(L"daoxuan.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 			cout << "正在进入小世界";
 			print();
 			cout << endl;
+			std::this_thread::sleep_for(std::chrono::seconds(3));
+			PlaySound(NULL, 0, SND_PURGE);
 			SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
 
 			TreeMap treemap;
