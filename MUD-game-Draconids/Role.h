@@ -29,13 +29,19 @@ public:
     friend class XI;
     void addExp(int addExp);
     void addMoney(int addMoney);
+
     int getAgility() const;
+    void setAgility(int a);
+
     int getAttack() const;
+    void setAttack(int a);
+
     int getDEF() const;
+    void setDefend(int d);
+
     int getHP() const;
     string getname();
     int getlife();
-    int getmoney();
     int getlevel();
     int getEXP();
     void recoverHP(int amount);
@@ -50,15 +56,26 @@ public:
     //显示背包
     void addGoodsToBag(int* goodsId, int* num);//加入背包,重载应对两种情况
     void addGoodsToBag(int goodsId, int num);
-
     bool subGoodsToBag(int goodsId, int num);	//减少背包里的物品
-
     void setBag(Bag &bags);
-
     void newBag();
+
     int getMoney();
     void setMoney(int m);
 
+    void useDrug();
+    int getHealth();
+    int getHealth_max();
+    void setHealth(int hp);
+
+    void showEquip();//展示当前装备
+    void wearEquip(int id);//穿上装备
+    void removeEquip(int id);//脱下装备
+
+    int getWeapon();
+    void setWeapon(int w);
+    int getClothes();
+    void setClothes(int c);
 private:
     string name;
     int HP;          // 血量
@@ -67,13 +84,15 @@ private:
     int Agility;     // 敏捷
     std::set<std::unique_ptr<Skill>> Skill_vector; // 技能
     int life; // 生命
-    //std::unique_ptr<Good> weapon; // 武器（只能装备一把）
+    int weapon=-1; // 武器（只能装备一把）
+    int clothes=-1; // 武器（只能装备一把）
     Bag bag; // 背包
     int money; // 金币
     std::unique_ptr<Task> task; // 任务
     int level; // 等级
     int EXP; // 经验
     const int levelExp_Max[29] = { 6,12,18,24,30,36,42,48,54,60,69,78,87,96,105,114,123,132,141,150,162,174,186,198,210,225,240,270,300 }; // 每个对应等级的最高经验值
+    Goods goods[14] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13 };
 };
 
 

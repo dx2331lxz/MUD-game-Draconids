@@ -202,11 +202,6 @@ int Role::getlife()
     return life;
 }
 
-int Role::getmoney()
-{
-    return money;
-}
-
 int Role::getlevel()
 {
     return level;
@@ -263,35 +258,35 @@ void Role::addGoodsToBag(int* goodsId, int* num) {
     cout << endl << "得到了：" << endl;
 
     bag.showGoods(goodsId, num);
-    for (int i = 0; goodsId[i] >= 0; i++)
-        /*if (goodsId[i] == 6 || goodsId[i] == 8 || goodsId[i] == 19) {
-            task.setGoods(goods[goodsId[i]]);
-            task.setIsTaskEnd();
-        }*/
-    if (bag.getGoodsNum() > 20) {
-        cout << "背包已满，无法添加。" << endl;
-    }
-    else if (bag.getGoodsNum() + num[0] + num[1] + num[2] + num[3] > 20) {
-        cout << "背包剩余空位不足，无法完全添加。" << endl;
-        cout << "你仅能添加" << 20 - bag.getGoodsNum() << "件。" << endl;
-        cout << "请选择要添加的物品：";
-        for (int chioce = 0; num[chioce] == 0 || bag.getGoodsNum() >= 20;) {
-            cin >> chioce;
-            if (num[chioce] + bag.getGoodsNum() > 20) {
-                bag.addGoods(goodsId[chioce], 20 - bag.getGoodsNum());
-                cout << "成功添加" << 20 - bag.getGoodsNum() << "件到背包！" << endl << endl;
-            }
-            else {
-                bag.addGoods(goodsId[chioce], num[chioce]);
-                cout << "成功添加" << num[chioce] << "件到背包！" << endl << endl;
-            }
-        }
-    }
-    else {
+    //for (int i = 0; goodsId[i] >= 0; i++)
+    //    if (goodsId[i] == 6 || goodsId[i] == 8 || goodsId[i] == 19) {
+    //        task.setGoods(goods[goodsId[i]]);
+    //        task.setIsTaskEnd();
+    //    }
+    //if (bag.getGoodsNum() > 14) {
+    //    cout << "背包已满，无法添加。" << endl;
+    //}
+    //else if (bag.getGoodsNum() + num[0] + num[1] + num[2] + num[3] > 14) {
+    //    cout << "背包剩余空位不足，无法完全添加。" << endl;
+    //    cout << "你仅能添加" << 14 - bag.getGoodsNum() << "件。" << endl;
+    //    cout << "请选择要添加的物品：";
+    //    for (int chioce = 0; num[chioce] == 0 || bag.getGoodsNum() >= 14;) {
+    //        cin >> chioce;
+    //        if (num[chioce] + bag.getGoodsNum() > 14) {
+    //            bag.addGoods(goodsId[chioce], 14 - bag.getGoodsNum());
+    //            cout << "成功添加" << 14 - bag.getGoodsNum() << "件到背包！" << endl << endl;
+    //        }
+    //        else {
+    //            bag.addGoods(goodsId[chioce], num[chioce]);
+    //            cout << "成功添加" << num[chioce] << "件到背包！" << endl << endl;
+    //        }
+    //    }
+    //}
+    //else {
         for (int i = 0; goodsId[i] >= 0; i++)
             bag.addGoods(goodsId[i], num[i]);
         cout << "全部成功添加到背包！" << endl << endl;
-    }
+   /* }*/
 }
 
 void Role::addSaveGoodsToBag(int goodsId, int num) {
@@ -302,29 +297,29 @@ void Role::addGoodsToBag(int goodsId, int num) {
     cout << endl << "得到了：" << endl;
 
     bag.showGoods(goodsId, num);
-    if (bag.getGoodsNum() > 20) {
-        cout << "背包已满，无法添加。" << endl;
-    }
-    else if (bag.getGoodsNum() + num > 20) {
-        cout << "背包剩余空位不足，无法完全添加。" << endl;
-        cout << "你仅能添加" << 20 - bag.getGoodsNum() << "件。" << endl;
-        cout << "请选择要添加的物品：";
-        for (int chioce = 0; num == 0 || bag.getGoodsNum() >= 20;) {
-            cin >> chioce;
-            if (num + bag.getGoodsNum() > 20) {
-                bag.addGoods(goodsId, 20 - bag.getGoodsNum());
-                cout << "成功添加" << 20 - bag.getGoodsNum() << "件到背包！" << endl << endl;
-            }
-            else {
-                bag.addGoods(goodsId, num);
-                cout << "成功添加" << num << "件到背包！" << endl << endl;
-            }
-        }
-    }
-    else {
+    //if (bag.getGoodsNum() > 14) {
+    //    cout << "背包已满，无法添加。" << endl;
+    //}
+    //else if (bag.getGoodsNum() + num > 14) {
+    //    cout << "背包剩余空位不足，无法完全添加。" << endl;
+    //    cout << "你仅能添加" << 14 - bag.getGoodsNum() << "件。" << endl;
+    //    cout << "请选择要添加的物品：";
+    //    for (int chioce = 0; num == 0 || bag.getGoodsNum() >= 14;) {
+    //        cin >> chioce;
+    //        if (num + bag.getGoodsNum() > 14) {
+    //            bag.addGoods(goodsId, 14 - bag.getGoodsNum());
+    //            cout << "成功添加" << 14 - bag.getGoodsNum() << "件到背包！" << endl << endl;
+    //        }
+    //        else {
+    //            bag.addGoods(goodsId, num);
+    //            cout << "成功添加" << num << "件到背包！" << endl << endl;
+    //        }
+    //    }
+    //}
+    //else {
         bag.addGoods(goodsId, num);
         cout << "全部成功添加到背包！" << endl << endl;
-    }
+  /*  }*/
 }
 
 bool Role::subGoodsToBag(int goodsId, int num) {
@@ -338,4 +333,148 @@ void Role::setBag(Bag &bags) {
 void Role::newBag() {
     Bag bags;
     bag = bags;
+}
+
+void Role::useDrug() {
+    if (bag.isUseDrug()) {
+        cout << "是否使用药品：	1.是	2.否" << endl;
+        int choice;
+        cin >> choice;
+        if (choice == 2)
+            return;
+        if (choice == 1) {
+            cout << "请选择要使用的药品：" << endl;
+            for (int i = bag.getGoodsNum(); i > 0; i--) {
+                for (int j = 12; j < 14; j++)
+                    if (getBagWhichGoodsId(i) == j)
+                        cout << i << "." << '\t' << goods[getBagWhichGoodsId(i)].getName() << '\t' << getBagWhichGoodsNum(i) << " 件" << endl;
+            }
+            cout << "0.取消" << endl;
+            int choiceGoodsId, choiceGoodsNum;
+            while (true) {
+                cin >> choiceGoodsId;
+                if (choiceGoodsId < 0 || choiceGoodsId > bag.getGoodsNum())
+                    cout << "选择错误，请重新选择！" << endl;
+                else break;
+            }
+            choiceGoodsId = getBagWhichGoodsId(choiceGoodsId);
+            cout << "请选择使用多少（输入0取消）：" << endl;
+            cin >> choiceGoodsNum;
+            subGoodsToBag(choiceGoodsId, choiceGoodsNum);
+            cout << "成功使用药品！";
+            if (choiceGoodsId == 12 || choiceGoodsId == 13) {
+                for (int i = choiceGoodsNum; i > 0; i--)
+                    setHealth(goods[choiceGoodsId].getAddHP() + getHealth());
+                cout << "共恢复" << goods[choiceGoodsId].getAddHP() * choiceGoodsNum << "点血量。" << endl << endl;
+            }
+            if (choiceGoodsId == 0) return;
+        }
+    }
+}
+
+int Role::getHealth() {
+    return HP;
+}
+
+int Role::getHealth_max() {
+    return 100;
+}
+
+void Role::setHealth(int hp) {
+    HP = hp;
+    if (hp > 100)
+        HP = 100;
+    if (HP < 0)
+        HP = 0;
+}
+
+void Role::showEquip()
+{
+    cout << "当前已装备:" << endl;
+    cout << "武器:";
+    if (weapon == -1) {
+        cout << "无" << endl;
+    }
+    else {
+        cout << goods[weapon].getName() << endl;
+    }
+    cout << "防具:";
+    if (clothes == -1) {
+        cout << "无" << endl;
+    }
+    else {
+        cout << goods[clothes].getName() << endl;
+    }
+}
+
+void Role::wearEquip(int id)
+{
+    if (goods[id].getType() == 0) {
+        if (weapon != -1) {
+            removeEquip(weapon);
+        }
+        setAttack(getAttack() + goods[id].getAddAttack());
+        weapon = id;
+    }
+    else if (goods[id].getType() == 1) {
+        if (clothes != -1) {
+            removeEquip(clothes);
+        }
+        setDefend(getDEF() + goods[id].getAddDefend());
+        setAgility(getAgility() + goods[id].getAddAGI());
+        clothes = id;
+    }
+    bag.reduceGoods(id, 1);
+    cout << "已装备 " << goods[id].getName() << endl;
+}
+
+void Role::removeEquip(int id)
+{
+    if (goods[id].getType() == 0) {
+        if (weapon != -1) {
+            cout << "当前无武器" << endl;
+        }
+        setAttack(getAttack() - goods[id].getAddAttack());
+        weapon = -1;
+    }
+    else if (goods[id].getType() == 1) {
+        if (clothes != -1) {
+            cout << "当前无防具" << endl;
+        }
+        setDefend(getDEF() - goods[id].getAddDefend());
+        clothes = -1;
+    }
+    bag.addGoods(id, 1);
+    cout << "已换下 " << goods[id].getName() << endl;
+}
+
+int Role::getWeapon()
+{
+    return weapon;
+}
+
+void Role::setWeapon(int w)
+{
+    weapon = w;
+}
+
+int Role::getClothes()
+{
+    return clothes;
+}
+
+void Role::setClothes(int c)
+{
+    clothes = c;
+}
+
+void Role::setAttack(int a) {
+    attack = a;
+}
+
+void Role::setDefend(int d) {
+    DEF = d;
+}
+void Role::setAgility(int a) {
+    Agility = a;
 }

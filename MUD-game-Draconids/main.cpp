@@ -94,9 +94,10 @@ void fight(Role& character, Role& enemy) {
 }
 
 int choose(Map& map, Role & character) {
-	
+	Goods goods[24] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 };
+start:
 	if (map.GetPosition() == 0 || map.GetPosition() == 1) {
-		cout << "1. 寻找NPC 2. 传送至地图别处 3. 退出地图 4. 进入学院 5. 个人主页" << endl;
+		cout << "1. 寻找NPC 2. 传送至地图别处 3. 退出地图 4. 进入学院 5. 个人主页 7.背包 8.装备" << endl;
 	}
 	else {
 		cout << "1. 寻找NPC 2. 传送至地图别处 3. 退出地图 4. 个人主页" << endl;
@@ -146,6 +147,60 @@ int choose(Map& map, Role & character) {
 	}
 	case 5:
 		menu(character);
+		break;
+	case 7:
+		system("cls");
+		character.showBag();		//显示背包
+		character.useDrug();		//是否使用药品
+		cout << endl;
+		cout << "输入1退出：";
+		
+		while(1){
+			int exit1 = 0;
+			cin >> exit1;
+			if (exit1 == 1) {
+				system("cls");
+				break;
+			}
+		}
+		goto start;
+		break;
+	case 8:
+		system("cls");
+		character.showEquip();
+		cout << "1.更换装备		2.取下装备		3.退出" << endl;
+		int choiceEquip;
+		cin >> choiceEquip;
+		if (choiceEquip == 1) {
+			character.showBag();
+			cout << "请选择要换上的装备(14.取消)" << endl;
+			int id;
+			cin >> id;
+			if (id >= 14 || id < 0)
+				goto start;
+			character.wearEquip(id);
+			character.getBag().reduceGoods(id, 1);
+		}
+		if (choiceEquip == 2) {
+			cout << "请输入要换下的装备" << endl;
+			cout << "1." << goods[character.getWeapon()].getName() << endl;
+			cout << "2." << goods[character.getClothes()].getName() << endl;
+			int choice;
+			cin >> choice;
+			if (choice == 1)
+			{
+				character.removeEquip(character.getWeapon());
+				character.getBag().addGoods(character.getWeapon(), 1);
+			}
+			if (choice == 2)
+			{
+				character.removeEquip(character.getClothes());
+				character.getBag().addGoods(character.getClothes(), 1);
+			}
+		}
+		if (choiceEquip == 3)
+			system("cls");
+			goto start;
 		break;
 	default:
 		cout << "你干嘛~~，诶呦" << endl;

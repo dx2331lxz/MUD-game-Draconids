@@ -68,15 +68,18 @@ void Store::showStores() {
 		cout << left << setw(2) << i + 1 << "." << setw(30) << left << goods[iter->first].getName() << setw(80) << left << goods[iter->first].getDesc() << goods[iter->first].getPriceBuy() << endl;
 		++i;//物品序号
 	}
-	cout << "购买" << endl;
+	cout << "购买(输入15退出购买界面）" << endl;
 	canHandleLeftClick = true; // 重置为 true，以允许处理左键事件
 	//----------循环检测----------
 	while (true) {
 		ReadConsoleInput(hInput, &inputBuffer, 1, &eventsRead);
 		if (GetAsyncKeyState(VK_LBUTTON) & 0x8000) {
 			int MouseY = inputBuffer.Event.MouseEvent.dwMousePosition.Y;
-			if (MouseY > 14)
+			if (MouseY > 14) {
+				SetConsoleMode(hInput, prevMode);
 				return;
+			}
+				
 			else if (canHandleLeftClick) {
 				showProductDetails(MouseY);
 				canHandleLeftClick = false;
@@ -104,7 +107,7 @@ bool Store::showProductDetails(int y) {
 		if (goods[iter->first].getType() == 0) cout << "攻击加成：" << goods[iter->first].getAddAttack() << "  " << "防御加成：" << goods[iter->first].getAddDefend() << "  " << "敏捷加成：" << goods[iter->first].getAddAGI() << endl;
 		else if (goods[iter->first].getType() == 1) cout << "血量加成：" << goods[iter->first].getAddMaxHP() << "  " << "防御加成：" << goods[iter->first].getAddDefend() << "  " << "敏捷加成：" << goods[iter->first].getAddAGI() << endl;
 		else
-			cout << "恢复血量:" << goods[iter->first].getAddHP();
+			cout << "恢复血量:" << goods[iter->first].getAddHP() << endl;
 		cout << endl;
 		cout << "按鼠标右键退出商品详细显示界面";
 		while (true) {
@@ -118,6 +121,7 @@ bool Store::showProductDetails(int y) {
 
 void Store::storeToPlayer(Role &player) {
 	int goodsId, goodsNum;
+	cout << "持有财产：" << player.getMoney()<<endl;
 	cout << "请输入要购买的物品ID号" << endl;
 	cin >> goodsId;
 	if (goodsId >14 ) return;
@@ -130,7 +134,7 @@ void Store::storeToPlayer(Role &player) {
 		player.addGoodsToBag(goodsId-1, goodsNum);
 		player.setMoney(player.getMoney() - totalPrice);
 		cout << "购买成功" << endl;
-		cout << "获得 " << goods[goodsId-1].getName() << " * " << goodsNum;
+		cout << "获得 " << goods[goodsId-1].getName() << " * " << goodsNum<<endl;
 	}
 	else
 	{
