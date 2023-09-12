@@ -161,6 +161,7 @@
     <Media Include="daoguang.wav" />
     <Media Include="death1.wav" />
     <Media Include="kaichang.wav" />
+    <Media Include="lypvoice.wav" />
     <Media Include="putonggj.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

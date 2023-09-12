@@ -88,6 +88,9 @@ XI::XI() :Skill("言灵·吸血镰", "释放一次攻击1.5倍伤害, 吸收攻击力30% 血量", "我
 
 void XI::Motor_skill_start(Role& role, Role& enemy)
 {
+    PlaySound(L"lypvoice.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+    std::this_thread::sleep_for(std::chrono::seconds(4));
+    PlaySound(NULL, 0, SND_PURGE);
     role.attack = role.attack * 2;
     FightSystem fs(role, enemy); // 创建 FightSystem 的对象，或者从其他地方获取已有的对象
 
