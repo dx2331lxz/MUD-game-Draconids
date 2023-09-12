@@ -294,8 +294,12 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 					break;
 				}
 			}
+			
+		}
+		else if (pos[0] == 1 && pos[1] == 1) {
 
 		}
+		
 	}
 }
 
