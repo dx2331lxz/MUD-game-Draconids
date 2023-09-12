@@ -207,9 +207,6 @@ void loading()									//等待界面，模拟动态进度条过程
 
 // 个人菜单
 
-
-
-
 int menu(Role& character) {
 
     cout << "姓名: "<< character.getname() << endl;
@@ -226,5 +223,6 @@ int menu(Role& character) {
     cout << "经验: " << character.getEXP() << endl;
     cout << "技能: ";
     character.showskill();
+    cout << endl;
     return 1;
 }
