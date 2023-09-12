@@ -8,18 +8,24 @@ class Skill
 {
 public:
 	Skill();
-	Skill(string name, string effect, string introduce):name(name),effect(effect), introduce(introduce) {};
+	Skill(string name, string effect, string introduce):name(name),effect(effect), introduce(introduce), is_can(false) {};
 	~Skill();
 	// 使用技能
-	virtual void Motor_skill_start(Role& role) = 0;
+	virtual void Motor_skill_start(Role& role, Role& enemy) = 0;
 	// 使用技能结束
-	virtual void Motor_skill_end(Role& role) = 0;
+	virtual void Motor_skill_end(Role& role, Role& enemy) = 0;
 	// 展示技能（名称，介绍，效果）
 	void show();
+	void can();
+	bool get_is_can();
+	string get_name();
+	string get_effect();
+	string get_introduce();
 private:
 	string name;
 	string effect;
 	string introduce;
+	bool is_can;
 };
 
 
@@ -27,8 +33,8 @@ class GUI:public Skill
 {
 public:
 	GUI();
-	virtual void Motor_skill_start(Role& role);
-	virtual void Motor_skill_end(Role& role);
+	virtual void Motor_skill_start(Role& role, Role& enemy);
+	virtual void Motor_skill_end(Role& role, Role& enemy);
 
 private:
 	
@@ -43,8 +49,8 @@ class SHEN:public Skill
 {
 public:
 	SHEN();
-	virtual void Motor_skill_start(Role& role);
-	virtual void Motor_skill_end(Role& role);
+	virtual void Motor_skill_start(Role& role, Role& enemy);
+	virtual void Motor_skill_end(Role& role, Role& enemy);
 
 private:
 
@@ -54,8 +60,8 @@ class XI : public Skill
 {
 public:
 	XI();
-	virtual void Motor_skill_start(Role& role);
-	virtual void Motor_skill_end(Role& role);
+	virtual void Motor_skill_start(Role& role, Role& enemy);
+	virtual void Motor_skill_end(Role& role, Role& enemy);
 private:
 	int atteck;
 };

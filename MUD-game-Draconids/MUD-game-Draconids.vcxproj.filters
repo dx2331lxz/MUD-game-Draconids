@@ -25,11 +25,23 @@
     <ClCompile Include="Bag.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Good.cpp">
+    <ClCompile Include="Goods.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Good.h">
-      <Filter>头文件</Filter>
+    <ClCompile Include="fight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Goods.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="fight.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Npc.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Role.cpp">
       <Filter>源文件</Filter>
@@ -40,10 +52,16 @@
     <ClCompile Include="Task.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Map.cpp">
+    <ClCompile Include="welcomePage.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Npc.cpp">
+    <ClCompile Include="introduce.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="load.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="save.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -69,5 +87,31 @@
     <ClInclude Include="Npc.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="fight.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Goods.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="welcomePage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="introduce.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="load.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="save.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="kaichang.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="daoguang.wav">
+      <Filter>资源文件</Filter>
+    </Media>
   </ItemGroup>
 </Project>
