@@ -21,6 +21,7 @@ void KeyboardInputThread() {
 
 
 void print_introduce(string backgroundSentence) {
+    int n;
     std::thread keyboardThread;
     cout << "按Ctrl键加速" << endl;
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -30,7 +31,6 @@ void print_introduce(string backgroundSentence) {
     
     keyboardThread = std::thread(KeyboardInputThread); // 启动检测键盘输入的线程
     n = 0;
-
     while (n < backgroundSentence.length() && !enterPressed.load()) {
         std::cout << backgroundSentence[n++];
         std::cout.flush();

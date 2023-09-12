@@ -166,26 +166,29 @@ int main() {
 	std::thread keyboardThread1;
 	PlaySound(L"daoguang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	welcomePage();
-	loading();
+	int startChoose = 0;
+	std::cin >> startChoose;
 	PlaySound(NULL, 0, SND_PURGE);
-	PlaySound(L"kaichang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-	introduce();
+	loading();
 
-	for (int i = 0; i < 2; i++) {
-		std::cout << ""; // 输出空格覆盖之前输出的"....."
-	}
-	std::cout << "\b\b";
 	//this_thread::sleep_for(std::chrono::seconds(20));
 	 //初始化人物信息
 
-	int startChoose = 0;
-	std::cin >> startChoose;
+	
+
 	if (startChoose == 1) {
 
 
 
 		// 建立新的存档，进入introduce，开始游戏
+		
+		PlaySound(L"kaichang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+		introduce();
 
+		for (int i = 0; i < 2; i++) {
+			std::cout << ""; // 输出空格覆盖之前输出的"....."
+		}
+		std::cout << "\b\b";
 
 		string name;
 		cout << "输入身份：";
@@ -201,7 +204,7 @@ int main() {
 		std::this_thread::sleep_for(std::chrono::seconds(3));
 		PlaySound(NULL, 0, SND_PURGE);
 		PlaySound(L"welcome.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-		std::this_thread::sleep_for(std::chrono::seconds(3));
+		std::this_thread::sleep_for(std::chrono::seconds(4));
 		PlaySound(NULL, 0, SND_PURGE);
 		cout << "欢迎来到提瓦特大陆" << endl;
 		cout << endl;
@@ -218,18 +221,10 @@ int main() {
 		return 0;
 	}
 	if (startChoose == 2) {
-		Role& character = load();
+		
+		Role character(load());
 		character.showrole();
-		PlaySound(NULL, 0, SND_PURGE);
-		// 初始化地图
-		PlaySound(L"lhh.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-		std::this_thread::sleep_for(std::chrono::seconds(3));
-		PlaySound(NULL, 0, SND_PURGE);
-		PlaySound(L"welcome.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-		std::this_thread::sleep_for(std::chrono::seconds(3));
-		PlaySound(NULL, 0, SND_PURGE);
-		cout << "欢迎来到提瓦特大陆" << endl;
-		cout << endl;
+
 		Map map;
 		map.ShowMap();
 		cout << endl;
@@ -244,6 +239,7 @@ int main() {
 	}//读取旧的存档，开始游戏
 	if (startChoose == 3) {
 		std::string byeSentence = "再会";
+		int n;
 		n = 0;
 
 		while (n < byeSentence.length()) {

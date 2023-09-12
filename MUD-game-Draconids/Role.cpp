@@ -8,6 +8,27 @@ Role::Role(string name, int HP, int attack, int DEF, int Agility, int life, int 
     Skill_vector.insert(std::make_unique<XI>());
 }
 
+Role::Role(const Role& role):name(role.name),HP(role.HP),attack(role.attack), DEF(role.DEF), Agility(role.Agility), life(role.life), money(role.life), EXP(role.EXP)
+{
+    int i = 0;
+    int count = 0;
+    // 使用迭代器遍历 set
+    for (const unique_ptr<Skill>& element : role.Skill_vector) {
+
+        if (element->get_is_can()) {
+
+            count ++;
+        }
+    }
+
+    for (const unique_ptr<Skill>& element : Skill_vector) {
+        i++;
+        if (i <= count) {
+            element->can();
+        }
+    }
+}
+
 void Role::showrole()
 {
     cout << endl;
@@ -40,8 +61,8 @@ int Role::showskill()
     }
     return count;
 }
-
 void Role::Addskill(int choose)
+
 {
     int i = 0;
 
@@ -141,6 +162,30 @@ void Role::Useskill(Role& enemy)
         }
     }
     
+}
+
+int Role::get_skill()
+{
+    int count = 0;
+    for (const unique_ptr<Skill>& element : Skill_vector) {
+
+        if (element->get_is_can()) {
+
+            count++;
+        }
+    }
+    return count;
+}
+
+void Role::set_skill(int size)
+{
+    int i = 0;
+    for (const unique_ptr<Skill>& element : Skill_vector) {
+        i++;
+        if (i <= size) {
+            element->can();
+        }
+    }
 }
 
 // ... (其他成员函数的定义)

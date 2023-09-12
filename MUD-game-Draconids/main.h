@@ -30,6 +30,6 @@
 #include"load.h"
 #pragma comment(lib,"winmm.lib")
 using namespace std;
-int n = 0;
+
 
 void print();

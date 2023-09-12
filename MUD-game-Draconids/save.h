@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <thread>
 #include<stdlib.h>
@@ -10,6 +11,7 @@
 #include <vector>
 #include"Skill.h"
 #include"Bag.h"
+#include"main.h"
 using namespace std;
 
 void save(Role& character);

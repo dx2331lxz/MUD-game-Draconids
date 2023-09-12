@@ -14,6 +14,7 @@ class Role
 {
 public:
     Role(string name, int HP, int attack, int DEF, int Agility, int life, int money, int level); //构造函数
+    Role(const Role &role);
     // 展示角色信息
     void showrole();
     // 展示角色技能
@@ -22,6 +23,8 @@ public:
     void Addskill(int choose = 0);
     // 使用技能
     void Useskill(Role& enemy);
+    int get_skill();
+    void set_skill(int size);
  // 声明技能为Role友元类
     friend class GUI;
     friend class SHEN;
@@ -45,7 +48,7 @@ private:
     int attack;      // 攻击
     int DEF;         // 防御
     int Agility;     // 敏捷
-    std::set<std::unique_ptr<Skill>> Skill_vector; // 技能
+    std::set<std::unique_ptr<Skill>> Skill_vector; // 技能  find
     int life; // 生命
     //std::unique_ptr<Good> weapon; // 武器（只能装备一把）
     //Bag& bag; // 背包
@@ -53,6 +56,7 @@ private:
     //Task& task; // 任务
     int level; // 等级 
     int EXP; // 经验
+    
     const int levelExp_Max[29] = { 6,12,18,24,30,36,42,48,54,60,69,78,87,96,105,114,123,132,141,150,162,174,186,198,210,225,240,270,300 }; // 每个对应等级的最高经验值
 };
 
