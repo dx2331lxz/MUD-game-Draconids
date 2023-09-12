@@ -2,15 +2,16 @@
 #include "main.h"
 #include <vector>
 #include<string>
-#include"Goods.h"
-#include"Bag.h"
 #include<set>
 #include <algorithm>
 using namespace std;
 class Skill;
 class Goods;
-class Bag;
+
 class Task;
+
+
+class Bag;
 class Role
 {
 public:
@@ -40,6 +41,7 @@ public:
     int getlife();
     void setMoney(int m);
     int getMoney();
+    
     int getlevel();
     int getEXP();
     void recoverHP(int amount);

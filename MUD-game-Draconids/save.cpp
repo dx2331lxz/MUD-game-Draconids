@@ -19,7 +19,7 @@ void save(Role& character) {
             << character.getDEF() << ' '
             << character.getAgility() << ' '
             << character.getlife() << ' '
-            << character.getmoney() << ' '
+            << character.getMoney() << ' '
             << character.getlevel() << ' '
             << character.getEXP() << ' '
             << character.get_skill();

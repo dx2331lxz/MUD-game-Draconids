@@ -1,11 +1,6 @@
-#ifndef STORE_H
-#define STORE_H
+#pragma once
 
-#include <iostream>  
-#include <map>  
-#include "Goods.h"
-#include "Bag.h"
-#include "Role.h"
+#include"main.h"
 
 using namespace std;
 
@@ -25,4 +20,4 @@ private:
 	//物品实例化
 	Goods goods[14] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13};
 };
-#endif
+
