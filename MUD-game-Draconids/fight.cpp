@@ -5,6 +5,11 @@
 #include "Role.h"  // 包含 Role 头文件
 #include <fstream>
 #include <vector>
+#include <iostream>
+#include <windows.h>
+#include <mmsystem.h>
+#include <thread>
+
 
 using namespace std;
 
@@ -28,7 +33,10 @@ bool FightSystem::fightRound()
     switch (choice1)
     {
     case 1:
+        PlaySound(L"attackpt.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+        std::this_thread::sleep_for(std::chrono::seconds(2));
         playerAttack();
+        PlaySound(NULL, 0, SND_PURGE);
         break;
     case 2:
         // 调用技能相关函数

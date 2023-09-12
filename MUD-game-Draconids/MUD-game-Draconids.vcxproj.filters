@@ -104,5 +104,11 @@
     <Media Include="daoguang.wav">
       <Filter>资源文件</Filter>
     </Media>
+    <Media Include="putonggj.wav">
+      <Filter>资源文件</Filter>
+    </Media>
+    <Media Include="attackpt.wav">
+      <Filter>资源文件</Filter>
+    </Media>
   </ItemGroup>
 </Project>

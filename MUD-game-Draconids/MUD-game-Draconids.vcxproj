@@ -161,8 +161,10 @@
     <ClInclude Include="welcomePage.h" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="attackpt.wav" />
     <Media Include="daoguang.wav" />
     <Media Include="kaichang.wav" />
+    <Media Include="putonggj.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
