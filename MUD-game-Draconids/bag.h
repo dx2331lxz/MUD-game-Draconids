@@ -1,5 +1,4 @@
 #pragma once
-#include"main.h"
 #include <map>  
 #include "Goods.h"
 
