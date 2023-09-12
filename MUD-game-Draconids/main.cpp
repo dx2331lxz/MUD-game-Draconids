@@ -297,7 +297,39 @@ int main() {
 		}
 		fileBag.close();
 		character.showrole();
-
+		Map map;
+		map.ShowMap();
+		cout << endl;
+		while (true)
+		{
+			if (!choose(map, character)) {
+				break;
+			}
+		}
+		save(character);
 		return 0;
 	}
+	if (startChoose == 3) {
+		std::string byeSentence = "再会";
+		int n;
+		n = 0;
+
+		while (n < byeSentence.length()) {
+			std::cout << byeSentence[n++];
+			std::cout.flush();
+			std::this_thread::sleep_for(std::chrono::milliseconds(50));
+		}
+		std::cout << std::endl;
+		std::string quitSentence = "press any key to quit...";
+		n = 0;
+
+		while (n < quitSentence.length()) {
+			std::cout << quitSentence[n++];
+			std::cout.flush();
+			std::this_thread::sleep_for(std::chrono::milliseconds(50));
+		}
+		std::cout << std::endl;
+		getchar();
+		exit(0);
+	}//退出游戏
 }
