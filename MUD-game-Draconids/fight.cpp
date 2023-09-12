@@ -36,7 +36,6 @@ bool FightSystem::fightRound()
         break;
     case 3:
         cout << "你选择逃跑了。" << endl;
-        whetherrun = 1;
         return false; // 逃跑
     default:
         cout << "无效的选择，继续战斗。" << endl;

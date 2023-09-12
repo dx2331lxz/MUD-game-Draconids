@@ -1,6 +1,6 @@
 #include"Role.h"
 
-Role::Role(string name, int HP, int attack, int DEF, int Agility, int life, int money, int level):name(name), HP(HP), attack(attack), DEF(DEF), Agility(Agility), life(life), money(money), level(level), EXP(0)
+Role::Role(string name, int HP, int attack, int DEF, int Agility, int life, int money, int level) :name(name), HP(HP), attack(attack), DEF(DEF), Agility(Agility), life(life), money(money), level(level), EXP(0)
 {
     Skill_vector.insert(std::make_unique<GUI>());
     Skill_vector.insert(std::make_unique<SHEN>());
@@ -8,7 +8,6 @@ Role::Role(string name, int HP, int attack, int DEF, int Agility, int life, int 
 }
 void Role::showrole()
 {
-
     cout << endl;
     cout << "当前人物属性:" << endl;
     cout << "姓名: " << name << "\t\t";
@@ -22,13 +21,14 @@ void Role::showrole()
     cout << "经验: " << EXP << endl;
     cout << endl;
 }
+
 int Role::showskill()
 {
     int size = 0;
     int count = 0;
     // 使用迭代器遍历 set
     for (const unique_ptr<Skill>& element : Skill_vector) {
-        
+
         size++;
         if (element->get_is_can()) {
             cout << size << ". ";
@@ -100,6 +100,7 @@ void Role::Useskill(Role& enemy)
             cout << "并不存在您输入的技能" << endl;
         }
         int i = 0;
+
         switch (choose)
         {
         case 1: {
@@ -107,8 +108,8 @@ void Role::Useskill(Role& enemy)
             for (const unique_ptr<Skill>& element : Skill_vector) {
                 i++;
                 if (i == 1) {
-                    element->Motor_skill_start(*this);
-                    element->Motor_skill_end(*this);
+                    element->Motor_skill_start(*this, enemy);
+                    element->Motor_skill_end(*this, enemy);
                 }
             }
             break;
@@ -137,7 +138,7 @@ void Role::Useskill(Role& enemy)
             break;
         }
     }
-    
+
 }
 
 // ... (其他成员函数的定义)
@@ -153,7 +154,7 @@ void Role::addExp(int addExp) {
     }
     if (level_ < level) {
         cout << "生啦生啦， 恭喜你已经到达" << level << "级啦！！" << endl;
-        if(level < 3){
+        if (level < 3) {
         }
         else if (level >= 3 && level < 10) {
             Addskill(1);
@@ -229,11 +230,4 @@ void Role::takeDamage(int damage) {
     if (HP < 0) {
         HP = 0;
     }
-}
-void Role::increaseDEF(int defenseIncrease) {
-    DEF += defenseIncrease;
-}
-//增加防御
-void Role::setDEF(int i) {
-    DEF = i;
 }
