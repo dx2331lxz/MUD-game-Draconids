@@ -185,6 +185,7 @@ int main() {
 	character.showrole();
 	PlaySound(NULL, 0, SND_PURGE);
 	// 初始化地图
+	PlaySound(L"daoguang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	cout << "欢迎来到 ****" << endl;
 	cout << endl;
 	Map map;
