@@ -60,6 +60,7 @@ void print() {
 
 	// 生成随机整数并输出
 	int randomNumber = dist(gen);
+	int index;
 	for (int i = 0; i < randomNumber; i++) {
 		index = 0;
 
@@ -232,14 +233,14 @@ int main() {
 	//this_thread::sleep_for(std::chrono::seconds(20));
 	 //初始化人物信息
 
-	
+
 
 	if (startChoose == 1) {
 
 
 
 		// 建立新的存档，进入introduce，开始游戏
-		
+
 		PlaySound(L"kaichang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 		introduce();
 
@@ -279,7 +280,7 @@ int main() {
 		return 0;
 	}
 	if (startChoose == 2) {
-		
+
 		Role character(load());
 
 		ifstream fileBag("SaveBag.dat", ios_base::in | ios_base::binary);
@@ -297,5 +298,6 @@ int main() {
 		fileBag.close();
 		character.showrole();
 
-	return 0;
+		return 0;
+	}
 }
