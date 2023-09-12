@@ -21,8 +21,8 @@ void load(Role& character, const std::vector<std::unique_ptr<Skill>>& Skill_vect
         in_roleFile >> EXP;
 
         // 将读入的信息存入角色对象
-       Role a(name, HP, attack, DEF, Agility, life, money, level,EXP);
-
+       Role character(name, HP, attack, DEF, Agility, life, money, level);
+       character.addExp(EXP);
         in_roleFile.close();
     }
     else {
