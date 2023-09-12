@@ -26,6 +26,21 @@ bool Skill::get_is_can()
     return is_can;
 }
 
+string Skill::get_name()
+{
+    return name;
+}
+
+string Skill::get_effect()
+{
+    return effect;
+}
+
+string Skill::get_introduce()
+{
+    return introduce;
+}
+
 
 GUI::GUI() :Skill("ÑÔÁé¡¤¹íÊ¤", "¹¥»÷ÌáÉı100%(Ö»ÄÜÊÍ·ÅÒ»´Î)", "¸ÃÑÔÁéµÄÓĞĞ§·¶Î§ÊÇÊÍ·ÅÕß×ÔÉí£¬ÊÍ·ÅÕßÃüÁî×Ô¼ºµÄÉíÌåÍêÈ«Íü¼ÇÌÛÍ´£¬´Ó¶ø·¢»Ó³ö¼«ÏŞµÄÁ¦Á¿")
 {
@@ -34,7 +49,7 @@ GUI::GUI() :Skill("ÑÔÁé¡¤¹íÊ¤", "¹¥»÷ÌáÉı100%(Ö»ÄÜÊÍ·ÅÒ»´Î)", "¸ÃÑÔÁéµÄÓĞĞ§·¶Î§Ê
 void GUI::Motor_skill_start(Role& role, Role& enemy)
 {
     role.attack = role.attack * 2;
-    FightSystem fs(role,enemy); // ´´½¨ FightSystem µÄ¶ÔÏó£¬»òÕß´ÓÆäËûµØ·½»ñÈ¡ÒÑÓĞµÄ¶ÔÏó
+    FightSystem fs(role, enemy); // ´´½¨ FightSystem µÄ¶ÔÏó£¬»òÕß´ÓÆäËûµØ·½»ñÈ¡ÒÑÓĞµÄ¶ÔÏó
 
     // µ÷ÓÃ playerAttack
     fs.playerAttack();
@@ -48,7 +63,7 @@ void GUI::Motor_skill_end(Role& role, Role& enemy)
 
 
 
-SHEN::SHEN():Skill("ÑÔÁé¡¤ÉîÑª","×Ô¼ºÊÜÉË±¬·¢¾Ş¶îÉËº¦","¸ÃÑÔÁé¶Ô×Ô¼ººÍµĞÈËÍ¬Ê±Ôì³ÉÉËº¦")
+SHEN::SHEN() :Skill("ÑÔÁé¡¤ÉîÑª", "×Ô¼ºÊÜÉË±¬·¢¾Ş¶îÉËº¦", "¸ÃÑÔÁé¶Ô×Ô¼ººÍµĞÈËÍ¬Ê±Ôì³ÉÉËº¦")
 {
 }
 
@@ -67,7 +82,7 @@ void SHEN::Motor_skill_end(Role& role, Role& enemy)
     role.attack -= 5;
 }
 
-XI::XI():Skill("ÑÔÁé¡¤ÎüÑªÁ­", "ÊÍ·ÅÒ»´Î¹¥»÷1.5±¶ÉËº¦, ÎüÊÕ¹¥»÷Á¦30% ÑªÁ¿", "ÎÒtmÎüÎüÎü£¬ Ã»ÓĞÒ»µÎÑªÊÇ×Ô¼ºµÄ")
+XI::XI() :Skill("ÑÔÁé¡¤ÎüÑªÁ­", "ÊÍ·ÅÒ»´Î¹¥»÷1.5±¶ÉËº¦, ÎüÊÕ¹¥»÷Á¦30% ÑªÁ¿", "ÎÒtmÎüÎüÎü£¬ Ã»ÓĞÒ»µÎÑªÊÇ×Ô¼ºµÄ")
 {
 }
 
@@ -77,7 +92,7 @@ void XI::Motor_skill_start(Role& role, Role& enemy)
     FightSystem fs(role, enemy); // ´´½¨ FightSystem µÄ¶ÔÏó£¬»òÕß´ÓÆäËûµØ·½»ñÈ¡ÒÑÓĞµÄ¶ÔÏó
 
     // µ÷ÓÃ playerAttack
-   role.HP += static_cast<int>(role.attack * 0.3);
+    role.HP += static_cast<int>(role.attack * 0.3);
     if (role.HP > 100) {
         role.HP = 100;
     }

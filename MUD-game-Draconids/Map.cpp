@@ -140,10 +140,12 @@ char Map::isthere(int a)
 void Map::Map_find()//在map中查找npc
 {
 	if (pos == 0) {
-		PlaySound(L"NPC1.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-		std::this_thread::sleep_for(std::chrono::seconds(6));
+		
 		cout << "找到npc，姓名为：零" << endl;
 		cout << "学院任务,前往青铜城,斩杀复苏龙族。" << endl;
+		PlaySound(L"NPC1.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+		std::this_thread::sleep_for(std::chrono::seconds(6));
+		PlaySound(NULL, 0, SND_PURGE);
 	}
 
 
@@ -243,7 +245,7 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 			system("cls");
 			break;
 		}
-
+		
 		/*showmap();
 		cout << "输入wasd移动,输入e退出" << endl;
 		char action;
@@ -266,7 +268,7 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 				pos[1]++;
 			else return;
 		}*/
-		if ((pos[0] == 2 && pos[1] == 0) && (enemy.getHP() != 0)) {
+		if ((pos[0]==2&&pos[1]==0) && (enemy.getHP() != 0)) {
 			system("cls");
 			cout << "你遇到了敌人, 你有以下几种选择（输入数字）：" << endl;
 			while (true)
