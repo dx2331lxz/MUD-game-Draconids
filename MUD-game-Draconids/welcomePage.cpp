@@ -25,11 +25,11 @@ void welcomePage() {
     std::cout << "|_________________________________________________________________________________|" << std::endl;
     std::cout << std::endl;
     std::string startSentence = "1、新的开始   2、继续战斗   3、退出游戏";
-    int index = 0;
+    n = 0;
 
 
-    while (index < startSentence.length()) {
-        std::cout << startSentence[index++];
+    while (n < startSentence.length()) {
+        std::cout << startSentence[n++];
         std::cout.flush();//立刻输出缓冲区里的字符
         std::this_thread::sleep_for(std::chrono::milliseconds(50));//使程序停止50ms
     }
@@ -89,19 +89,19 @@ void welcomePage() {
     //}//读取旧的存档，开始游戏
     if (startChoose == 3) {
         std::string byeSentence = "再会";
-        index = 0;
+        n = 0;
 
-        while (index < byeSentence.length()) {
-            std::cout << byeSentence[index++];
+        while (n < byeSentence.length()) {
+            std::cout << byeSentence[n++];
             std::cout.flush();
             std::this_thread::sleep_for(std::chrono::milliseconds(50));
         }
         std::cout << std::endl;
         std::string quitSentence = "press any key to quit...";
-        index = 0;
+        n = 0;
 
-        while (index < quitSentence.length()) {
-            std::cout << quitSentence[index++];
+        while (n < quitSentence.length()) {
+            std::cout << quitSentence[n++];
             std::cout.flush();
             std::this_thread::sleep_for(std::chrono::milliseconds(50));
         }

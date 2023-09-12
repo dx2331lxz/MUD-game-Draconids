@@ -2,7 +2,7 @@
 
 
 
-void load(Role& character, std::set<std::unique_ptr<Skill>>& Skill_vector, std::string& skillData, Bag& Bag) {
+Role& load() {
     std::ifstream in_roleFile("roleData.txt");
     if (in_roleFile.is_open()) {
         std::string name;
@@ -24,6 +24,7 @@ void load(Role& character, std::set<std::unique_ptr<Skill>>& Skill_vector, std::
        Role character(name, HP, attack, DEF, Agility, life, money, level);
        character.addExp(EXP);
        in_roleFile.close();
+       return character;
     }
     else {
         std::cout << "¶ÁÈ¡Ê§°Ü\n";

@@ -1,6 +1,6 @@
 #include "save.h"
 
-void save(Role& character, std::set<std::unique_ptr<Skill>>& Skill_vector, std::string& skillData,Bag& Bag) {
+void save(Role& character) {
     std::ofstream out_roleFile("roleData.txt");
 
     if (out_roleFile.is_open()) {

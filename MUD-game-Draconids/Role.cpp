@@ -2,8 +2,7 @@
 
 
 Role::Role(string name, int HP, int attack, int DEF, int Agility, int life, int money, int level) :name(name), HP(HP), attack(attack), DEF(DEF), Agility(Agility), life(life), money(money), level(level), EXP(0) {
-    bag = Bag();
-    task = Task();
+
     Skill_vector.insert(std::make_unique<GUI>());
     Skill_vector.insert(std::make_unique<SHEN>());
     Skill_vector.insert(std::make_unique<XI>());

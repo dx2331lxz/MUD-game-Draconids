@@ -12,4 +12,4 @@
 #include"Bag.h"
 using namespace std;
 
-void load(Role& character, const std::vector<std::unique_ptr<Skill>>& Skill_vector, const std::string& skillData, Bag& Bag);
+Role& load();
