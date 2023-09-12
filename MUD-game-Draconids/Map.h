@@ -1,6 +1,5 @@
 #pragma once
 #include<iostream>
-using namespace std;
 #include<vector>
 #include<map>
 #include<string>
@@ -9,6 +8,7 @@ using namespace std;
 #include<unordered_map>
 #include"Npc.h"
 #include"Role.h"
+#include"Store.h"
 #include"main.h"
 #include<graphics.h>
 

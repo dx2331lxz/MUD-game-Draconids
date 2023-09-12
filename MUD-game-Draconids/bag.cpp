@@ -3,7 +3,8 @@
 #include<iomanip>
 using namespace std;
 
-Bag::Bag() :saveGoods{} {
+Bag::Bag() {
+	saveGoods[13][2] = { 0 };
 }
 
 Bag::~Bag() {}
@@ -13,11 +14,11 @@ void Bag::showBags() {
 		cout << "当前背包无物品！" << endl;
 	else {
 		cout << "当前背包:" << endl;
-		cout << "物品ID	 物品名称      数量" << endl;
+		cout << setw(10)<<left<<"物品ID"<<setw(20)<<left<<"物品名称" << setw(10) << left<<"数量" << endl;
 		map<int, int>::iterator iter;
 		for (iter = bags.begin(); iter != bags.end(); ++iter)
 		{
-			cout << left << setw(10) << goods[iter->first].getGoodsId() << setw(10) << goods[iter->first].getName() << setw(3) << '\t' << iter->second << endl;
+			cout << left << setw(10) << goods[iter->first].getGoodsId() << setw(20) << goods[iter->first].getName() << setw(10) << left<< iter->second << endl;
 		}
 	}
 }
@@ -68,7 +69,7 @@ void Bag::saveBag() {
 bool Bag::isUseDrug() {
 	map<int, int>::iterator iter;
 	for (iter = bags.begin(); iter != bags.end(); ++iter) {
-		if (goods[iter->first].getGoodsId() == 20 || goods[iter->first].getGoodsId() == 21 )
+		if (goods[iter->first].getGoodsId() == 13 || goods[iter->first].getGoodsId() == 12 )
 			return true;
 	}
 	return false;

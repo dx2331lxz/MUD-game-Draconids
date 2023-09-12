@@ -221,7 +221,7 @@ int menu(Role& character) {
     cout << character.getHP() << endl;
     SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);//恢复默认颜色
     cout << "经验: " << character.getEXP() << endl;
-    cout << "技能: ";
+    cout << "技能: "<<endl;
     character.showskill();
     cout << endl;
     return 1;

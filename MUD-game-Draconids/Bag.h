@@ -1,6 +1,4 @@
-#ifndef BAG_H
-#define BAG_H
-
+#pragma once
 #include <map>  
 #include "Goods.h"
 
@@ -26,9 +24,9 @@ public:
 
 private:
 	map<int, int> bags;
-	int saveGoods[20][2];		//用来Save物品的数组
+	int saveGoods[14][3];		//用来Save物品的数组
 	//物品实例化
-	Goods goods[22] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21};
+	Goods goods[14] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13};
 };
 
-#endif 
+

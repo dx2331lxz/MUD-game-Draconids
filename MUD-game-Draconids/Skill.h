@@ -8,7 +8,7 @@ class Skill
 {
 public:
 	Skill();
-	Skill(string name, string effect, string introduce):name(name),effect(effect), introduce(introduce), is_can(false) {};
+	Skill(string name, string effect, string introduce) :name(name), effect(effect), introduce(introduce), is_can(false) {};
 	~Skill();
 	// 使用技能
 	virtual void Motor_skill_start(Role& role, Role& enemy) = 0;
@@ -29,7 +29,7 @@ private:
 };
 
 
-class GUI:public Skill
+class GUI :public Skill
 {
 public:
 	GUI();
@@ -37,7 +37,7 @@ public:
 	virtual void Motor_skill_end(Role& role, Role& enemy);
 
 private:
-	
+
 };
 //言灵·鬼胜 介绍：该言灵的有效范围是释放者自身，释放者命令自己的身体完全忘记疼痛，从而发挥出极限的力量
 //效果 : 攻击下一回合提升100 % (只能释放一次)
@@ -45,7 +45,7 @@ private:
 //效果 : 若被攻击, 则扣除敌方血量(或者降低其攻击),
 //言灵·吸血镰
 //效果 : 释放一次攻击1.5倍伤害, 吸收30% 血量.
-class SHEN:public Skill
+class SHEN :public Skill
 {
 public:
 	SHEN();
@@ -65,4 +65,3 @@ public:
 private:
 	int atteck;
 };
-

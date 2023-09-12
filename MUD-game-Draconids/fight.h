@@ -2,6 +2,11 @@
 #include "Role.h"
 #include "Goods.h"
 #include"main.h"
+#include <iostream>
+#include <windows.h>
+#include <mmsystem.h>
+#include <thread>
+
 
 class FightSystem {
 public:
@@ -22,6 +27,7 @@ public:
     void GameEnd();     // 判断游戏是否结束，如果结束，程序会退出
     void enemyAttack();
     int addround();
+    void playWav(const char* wavFileName);
 
 private:
     Role& player;   // 战斗的角色
