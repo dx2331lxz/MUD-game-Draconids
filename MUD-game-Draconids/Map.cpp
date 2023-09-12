@@ -75,13 +75,13 @@ void Map::ShowMap()
 	cout << "        /       \\   " << endl;
 	cout << "       /         \\   " << endl;
 	cout << "      /           \\" << endl;
-	cout << "   " << isthere(2) << "北京\t  " << isthere(6) << "日本" << endl;
+	cout << "   " << isthere(2) << "北京\t  " << isthere(3) << "日本" << endl;
 	cout << "       \\          /" << endl;
 	cout << "        \\        /" << endl;
 	cout << "\t  " << isthere(1) << posname[1] << endl;
 	cout << "       /\t  \\" << endl;
 	cout << "      /\t\t   \\" << endl;
-	cout << "" << isthere(4) << "仕兰中学 \t   " << isthere(7) << "巴西" << endl;
+	cout << "" << isthere(6) << "仕兰中学 \t   " << isthere(7) << "巴西" << endl;
 	cout << "      \\ \t   /        " << endl;
 	cout << "       \\ \t  /    " << endl;
 	cout << "\t" << isthere(0) << "卡塞尔学院" << endl;
@@ -144,7 +144,7 @@ void Map::Map_find()//在map中查找npc
 		cout << "找到npc，姓名为：零" << endl;
 		cout << "学院任务,前往青铜城,斩杀复苏龙族。" << endl;
 		PlaySound(L"NPC1.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-		std::this_thread::sleep_for(std::chrono::seconds(6));
+		std::this_thread::sleep_for(std::chrono::seconds(7));
 		PlaySound(NULL, 0, SND_PURGE);
 	}
 
@@ -152,7 +152,11 @@ void Map::Map_find()//在map中查找npc
 	if (searchNPC_map[pos]) {
 		cout << "找到npc，姓名为：" << allnpc[pos - 2]->GetName() << endl;
 		while (1) {
-			cout << "选项：1.talk，2.task,3.leave" << endl;
+			cout << "选项：talk" << endl;
+			cout << "选项：task" << endl;
+			cout << "选项：leave" << endl;
+			cout << "请输入选项：" << endl;
+
 			string choice;
 			cin >> choice;
 			if (choice == "talk")
