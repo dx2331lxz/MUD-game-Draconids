@@ -138,6 +138,8 @@ int main() {
 
 	cin >> name;
 	Role character(name, 100, 10, 10, 10, 1, 0, 1);
+	//save(character,Skill_vector,skillData,bag);
+	save(character);
 	character.showrole();
 	PlaySound(NULL, 0, SND_PURGE);
 	// ≥ı ºªØµÿÕº
