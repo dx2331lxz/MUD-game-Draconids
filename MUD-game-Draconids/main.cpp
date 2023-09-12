@@ -14,6 +14,35 @@
 //	return 0;
 //}
 
+bool ctrlPressed = false;
+bool pPressed = false;
+
+
+void KeyboardInputThread(Role& character) {
+	while (true) {
+		if (_kbhit()) { // 检查是否有键盘输入
+			char key = _getch(); // 获取键盘输入字符
+
+			if (key == 16) { // 16 是Ctrl的ASCII码
+				ctrlPressed = true;
+			}
+			else if (ctrlPressed && key == 112) { // 112 是P的ASCII码
+				pPressed = true;
+			}
+			else {
+				ctrlPressed = false;
+				pPressed = false;
+			}
+
+			if (ctrlPressed && pPressed) {
+				menu(character);
+				ctrlPressed = false;
+				pPressed = false;
+			}
+		}
+	}
+}
+
 
 
 void print() {
@@ -65,11 +94,12 @@ void fight(Role& character, Role& enemy) {
 }
 
 int choose(Map& map, Role & character) {
+	
 	if (map.GetPosition() == 0 || map.GetPosition() == 1) {
-		cout << "1. 寻找NPC 2. 传送至地图别处 3. 退出地图 4. 进入学院" << endl;
+		cout << "1. 寻找NPC 2. 传送至地图别处 3. 退出地图 4. 进入学院 5. 个人主页" << endl;
 	}
 	else {
-		cout << "1. 寻找NPC 2. 传送至地图别处 3. 退出地图" << endl;
+		cout << "1. 寻找NPC 2. 传送至地图别处 3. 退出地图 4. 个人主页" << endl;
 	}
 	int i;
 	cin >> i;
@@ -109,8 +139,14 @@ int choose(Map& map, Role & character) {
 			treemap.showmap();
 			treemap.go(character);
 		}
+		else {
+			menu(character);
+		}
 		break;
 	}
+	case 5:
+		menu(character);
+		break;
 	default:
 		cout << "你干嘛~~，诶呦" << endl;
 		break;
@@ -122,10 +158,15 @@ void show1() { cout << "choice1\n"; }
 void show2() { cout << "choice2\n"; }
 
 
+//
+// // 启动检测键盘输入的线程
+
+
 int main() {
-	
+	std::thread keyboardThread1;
 	PlaySound(L"daoguang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	welcomePage();
+	loading();
 	PlaySound(NULL, 0, SND_PURGE);
 	PlaySound(L"kaichang.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
 	introduce();

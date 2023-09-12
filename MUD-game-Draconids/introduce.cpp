@@ -7,7 +7,7 @@ std::atomic<bool> enterPressed(false);
 void KeyboardInputThread() {
     while (true) {
         if (GetAsyncKeyState(VK_CONTROL) & 0x8000) {
-            // Enter键被按下
+            // Ctrl键被按下
             enterPressed.store(true);
 
             break;
@@ -102,4 +102,129 @@ void choose(Map& map) {
     //map.Map_find();
     //map.move();
     //cout << map.GetPosition();
+}
+
+
+
+COORD getXY()							//通过WindowsAPI函数获取光标的位置
+{
+    CONSOLE_SCREEN_BUFFER_INFO pBuffer;
+
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &pBuffer);
+    //利用标准输出句柄获得光标坐标信息
+
+    return COORD{ pBuffer.dwCursorPosition.X, pBuffer.dwCursorPosition.Y };
+    //封装为表示坐标的COORD结构
+}
+
+COORD getScrnInfo()										//获取控制台窗口缓冲区大小
+{
+    HANDLE hStd = GetStdHandle(STD_OUTPUT_HANDLE);		//获得标准输出设备句柄
+    CONSOLE_SCREEN_BUFFER_INFO scBufInf;				//定义一个窗口缓冲区信息结构体
+
+    GetConsoleScreenBufferInfo(hStd, &scBufInf);		//获取窗口缓冲区信息
+
+    return scBufInf.dwSize;								//返回窗口缓冲区大小
+}
+
+void moveXY(COORD pstn)
+{
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pstn);
+    //通过标准输出句柄控制光标的位置
+}
+
+void clearDisplay(COORD firstPst, COORD lastPst)		//清除部分屏幕内容，从firstPst坐标到lastPst坐标之间的内容
+{
+    int yDValue(lastPst.Y - firstPst.Y);					//记录首末位置纵坐标差值，控制迭代次数
+
+    COORD size(getScrnInfo());								//记录目前控制台缓冲区大小
+
+    moveXY(firstPst);							//移动光标到首位置
+    for (int y(0); y <= yDValue; y++)			//一层循环控制清除行数
+    {
+        for (int x(firstPst.X); x <= size.X; x++)			//二层循环避免重复清除
+        {
+            std::cout << ' ';						//输出一个空格来覆盖原内容，达到清除效果
+            int px;									//记录光标当前位置的横坐标
+            if (x != size.X)
+                px = x + 1;
+            else
+                px = 0;
+            if (y == yDValue && px == lastPst.X)		//与光标末位置作对比，达到末位置即退出循环
+                break;
+        }
+    }
+    moveXY(firstPst);
+}
+
+void loading()									//等待界面，模拟动态进度条过程
+{
+    COORD headPst(getXY());						//记录最初位置，便于结束后清除进度条内容
+    HANDLE hStd(GetStdHandle(STD_OUTPUT_HANDLE));
+    CONSOLE_CURSOR_INFO  cInfo;
+    GetConsoleCursorInfo(hStd, &cInfo);			//获取光标信息的句柄
+    cInfo.bVisible = false;						//修改光标可见性
+    SetConsoleCursorInfo(hStd, &cInfo);			//设置光标不可见
+
+    std::cout << "请等待";
+    COORD firstPst;								//存储光标坐标，为清除做铺垫
+    COORD lastPst;
+
+    int n(0);									//模拟进度条数字
+    int m(0);									//记录进度条方块总数
+    srand((unsigned)time(NULL));				//取时间作为随机数种子，避免伪随机数
+    while (n < 100)								//达到较好的动态效果
+    {
+        m = n / 5;
+        n += rand() % 14 + 1;
+        if (n < 100)
+        {
+            for (int i(n / 5 - m); i > 0; i--)
+                std::cout << "█";
+            firstPst = getXY();						//获取输出前坐标
+            std::cout << n << "%";					//输出百分比进度条
+            lastPst = getXY();						//获取输出之后的光标位置
+        }
+        else
+        {
+            n = 100;								//最大值为100，达到则退出操作
+            std::cout << "█";
+            std::cout << n << "%";
+            lastPst = getXY();
+            break;
+        }
+
+        Sleep(80);
+        clearDisplay(firstPst, lastPst);		//清除现有图形，重新绘制
+    }
+
+    clearDisplay(headPst, lastPst);				//清除进度条图形
+    cInfo.bVisible = true;						//光标可见性改为可见
+    SetConsoleCursorInfo(hStd, &cInfo);
+}
+
+
+
+// 个人菜单
+
+
+
+
+int menu(Role& character) {
+
+    cout << "姓名: "<< character.getname() << endl;
+    cout << "血量: ";
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED); // 设置字体为红色
+    
+    
+    for (int i = 0; i < int(character.getHP() / 10); i++) {
+        cout << "█";
+    }
+    cout << character.getHP() << endl;
+    SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);//恢复默认颜色
+    cout << "经验: " << character.getEXP() << endl;
+    cout << "技能: ";
+    character.showskill();
+    return 1;
 }
