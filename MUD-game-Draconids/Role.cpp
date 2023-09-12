@@ -51,7 +51,7 @@ int Role::showskill()
     int count = 0;
     // 使用迭代器遍历 set
     for (const unique_ptr<Skill>& element : Skill_vector) {
-        
+
         size++;
         if (element->get_is_can()) {
             cout << size << ". ";
@@ -161,7 +161,7 @@ void Role::Useskill(Role& enemy)
             break;
         }
     }
-    
+
 }
 
 int Role::get_skill()
@@ -201,7 +201,7 @@ void Role::addExp(int addExp) {
     }
     if (level_ < level) {
         cout << "生啦生啦， 恭喜你已经到达" << level << "级啦！！" << endl;
-        if(level < 3){
+        if (level < 3) {
         }
         else if (level >= 3 && level < 10) {
             Addskill(1);

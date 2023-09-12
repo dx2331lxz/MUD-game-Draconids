@@ -1,5 +1,5 @@
 #include"Map.h"
-Map::Map():pos(0)
+Map::Map() :pos(0)
 {
 	search_map.insert(pair<string, int>("卡塞尔学院", 0));
 	search_map.insert(pair<string, int>("青铜城", 1));
@@ -295,7 +295,7 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 					foo = 1;
 					break;
 				default:
-					cout << "别闹"<< endl;
+					cout << "别闹" << endl;
 					break;
 				}
 				if (foo) {
@@ -345,7 +345,7 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 
 
 MapNode::MapNode(string name)
-	:left(nullptr), right(nullptr), role(nullptr),name(name) {}
+	:left(nullptr), right(nullptr), role(nullptr), name(name) {}
 MapNode::MapNode(unique_ptr<Role>& role, shared_ptr<MapNode> left, shared_ptr<MapNode> right)
 	:role(move(role)), left(left), right(right)
 {

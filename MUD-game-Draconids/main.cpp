@@ -61,10 +61,10 @@ void print() {
 	// 生成随机整数并输出
 	int randomNumber = dist(gen);
 	for (int i = 0; i < randomNumber; i++) {
-		n = 0;
-		
-		while (n < sentence.length()) {
-			std::cout << sentence[n++];
+		index = 0;
+
+		while (index < sentence.length()) {
+			std::cout << sentence[index++];
 			std::cout.flush();//立刻输出缓冲区里的字符
 			std::this_thread::sleep_for(std::chrono::milliseconds(200));//使程序停止50ms
 		}
@@ -127,7 +127,7 @@ start:
 			School_Map school_map;
 			school_map.move(character);
 		}
-		else if(map.GetPosition() == 1)
+		else if (map.GetPosition() == 1)
 		{
 			HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 			SetConsoleTextAttribute(hConsole, FOREGROUND_RED | FOREGROUND_GREEN);
@@ -297,41 +297,5 @@ int main() {
 		fileBag.close();
 		character.showrole();
 
-		Map map;
-		map.ShowMap();
-		cout << endl;
-		while (true)
-		{
-			if (!choose(map, character)) {
-				break;
-			}
-		}
-		save(character);
-		return 0;
-	}//读取旧的存档，开始游戏
-	if (startChoose == 3) {
-		std::string byeSentence = "再会";
-		int n;
-		n = 0;
-
-		while (n < byeSentence.length()) {
-			std::cout << byeSentence[n++];
-			std::cout.flush();
-			std::this_thread::sleep_for(std::chrono::milliseconds(50));
-		}
-		std::cout << std::endl;
-		std::string quitSentence = "press any key to quit...";
-		n = 0;
-
-		while (n < quitSentence.length()) {
-			std::cout << quitSentence[n++];
-			std::cout.flush();
-			std::this_thread::sleep_for(std::chrono::milliseconds(50));
-		}
-		std::cout << std::endl;
-		getchar();
-		exit(0);
-	}//退出游戏
+	return 0;
 }
-
-

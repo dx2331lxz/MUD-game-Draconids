@@ -3,10 +3,18 @@
 #include <cstdlib> // 用于生成随机数
 #include "Skill.h" // 包含 Skill 头文件
 #include "Role.h"  // 包含 Role 头文件
+#include <fstream>
+#include <vector>
+#include <iostream>
+#include <windows.h>
+#include <mmsystem.h>
+#include <thread>
+
+
 using namespace std;
 
 FightSystem::FightSystem(Role& player, Role& enemy)
-    : player(player), enemy(enemy), round(1), hurt(0)
+    :player(player), enemy(enemy), round(1), hurt(0)
 {
 }
 
@@ -19,13 +27,16 @@ bool FightSystem::fightRound()
     cout << "2. 技能" << endl;
     cout << "3. 逃跑" << endl;
 
-    int choice;
-    cin >> choice;
+    int choice1,choice2;
+    cin >> choice1;
 
-    switch (choice)
+    switch (choice1)
     {
     case 1:
+        PlaySound(L"attackpt.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+        std::this_thread::sleep_for(std::chrono::seconds(2));
         playerAttack();
+        PlaySound(NULL, 0, SND_PURGE);
         break;
     case 2:
         // 调用技能相关函数
@@ -104,11 +115,15 @@ bool FightSystem::endFight()
     }
     else
     {
+        PlaySound(L"death1.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+        PlaySound(NULL, 0, SND_PURGE);
         cout << "恭喜！你赢得了战斗。" << endl;
         addExp(40); // 添加经验值
         return true;
     }
 }
+
 
 Role& FightSystem::runEndFight()
 {
