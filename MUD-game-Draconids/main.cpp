@@ -189,7 +189,7 @@ int main() {
 	std::this_thread::sleep_for(std::chrono::seconds(3));
 	PlaySound(NULL, 0, SND_PURGE);
 	PlaySound(L"welcome.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
-	std::this_thread::sleep_for(std::chrono::seconds(3));
+	std::this_thread::sleep_for(std::chrono::seconds(4));
 	PlaySound(NULL, 0, SND_PURGE);
 	cout << "欢迎来到提瓦特大陆" << endl;
 	cout << endl;
