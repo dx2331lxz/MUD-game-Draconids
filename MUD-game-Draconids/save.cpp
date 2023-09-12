@@ -33,9 +33,9 @@ void save(Role& character, const std::vector<std::unique_ptr<Skill>>& Skill_vect
         // 对于Skill_vector中的每个元素，逐个写入成员变量的值到文件
         for (const auto& skill : Skill_vector)
         {
-            out_skillFile.write(skill->getname().c_str(), skill->getname().size() + 1); // 注意：这里写入了null终止符
-            out_skillFile.write(skill->geteffect().c_str(), skill->geteffect().size() + 1);
-            out_skillFile.write(skill->getintroduce().c_str(), skill->getintroduce().size() + 1);
+            out_skillFile.write(skill->get_name().c_str(), skill->get_name().size() + 1); // 注意：这里写入了null终止符
+            out_skillFile.write(skill->get_effect().c_str(), skill->get_effect().size() + 1);
+            out_skillFile.write(skill->get_introduce().c_str(), skill->get_introduce().size() + 1);
         }
 
         out_skillFile.close();
@@ -43,19 +43,19 @@ void save(Role& character, const std::vector<std::unique_ptr<Skill>>& Skill_vect
     
 
 
-        ofstream fileBag("SaveBag.dat", ios_base::binary);
+        ofstream out_bagFile("SaveBag.dat", ios_base::binary);
 
-        if ( !fileBag ) {
+        if ( !out_bagFile ) {
             cout << "无法打开保存文件！" << endl;
             cout << "保存失败！" << endl;
         }
         else
         {
             for (const auto& i : Bag.getMapBags()) {
-                fileBag << i.first << ' ' << i.second << ' ';
+                out_bagFile << i.first << ' ' << i.second << ' ';
             }
             cout << "保存成功！" << endl;
         }
-        fileBag.close();
+        out_bagFile.close();
 
  }

@@ -46,17 +46,20 @@ void load(Role& character, const std::vector<std::unique_ptr<Skill>>& Skill_vect
         std::cout << "¶ÁÈ¡Ê§°Ü\n";
     }
 
-    std::ifstream in_bagFile("bagData.txt");
 
-    if (in_bagFile.is_open()) {
-        for (int i = 0; i < 20; i++) {
-            for (int j = 0; j < 2; j++) {
-                in_bagFile >> Bag.saveGoods[i][j];
-            }
-        }
-        in_bagFile.close();
+    ifstream fileBag("SaveBag.dat", ios_base::in | ios_base::binary);
+
+    for (int key2 = 24; !fileBag.eof();) {
+
+        int key;
+        int value;
+        fileBag >> key >> value;
+        if (key2 == key)
+            break;
+        character  bag.addSaveGoodsToBag(key, value);
+        key2 = key;
+
     }
-    else {
-        std::cout << "¶ÁÈ¡Ê§°Ü\n";
-    }
+    fileBag.close();
+
 }
