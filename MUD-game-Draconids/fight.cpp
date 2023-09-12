@@ -115,6 +115,9 @@ bool FightSystem::endFight()
     }
     else
     {
+        PlaySound(L"death1.wav", NULL, SND_FILENAME | SND_ASYNC | SND_LOOP);
+        std::this_thread::sleep_for(std::chrono::seconds(2));
+        PlaySound(NULL, 0, SND_PURGE);
         cout << "恭喜！你赢得了战斗。" << endl;
         addExp(40); // 添加经验值
         return true;

@@ -110,5 +110,8 @@
     <Media Include="attackpt.wav">
       <Filter>资源文件</Filter>
     </Media>
+    <Media Include="death1.wav">
+      <Filter>资源文件</Filter>
+    </Media>
   </ItemGroup>
 </Project>

@@ -163,6 +163,7 @@
   <ItemGroup>
     <Media Include="attackpt.wav" />
     <Media Include="daoguang.wav" />
+    <Media Include="death1.wav" />
     <Media Include="kaichang.wav" />
     <Media Include="putonggj.wav" />
   </ItemGroup>
