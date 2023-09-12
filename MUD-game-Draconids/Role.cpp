@@ -287,13 +287,9 @@ Bag Role::getBag() {
     return bag;
 }
 
-int Role::getMoney() {
-    return money;
-}
 
-void Role::setMoney(int m) {
-    money = m;
-}
+
+
 
 
 void Role::showBag() {

@@ -2,7 +2,7 @@
 #include "main.h"
 #include <vector>
 #include<string>
-#include "Bag.h"
+#include"Bag.h"
 #include"Goods.h"
 #include<set>
 #include <algorithm>
@@ -69,8 +69,6 @@ public:
     void setBag(Bag &bags);
     void newBag();
 
-    int getMoney();
-    void setMoney(int m);
 
     void useDrug();
     int getHealth();
