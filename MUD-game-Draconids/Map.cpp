@@ -235,8 +235,13 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 	Role enemy("怪兽", 10, 1, 1, 1, 1, 10, 1);
 	while (true) {
 		system("cls");
-		if (!school_map_show())
+		cout << "鼠标左键选择进入房间，鼠标右键退出选择界面" << endl;
+		Sleep(1000);
+		if (!school_map_show()) {
+			system("cls");
 			break;
+		}
+		
 		/*showmap();
 		cout << "输入wasd移动,输入e退出" << endl;
 		char action;
@@ -260,6 +265,7 @@ void School_Map::move(Role& character)//移动输入wasd,e退出 如果超出位置,只能在此
 			else return;
 		}*/
 		if ((pos[0]==2&&pos[1]==0) && (enemy.getHP() != 0)) {
+			system("cls");
 			cout << "你遇到了敌人, 你有以下几种选择（输入数字）：" << endl;
 			while (true)
 			{
@@ -576,7 +582,6 @@ bool School_Map::school_map_show()
 		{
 		case WM_LBUTTONDOWN:
 			if (msg.x >= 0 && msg.x <= 200 && msg.y >= 0 && msg.y <= 160) {
-				cout << "区域1" << endl;
 				pos[0] = 0;
 				pos[1] = 0;
 				closegraph();
@@ -584,35 +589,31 @@ bool School_Map::school_map_show()
 				;
 			}
 			else if (msg.x > 200 && msg.x <= 400 && msg.y >= 0 && msg.y <= 160) {
-				cout << "区域2" << endl;
+
 				pos[0] = 0;
 				pos[1] = 1;
 				closegraph();
 				return true;
 			}
 			else if (msg.x >= 0 && msg.x <= 200 && msg.y > 160 && msg.y <= 320) {
-				cout << "区域3" << endl;
 				pos[0] = 1;
 				pos[1] = 0;
 				closegraph();
 				return true;
 			}
 			else if (msg.x > 200 && msg.x <= 400 && msg.y > 160 && msg.y <= 320) {
-				cout << "区域4" << endl;
 				pos[0] = 1;
 				pos[1] = 1;
 				closegraph();
 				return true;
 			}
 			else if (msg.x >= 0 && msg.x <= 200 && msg.y > 320 && msg.y <= 480) {
-				cout << "区域5" << endl;
 				pos[0] = 2;
 				pos[1] = 0;
 				closegraph();
 				return true;
 			}
 			else {
-				cout << "区域6" << endl;
 				pos[0] = 2;
 				pos[1] = 1;
 				closegraph();
