@@ -9,6 +9,7 @@ using namespace std;
 #include<unordered_map>
 #include"Npc.h"
 #include"Role.h"
+#include"Store.h"
 #include"main.h"
 #include<graphics.h>
 #define SHOWCONSOLE 1

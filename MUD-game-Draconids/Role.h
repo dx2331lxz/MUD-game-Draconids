@@ -3,6 +3,7 @@
 #include <vector>
 #include<string>
 #include"Goods.h"
+#include"Bag.h"
 #include<set>
 #include <algorithm>
 using namespace std;
@@ -34,11 +35,23 @@ public:
     int getHP() const;
     string getname();
     int getlife();
-    int getmoney();
+    void setMoney(int m);
+    int getMoney();
     int getlevel();
     int getEXP();
     void recoverHP(int amount);
     void takeDamage(int damage);
+    Bag getBag();
+    void showBag();
+    int getBagWhichGoodsId(int whichGoods);			//得到背包里第whichGoods件物品
+    int getBagWhichGoodsNum(int whichGoods);
+    //显示背包
+    void addGoodsToBag(int* goodsId, int* num);//加入背包,重载应对两种情况
+    void addGoodsToBag(int goodsId, int num);
+
+    bool subGoodsToBag(int goodsId, int num);	//减少背包里的物品
+
+    void setBag(Bag bags);
 private:
     string name;
     int HP;          // 血量
@@ -48,7 +61,7 @@ private:
     std::set<std::unique_ptr<Skill>> Skill_vector; // 技能
     int life; // 生命
     //std::unique_ptr<Good> weapon; // 武器（只能装备一把）
-    std::unique_ptr<Bag> bag; // 背包
+    Bag bag; // 背包
     int money; // 金币
     std::unique_ptr<Task> task; // 任务
     int level; // 等级

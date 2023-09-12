@@ -60,13 +60,13 @@ void Store::showStores() {
 	while (true) {
 		ReadConsoleInput(hInput, &inputBuffer, 1, &eventsRead);
 		if (GetAsyncKeyState(VK_LBUTTON) & 0x8000) {
-			int MouseY = inputBuffer.Event.MouseEvent.dwMousePosition.Y;
+			int MouseY = inputBuffer.Event.MouseEvent.dwMousePosition.Y; 
 			if (MouseY > 14)
-				return;
-			else if (canHandleLeftClick) {
+				return ;
+			else if(canHandleLeftClick){
 				showProductDetails(MouseY);
 				canHandleLeftClick = false;
-			}
+			}		
 			break;
 		}
 	}
@@ -101,15 +101,16 @@ bool Store::showProductDetails(int y) {
 		}
 	}
 }
-Role Store::storeToPlayer(Role player){
+
+void Store::storeToPlayer(Role &player){
 	int goodsId, goodsNum;
 	cout << "22.退出" << endl;
 	cout << "请输入要购买的物品ID号" << endl;
 	cin >> goodsId;
-	if (goodsId == 22) return player;
+	if (goodsId == 15) return ;
 	cout << "请输入要购买的数量(输入0退出)" << endl;
 	cin >> goodsNum;
-	if (goodsNum == 0) return player;
+	if (goodsNum == 0) return ;
 	int totalPrice = int(goods[goodsId].getPriceBuy()) * int(goodsNum);
 	if (player.getMoney() >= totalPrice)
 	{
@@ -122,18 +123,18 @@ Role Store::storeToPlayer(Role player){
 	{
 		cout << "金钱不足,购买失败" << endl;
 	}
-	return player;
+	return ;
 }
 
-Role Store::playerToStore(Role player)
+void Store::playerToStore(Role &player)
 {
 	int goodsId, goodsNum;
 	cout << "请输入要卖出的物品ID(输入15退出)" << endl;
 	cin >> goodsId;
-	if (goodsId == 15) return player;
+	if (goodsId == 15) return ;
 	cout << "请输入要卖出的数量(输入0退出)" << endl;
 	cin >> goodsNum;
-	if (goodsNum == 0) return player;
+	if (goodsNum == 0) return ;
 	if (player.subGoodsToBag(goodsId, goodsNum)) {
 		int totalPrice = int(goods[goodsId].getPriceSell()) * int(goodsNum);
 
@@ -144,5 +145,5 @@ Role Store::playerToStore(Role player)
 	else {
 		cout << "无此物品，出售失败！" << endl;
 	}
-	return player;
+	return ;
 }
