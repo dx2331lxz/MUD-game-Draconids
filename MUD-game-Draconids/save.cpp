@@ -43,19 +43,19 @@ void save(Role& character, std::set<std::unique_ptr<Skill>>& Skill_vector, std::
     
 
 
-    ofstream out_bagFile("SaveBag.dat", ios_base::binary);
+    //ofstream out_bagFile("SaveBag.dat", ios_base::binary);
 
-    if ( !out_bagFile ) {
-        cout << "无法打开保存文件！" << endl;
-        cout << "保存失败！" << endl;
-    }
-    else
-    {
-        for (const auto& i : Bag.getMapBags()) {
-            out_bagFile << i.first << ' ' << i.second << ' ';
-        }
-        cout << "保存成功！" << endl;
-    }
-    out_bagFile.close();
+    //if ( !out_bagFile ) {
+    //    cout << "无法打开保存文件！" << endl;
+    //    cout << "保存失败！" << endl;
+    //}
+    //else
+    //{
+    //    for (const auto& i : Bag.getMapBags()) {
+    //        out_bagFile << i.first << ' ' << i.second << ' ';
+    //    }
+    //    cout << "保存成功！" << endl;
+    //}
+    //out_bagFile.close();
 
  }
