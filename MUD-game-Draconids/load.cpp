@@ -2,7 +2,7 @@
 
 
 
-void load(Role& character, const std::vector<std::unique_ptr<Skill>>& Skill_vector, const std::string& skillData, Bag& Bag) {
+void load(Role& character, std::set<std::unique_ptr<Skill>>& Skill_vector, std::string& skillData, Bag& Bag) {
     std::ifstream in_roleFile("roleData.txt");
     if (in_roleFile.is_open()) {
         std::string name;
@@ -35,10 +35,10 @@ void load(Role& character, const std::vector<std::unique_ptr<Skill>>& Skill_vect
         std::string name, effect, introduce;
         while (in_skillFile >> name >> effect >> introduce) {
             // 在此处处理读取到的数据
-            Skill skill(name, effect, introduce);
-
             // 处理完成后，将 Skill 对象存储到相应的容器中
-            Skill_vector.push_back(skill);
+            Skill_vector.insert(std::make_unique<GUI>());
+            Skill_vector.insert(std::make_unique<SHEN>());
+            Skill_vector.insert(std::make_unique<XI>());
         }
         in_skillFile.close();
     }
@@ -56,7 +56,7 @@ void load(Role& character, const std::vector<std::unique_ptr<Skill>>& Skill_vect
         fileBag >> key >> value;
         if (key2 == key)
             break;
-        character  bag.addSaveGoodsToBag(key, value);
+        //character  bag.addSaveGoodsToBag(key, value);
         key2 = key;
 
     }
