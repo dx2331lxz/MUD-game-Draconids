@@ -281,6 +281,20 @@ int main() {
 	if (startChoose == 2) {
 		
 		Role character(load());
+
+		ifstream fileBag("SaveBag.dat", ios_base::in | ios_base::binary);
+		for (int key2 = 14; !fileBag.eof();) {
+
+			int key;
+			int value;
+			fileBag >> key >> value;
+			if (key2 == key)
+				break;
+			character.addSaveGoodsToBag(key, value);
+			key2 = key;
+
+		}
+		fileBag.close();
 		character.showrole();
 
 		Map map;

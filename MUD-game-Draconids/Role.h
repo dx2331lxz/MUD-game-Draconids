@@ -14,6 +14,8 @@ class Task;
 
 
 class Bag;
+
+
 class Role
 {
 public:

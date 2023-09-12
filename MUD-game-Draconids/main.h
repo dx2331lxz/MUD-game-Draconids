@@ -1,11 +1,11 @@
 #pragma once
 #include<iostream>
 #include<string>
+#include"Bag.h"
 #include"Role.h"
 #include"Task.h"
 #include"Goods.h"
 #include"Skill.h"
-#include"Bag.h"
 #include <vector>
 #include <memory>
 #include <map>

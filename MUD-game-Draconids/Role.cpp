@@ -8,7 +8,7 @@ Role::Role(string name, int HP, int attack, int DEF, int Agility, int life, int 
     Skill_vector.insert(std::make_unique<XI>());
 }
 
-Role::Role(const Role& role):name(role.name),HP(role.HP),attack(role.attack), DEF(role.DEF), Agility(role.Agility), life(role.life), money(role.life), EXP(role.EXP)
+Role::Role(const Role& role):name(role.name),HP(role.HP),attack(role.attack), DEF(role.DEF), Agility(role.Agility), life(role.life), money(role.life), EXP(role.EXP), weapon(role.weapon)
 {
     int i = 0;
     int count = 0;

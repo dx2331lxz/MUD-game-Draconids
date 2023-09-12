@@ -2,7 +2,7 @@
 
 void save(Role& character) {
     std::ofstream out_roleFile("roleData.txt");
-
+    ofstream fileBag("SaveBag.dat", ios_base::binary);
     if (out_roleFile.is_open()) {
         //out_roleFile << character.getname() << "\n";
         //out_roleFile << character.getHP() << "\n";
@@ -22,8 +22,13 @@ void save(Role& character) {
             << character.getMoney() << ' '
             << character.getlevel() << ' '
             << character.getEXP() << ' '
+            << character.getWeapon()<< ' '
             << character.get_skill();
         out_roleFile.close();
+        for (const auto& i : character.getBag().getMapBags()) {
+            fileBag << i.first << ' ' << i.second << ' ';
+        }
+        fileBag.close();
     }
     else {
         std::cout << "´æµµÊ§°Ü  \n";

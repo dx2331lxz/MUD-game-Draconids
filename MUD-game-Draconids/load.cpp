@@ -7,7 +7,7 @@ Role load() {
     if (in_roleFile.is_open()) {
 
         string name;
-        int HP, attack, DEF, Agility, life, money, level, EXP, size;
+        int HP, attack, DEF, Agility, life, money, level, EXP, Weapon, size;
         // 从文件中读取角色信息
         //in_roleFile >> name;
         //in_roleFile >> HP;
@@ -18,12 +18,12 @@ Role load() {
         //in_roleFile >> money;
         //in_roleFile >> level;
         //in_roleFile >> EXP;
-        in_roleFile >> name >> HP >> attack >> DEF >> Agility >> life >> money >> level >> EXP >> size;
+        in_roleFile >> name >> HP >> attack >> DEF >> Agility >> life >> money >> level >> EXP >> Weapon >>size;
         
         // 将读入的信息存入角色对象
         Role character(name, HP, attack, DEF, Agility, life, money, level);
         character.set_skill(size);
-        
+        character.setWeapon(Weapon);
         character.addExp(EXP);
         in_roleFile.close();
         return character;
