@@ -25,7 +25,7 @@ Goods::Goods(int id)
 		addAttack = 0;
 		addAGI = 0;
 		addDefend = 0;
-		priceBuy = 1000;
+		priceBuy = 0;
 		priceSell = 500;
 		break;
 	}
@@ -155,8 +155,8 @@ Goods::Goods(int id)
 		desc = "常见的疗伤药,补充少量气血";
 		type = 2;
 		addHP = 30;
-		priceBuy = 90;
-		priceSell = 10;
+		priceBuy = 0;
+		priceSell = 0;
 		break;
 	}
 	case 13: {
