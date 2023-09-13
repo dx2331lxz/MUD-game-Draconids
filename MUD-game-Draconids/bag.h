@@ -23,7 +23,7 @@ public:
 	map<int, int> getMapBags();//显示背包的内容或进行其他操作
 
 private:
-	map<int, int> bags; //存储背包中物品的信息。
+	map<int, int> bags; //存储背包中物品的信息(id和num)
 	int saveGoods[14][3];		//用来Save物品的数组
 	//物品实例化
 	Goods goods[14] = { 0, 1, 2, 3,4,5,6,7,8,9,10,11,12,13};
