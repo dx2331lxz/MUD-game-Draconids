@@ -186,21 +186,34 @@ start:
 			character.getBag().reduceGoods(id, 1);
 		}
 		if (choiceEquip == 2) {
+			int wea = character.getWeapon();
+			int cls = character.getClothes();
 			cout << "请输入要换下的装备" << endl;
-			cout << "1." << goods[character.getWeapon()].getName() << endl;
-			cout << "2." << goods[character.getClothes()].getName() << endl;
+			cout << "1.";
+			if (wea != -1) cout << goods[wea].getName() << endl;
+			else
+				cout << "无" << endl;
+			cout << "2.";
+			if (cls != -1)  cout << goods[cls].getName() << endl;
+			else
+				cout << "无" << endl;
 			int choice;
 			cin >> choice;
 			if (choice == 1)
-			{
-				character.removeEquip(character.getWeapon());
-				character.getBag().addGoods(character.getWeapon(), 1);
-			}
+				if (wea != -1) {
+					character.removeEquip(character.getWeapon());
+					character.getBag().addGoods(character.getWeapon(), 1);
+				}
+				else
+					cout << "当前未装备武器" << endl;
+
 			if (choice == 2)
-			{
+				if(cls != -1){
 				character.removeEquip(character.getClothes());
 				character.getBag().addGoods(character.getClothes(), 1);
-			}
+				}
+				else
+					cout << "当前未装备防具" << endl;
 		}
 		if (choiceEquip == 3)
 			system("cls");

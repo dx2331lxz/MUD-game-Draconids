@@ -496,6 +496,7 @@ void Role::removeEquip(int id)
     if (goods[id].getType() == 0) {
         if (weapon == -1) {
             cout << "当前无武器" << endl;
+            return;
         }
         setAttack(getAttack() - goods[id].getAddAttack());
         weapon = -1;
@@ -503,6 +504,7 @@ void Role::removeEquip(int id)
     else if (goods[id].getType() == 1) {
         if (clothes == -1) {
             cout << "当前无防具" << endl;
+            return;
         }
         setDefend(getDEF() - goods[id].getAddDefend());
         clothes = -1;
