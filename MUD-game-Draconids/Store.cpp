@@ -46,6 +46,7 @@ void Store::showStores() {
 
 	bool canHandleLeftClick = true;
 	bool choice = true;
+	cout << "——目前为鼠标操作状态，点击”购买”及以下区域进行购买——" << endl;
 	cout << left << setw(32) << "物品ID" << setw(80) << left << "描述" << " 价格" << endl;
 	map<int, int>::iterator iter;
 	int i = 0;//物品序号
@@ -58,10 +59,10 @@ void Store::showStores() {
 	canHandleLeftClick = true; // 重置为 true，以允许处理左键事件
 	//----------循环检测----------
 	while (true) {
-		ReadConsoleInput(hInput, &inputBuffer, 1, &eventsRead);
-		if (GetAsyncKeyState(VK_LBUTTON) & 0x8000) {
-			int MouseY = inputBuffer.Event.MouseEvent.dwMousePosition.Y;
-			if (MouseY > 14) {
+		ReadConsoleInput(hInput, &inputBuffer, 1, &eventsRead);//进入鼠标控制
+		if (GetAsyncKeyState(VK_LBUTTON) & 0x8000) {//检测左键
+			int MouseY = inputBuffer.Event.MouseEvent.dwMousePosition.Y;//获取点击位置Y坐标
+			if (MouseY > 15) {
 				SetConsoleMode(hInput, prevMode);
 				return;
 			}
@@ -80,7 +81,7 @@ void Store::showStores() {
 
 bool Store::showProductDetails(int y) {
 	map<int, int>::iterator iter = stores.begin();
-	for (int Y = 1; iter != stores.end(); ++iter) {
+	for (int Y = 2; iter != stores.end(); ++iter) {
 		if (y <= Y) break;
 		Y++;
 	}

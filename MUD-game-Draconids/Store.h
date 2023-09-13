@@ -9,10 +9,10 @@ public:
 	Store();
 	~Store();
 
-	void showStores();
-	void storeToPlayer(Role &player);		//返回一个已经操作过的背包
+	void showStores();						//显示商品列表并实现鼠标操作
+	void storeToPlayer(Role &player);		
 	void playerToStore(Role &player);
-	bool showProductDetails(int i);
+	bool showProductDetails(int i);			//进入对应的商品详情页
 
 private:
 	map<int, int> stores;

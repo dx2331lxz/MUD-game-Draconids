@@ -391,6 +391,7 @@ void Role::useDrug() {
     if (bag.isUseDrug()) {
         cout << "是否使用药品：	1.是	2.否" << endl;
         int choice;
+        int num1;
         cin >> choice;
         if (choice == 2)
             return;
@@ -398,8 +399,10 @@ void Role::useDrug() {
             cout << "请选择要使用的药品：" << endl;
             for (int i = bag.getGoodsNum(); i > 0; i--) {
                 for (int j = 12; j < 14; j++)
-                    if (getBagWhichGoodsId(i) == j)
+                    if (getBagWhichGoodsId(i) == j){
                         cout << i << "." << '\t' << goods[getBagWhichGoodsId(i)].getName() << '\t' << getBagWhichGoodsNum(i) << " 件" << endl;
+                        num1 = getBagWhichGoodsNum(i);
+                    }
             }
             cout << "0.取消" << endl;
             int choiceGoodsId, choiceGoodsNum;
@@ -409,15 +412,23 @@ void Role::useDrug() {
                     cout << "选择错误，请重新选择！" << endl;
                 else break;
             }
+   
             choiceGoodsId = getBagWhichGoodsId(choiceGoodsId);
             cout << "请选择使用多少（输入0取消）：" << endl;
             cin >> choiceGoodsNum;
-            subGoodsToBag(choiceGoodsId, choiceGoodsNum);
+            if (num1 < choiceGoodsNum) {
+                cout << "超出拥有数量，已自动更改可使用最大数量:" << num1 << endl;
+                choiceGoodsNum = num1;
+            }
+            subGoodsToBag(choiceGoodsId, choiceGoodsNum);//减去使用的物品
+            if(choiceGoodsNum)
             cout << "成功使用药品！";
             if (choiceGoodsId == 12 || choiceGoodsId == 13) {
                 for (int i = choiceGoodsNum; i > 0; i--)
                     setHealth(goods[choiceGoodsId].getAddHP() + getHealth());
-                cout << "共恢复" << goods[choiceGoodsId].getAddHP() * choiceGoodsNum << "点血量。" << endl << endl;
+                cout << "共恢复" << goods[choiceGoodsId].getAddHP() * choiceGoodsNum << "点血量。" << endl;
+                if (getHealth() == 100) cout << "已到达满血状态！(HP = 100)" << endl;
+                cout << endl;
             }
             if (choiceGoodsId == 0) return;
         }
@@ -483,14 +494,14 @@ void Role::wearEquip(int id)
 void Role::removeEquip(int id)
 {
     if (goods[id].getType() == 0) {
-        if (weapon != -1) {
+        if (weapon == -1) {
             cout << "当前无武器" << endl;
         }
         setAttack(getAttack() - goods[id].getAddAttack());
         weapon = -1;
     }
     else if (goods[id].getType() == 1) {
-        if (clothes != -1) {
+        if (clothes == -1) {
             cout << "当前无防具" << endl;
         }
         setDefend(getDEF() - goods[id].getAddDefend());
